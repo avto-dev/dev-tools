@@ -2,9 +2,9 @@
 
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
-use PHPUnit\Framework\ExpectationFailedException;
-use ReflectionException;
 use ReflectionFunction;
+use ReflectionException;
+use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
 /**

@@ -2,19 +2,19 @@
 
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
-use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\AssertionFailedError;
 use Tests\AvtoDev\DevTools\AbstractTestCase;
+use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
 class AdditionalAssertionsTraitTest extends AbstractTestCase
 {
     /**
-     * @return void
-     *
      * @throws ExpectationFailedException
      * @throws AssertionFailedError
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
     public function testAssertIsNumeric()
     {
@@ -22,7 +22,8 @@ class AdditionalAssertionsTraitTest extends AbstractTestCase
             AdditionalAssertionsTraitStub::assertIsNumeric($valid_assert);
         }
 
-        foreach (['foo', function () {}, [1, 'foo']] as $invalid_assert) {
+        foreach (['foo', function () {
+        }, [1, 'foo']] as $invalid_assert) {
             $caught = false;
 
             try {
@@ -36,11 +37,11 @@ class AdditionalAssertionsTraitTest extends AbstractTestCase
     }
 
     /**
-     * @return void
-     *
      * @throws ExpectationFailedException
      * @throws AssertionFailedError
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
     public function testAssertIsArray()
     {
@@ -48,7 +49,8 @@ class AdditionalAssertionsTraitTest extends AbstractTestCase
             AdditionalAssertionsTraitStub::assertIsArray($valid_assert);
         }
 
-        foreach (['foo', 1, new \stdClass, function () {}] as $invalid_assert) {
+        foreach (['foo', 1, new \stdClass, function () {
+        }] as $invalid_assert) {
             $caught = false;
 
             try {

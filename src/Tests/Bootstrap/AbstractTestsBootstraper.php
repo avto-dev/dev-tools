@@ -2,12 +2,12 @@
 
 namespace AvtoDev\DevTools\Tests\Bootstrap;
 
-use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 use Exception;
 use Illuminate\Support\Str;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Application;
 use Symfony\Component\Console\Output\ConsoleOutput;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 
 /**
  * Class AbstractTestsBootstraper.

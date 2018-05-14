@@ -2,8 +2,8 @@
 
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
-use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\Constraint\IsType;
+use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
@@ -19,10 +19,10 @@ trait AdditionalAssertionsTrait
      *
      * @param mixed|array|array[] $values
      *
-     * @return void
-     *
      * @throws AssertionFailedError
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
     public static function assertIsNumeric($values)
     {
@@ -36,10 +36,10 @@ trait AdditionalAssertionsTrait
      *
      * @param array|mixed $value
      *
-     * @return void
-     *
      * @throws AssertionFailedError
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
     public static function assertIsArray($value)
     {
@@ -51,10 +51,10 @@ trait AdditionalAssertionsTrait
      *
      * @param mixed|array|array[] $values
      *
-     * @return void
-     *
      * @throws AssertionFailedError
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
     public static function assertEmptyArray($values)
     {
@@ -69,10 +69,10 @@ trait AdditionalAssertionsTrait
      *
      * @param mixed|array|array[] $values
      *
-     * @return void
-     *
      * @throws AssertionFailedError
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
     public static function assertNotEmptyArray($values)
     {
@@ -87,10 +87,10 @@ trait AdditionalAssertionsTrait
      *
      * @param mixed|string|string[] $values
      *
-     * @return void
-     *
      * @throws AssertionFailedError
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
     public static function assertIsString($values)
     {
@@ -104,10 +104,10 @@ trait AdditionalAssertionsTrait
      *
      * @param mixed|string|string[] $values
      *
-     * @return void
-     *
      * @throws AssertionFailedError
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
     public static function assertEmptyString($values)
     {
@@ -122,10 +122,10 @@ trait AdditionalAssertionsTrait
      *
      * @param mixed|string|string[] $values
      *
-     * @return void
-     *
      * @throws AssertionFailedError
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
     public static function assertNotEmptyString($values)
     {
@@ -144,10 +144,10 @@ trait AdditionalAssertionsTrait
      * @param mixed|string $actual
      * @param bool         $ignore_case
      *
-     * @return void
-     *
      * @throws AssertionFailedError
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
     public static function assertStringsEquals($expected, $actual, $ignore_case = true)
     {
@@ -166,10 +166,10 @@ trait AdditionalAssertionsTrait
      * @param mixed|string $actual
      * @param bool         $ignore_case
      *
-     * @return void
-     *
      * @throws AssertionFailedError
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
     public static function assertStringsNotEquals($expected, $actual, $ignore_case = true)
     {
@@ -187,10 +187,10 @@ trait AdditionalAssertionsTrait
      * @param string|string[] $class_names
      * @param bool            $include_interfaces
      *
-     * @return void
-     *
      * @throws InvalidArgumentException
      * @throws ExpectationFailedException
+     *
+     * @return void
      */
     public static function assertClassExists($class_names, $include_interfaces = true)
     {
@@ -210,10 +210,10 @@ trait AdditionalAssertionsTrait
      * @param object|string   $object_or_class_name
      * @param string|string[] $expected_methods
      *
-     * @return void
-     *
      * @throws ExpectationFailedException
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
     public static function assertHasMethods($object_or_class_name, $expected_methods)
     {
@@ -230,10 +230,10 @@ trait AdditionalAssertionsTrait
      * @param string          $class
      * @param string|string[] $expected_traits
      *
-     * @return void
-     *
      * @throws ExpectationFailedException
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
     public static function assertClassUsesTraits($class, $expected_traits)
     {
@@ -257,7 +257,7 @@ trait AdditionalAssertionsTrait
         /**
          * Returns all traits used by a class, its subclasses and trait of their traits.
          *
-         * @param  object|string $class
+         * @param object|string $class
          *
          * @return array
          */

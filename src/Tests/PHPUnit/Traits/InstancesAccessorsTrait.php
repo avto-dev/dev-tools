@@ -17,9 +17,9 @@ trait InstancesAccessorsTrait
      * @param string $method_name
      * @param array  $args
      *
-     * @return mixed
-     *
      * @throws ReflectionException
+     *
+     * @return mixed
      */
     public static function callMethod($object, $method_name, array $args = [])
     {
@@ -37,8 +37,9 @@ trait InstancesAccessorsTrait
      * @param object $object
      * @param string $property_name
      *
-     * @return mixed
      * @throws ReflectionException
+     *
+     * @return mixed
      */
     public static function getProperty($object, $property_name)
     {
