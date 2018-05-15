@@ -8,6 +8,7 @@ use Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits\Stubs\TraitOne;
 use Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits\Stubs\TraitTwo;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 use Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits\Stubs\TraitThree;
+use Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits\Stubs\WithTraits;
 
 /**
  * Class AdditionalAssertionsTraitTest.
@@ -65,11 +66,8 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
         $this->makeAssertTest('assertHasMethods', [\Exception::class], [\Throwable::class], '__wakeup');
         $this->makeAssertTest('assertHasMethods', [\Exception::class], [\Throwable::class], ['__wakeup', '__clone']);
 
-        /** @see AdditionalAssertionsTrait::assertClassUsesTraits */
-        $test_instance = new class {
-            use TraitOne, TraitTwo;
-        };
-        $this->makeAssertTest('assertClassUsesTraits', [$test_instance], [new \stdClass], [
+        /* @see AdditionalAssertionsTrait::assertClassUsesTraits */
+        $this->makeAssertTest('assertClassUsesTraits', [new WithTraits, WithTraits::class], [new \stdClass], [
             TraitOne::class, TraitTwo::class, TraitThree::class,
         ]);
     }
