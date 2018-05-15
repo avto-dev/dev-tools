@@ -17,7 +17,6 @@ enabled:
   - phpdoc_return_self_reference
   - align_equals
   - concat_with_spaces
-  - void_return
   - php_unit_dedicate_assert
   - php_unit_namespaced
   - php_unit_construct
