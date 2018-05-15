@@ -2,25 +2,25 @@
 
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
-use AvtoDev\DevTools\Tests\PHPUnit\Traits\InstancesAccessorsTrait;
+use Tests\AvtoDev\DevTools\AbstractTestCase;
 use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
-use Tests\AvtoDev\DevTools\AbstractTestCase;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\InstancesAccessorsTrait;
 
 class InstancesAccessorsTraitTest extends AbstractTestCase
 {
     use InstancesAccessorsTrait;
 
     /**
-     * @return void
      * @throws ExpectationFailedException
      * @throws InvalidArgumentException
      * @throws \ReflectionException
+     *
+     * @return void
      */
     public function testsTraitAsserts()
     {
-        $instance = new class
-        {
+        $instance             = new class {
             private $property = 'foo';
 
             private function method()

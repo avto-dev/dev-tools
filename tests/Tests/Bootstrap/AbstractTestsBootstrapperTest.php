@@ -2,9 +2,9 @@
 
 namespace Tests\AvtoDev\DevTools\Tests\Bootstrap;
 
+use Tests\AvtoDev\DevTools\AbstractTestCase;
 use AvtoDev\DevTools\Tests\Bootstrap\AbstractTestsBootstrapper;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
-use Tests\AvtoDev\DevTools\AbstractTestCase;
 
 class AbstractTestsBootstrapperTest extends AbstractTestCase
 {
@@ -15,8 +15,7 @@ class AbstractTestsBootstrapperTest extends AbstractTestCase
     {
         $this->expectExceptionMessageRegExp('~stub is works~');
 
-        new class extends AbstractTestsBootstrapper
-        {
+        new class extends AbstractTestsBootstrapper {
             use CreatesApplicationTrait;
 
             protected function bootLog()

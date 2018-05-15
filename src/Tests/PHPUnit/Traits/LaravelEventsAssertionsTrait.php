@@ -2,9 +2,9 @@
 
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
-use PHPUnit\Framework\ExpectationFailedException;
-use ReflectionException;
 use ReflectionFunction;
+use ReflectionException;
+use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
 /**
@@ -22,8 +22,9 @@ trait LaravelEventsAssertionsTrait
      *
      * @param mixed|string $event_abstract
      *
-     * @return array
      * @throws ReflectionException
+     *
+     * @return array
      */
     public static function getEventListeners($event_abstract)
     {

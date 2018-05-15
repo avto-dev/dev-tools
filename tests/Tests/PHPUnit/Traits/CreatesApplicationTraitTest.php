@@ -3,8 +3,8 @@
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
 use Illuminate\Foundation\Application;
-use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 use Tests\AvtoDev\DevTools\AbstractTestCase;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 
 class CreatesApplicationTraitTest extends AbstractTestCase
 {
@@ -19,6 +19,24 @@ class CreatesApplicationTraitTest extends AbstractTestCase
      * @var bool
      */
     protected $after_called = false;
+
+    /**
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     *
+     * @return void
+     */
+    public function testTrait()
+    {
+        $this->assertFalse($this->before_called);
+        $this->assertFalse($this->after_called);
+
+        $this->assertInstanceOf(Application::class, $this->createApplication());
+
+        $this->assertTrue($this->before_called);
+        $this->assertTrue($this->after_called);
+    }
 
     /**
      * @param Application $app
@@ -44,22 +62,5 @@ class CreatesApplicationTraitTest extends AbstractTestCase
         $this->assertInstanceOf(Application::class, $app);
 
         $this->after_called = true;
-    }
-
-    /**
-     * @return void
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
-     * @throws \PHPUnit\Framework\ExpectationFailedException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     */
-    public function testTrait()
-    {
-        $this->assertFalse($this->before_called);
-        $this->assertFalse($this->after_called);
-
-        $this->assertInstanceOf(Application::class, $this->createApplication());
-
-        $this->assertTrue($this->before_called);
-        $this->assertTrue($this->after_called);
     }
 }
