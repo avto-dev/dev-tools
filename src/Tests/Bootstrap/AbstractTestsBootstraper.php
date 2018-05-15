@@ -7,15 +7,12 @@ use Illuminate\Support\Str;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Application;
 use Symfony\Component\Console\Output\ConsoleOutput;
-use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 
 /**
  * Class AbstractTestsBootstraper.
  */
 abstract class AbstractTestsBootstraper
 {
-    use CreatesApplicationTrait;
-
     /**
      * Prefix for 'magic' bootstrap methods.
      */
@@ -30,6 +27,13 @@ abstract class AbstractTestsBootstraper
      * @var Filesystem
      */
     protected $files;
+
+    /**
+     * Creates the application.
+     *
+     * @return Application
+     */
+    abstract public function createApplication();
 
     /**
      * AbstractTestsBootstraper constructor.
