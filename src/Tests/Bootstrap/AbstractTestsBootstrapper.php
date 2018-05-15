@@ -9,9 +9,9 @@ use Illuminate\Foundation\Application;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
 /**
- * Class AbstractTestsBootstraper.
+ * Class AbstractTestsBootstrapper.
  */
-abstract class AbstractTestsBootstraper
+abstract class AbstractTestsBootstrapper
 {
     /**
      * Prefix for 'magic' bootstrap methods.
@@ -29,7 +29,7 @@ abstract class AbstractTestsBootstraper
     protected $files;
 
     /**
-     * AbstractTestsBootstraper constructor.
+     * AbstractTestsBootstrapper constructor.
      *
      * @throws Exception
      */
@@ -44,7 +44,7 @@ abstract class AbstractTestsBootstraper
             // Если метод начинается с подстроки 'boot'
             if (Str::startsWith($method_name, static::MAGIC_METHODS_PREFIX)) {
                 // То вызываем метод, передавая ему на вход массив коллекций (хотя передавать не обязательно)
-                if (call_user_func_array([$this, $method_name], []) !== true) {
+                if ($this->$method_name() !== true) {
                     throw new Exception(sprintf(
                         'Bootstrap method "%s" has non-true result. So, we cannot start tests for this reason',
                         $method_name
@@ -78,7 +78,7 @@ abstract class AbstractTestsBootstraper
             $output = $this->app->make(ConsoleOutput::class);
         }
 
-        $output->writeln(empty($message)
+        $output->writeln(empty((string) $message)
             ? ''
             : sprintf('<%1$s>> Bootstrap:</%1$s> <%2$s>%3$s</%2$s>', 'comment', $style, $message)
         );

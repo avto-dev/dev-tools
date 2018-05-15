@@ -18,6 +18,7 @@ trait CreatesApplicationTrait
     public function createApplication()
     {
         $bootstrap_paths = [
+            __DIR__ . '/../bootstrap/app.php',
             __DIR__ . '/../../../../../../../bootstrap/app.php',
             __DIR__ . '/../../../../vendor/laravel/laravel/bootstrap/app.php',
         ];
