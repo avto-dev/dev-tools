@@ -3,8 +3,8 @@
 namespace Tests\AvtoDev\DevTools\Tests\Bootstrap;
 
 use Tests\AvtoDev\DevTools\AbstractTestCase;
-use AvtoDev\DevTools\Tests\Bootstrap\AbstractLaravelTestsBootstrapper;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
+use AvtoDev\DevTools\Tests\Bootstrap\AbstractLaravelTestsBootstrapper;
 
 class AbstractLaravelTestsBootstrapperTest extends AbstractTestCase
 {

@@ -15,24 +15,6 @@ abstract class AbstractTestsBootstrapper
     const MAGIC_METHODS_PREFIX = 'boot';
 
     /**
-     * Determine if a given string starts with a given substring.
-     *
-     * @param  string       $haystack
-     * @param  string|array $needles
-     * @return bool
-     */
-    public static function startsWith($haystack, $needles)
-    {
-        foreach ((array) $needles as $needle) {
-            if ($needle !== '' && \substr($haystack, 0, \strlen($needle)) === (string) $needle) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
      * AbstractTestsBootstrapper constructor.
      *
      * @throws Exception
@@ -40,12 +22,12 @@ abstract class AbstractTestsBootstrapper
     public function __construct()
     {
         set_exception_handler(function (Exception $e) {
-            echo(sprintf(
+            echo sprintf(
                 'Exception: "%s" (file: %s, line: %d)',
                 $e->getMessage(),
                 $e->getFile(),
                 $e->getLine()
-            ));
+            );
 
             exit(100);
         });
@@ -65,5 +47,24 @@ abstract class AbstractTestsBootstrapper
         }
 
         restore_exception_handler();
+    }
+
+    /**
+     * Determine if a given string starts with a given substring.
+     *
+     * @param string       $haystack
+     * @param string|array $needles
+     *
+     * @return bool
+     */
+    public static function startsWith($haystack, $needles)
+    {
+        foreach ((array) $needles as $needle) {
+            if ($needle !== '' && \mb_substr($haystack, 0, \mb_strlen($needle)) === (string) $needle) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
