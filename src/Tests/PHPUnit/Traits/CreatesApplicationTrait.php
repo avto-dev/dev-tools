@@ -2,7 +2,6 @@
 
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
-use Closure;
 use Illuminate\Foundation\Application;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
@@ -12,14 +11,11 @@ trait CreatesApplicationTrait
     /**
      * Creates the application.
      *
-     * @param Closure|null $before_bootstrap Call `$app->useStoragePath(...)` and others here
-     * @param Closure|null $after_bootstrap  Register your service-providers `$app->register(...)`, etc
-     *
      * @throws FileNotFoundException
      *
      * @return Application
      */
-    public function createApplication(Closure $before_bootstrap = null, Closure $after_bootstrap = null)
+    public function createApplication()
     {
         $bootstrap_paths = [
             __DIR__ . '/../../../../../../../bootstrap/app.php',
@@ -31,14 +27,14 @@ trait CreatesApplicationTrait
                 /** @var Application $app */
                 $app = require $path;
 
-                if ($before_bootstrap instanceof Closure) {
-                    $before_bootstrap->__invoke($app);
+                if (\method_exists($this, 'beforeApplicationBootstrapped')) {
+                    $this->beforeApplicationBootstrapped($app);
                 }
 
                 $app->make(Kernel::class)->bootstrap();
 
-                if ($after_bootstrap instanceof Closure) {
-                    $after_bootstrap->__invoke($app);
+                if (\method_exists($this, 'afterApplicationBootstrapped')) {
+                    $this->afterApplicationBootstrapped($app);
                 }
 
                 return $app;
