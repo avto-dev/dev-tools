@@ -27,7 +27,7 @@ trait LaravelEventsAssertionsTrait
      * @throws ReflectionException
      * @throws InvalidArgumentException
      */
-    public static function assertEventHasListenerClass($event_abstract, $listener_class): void
+    public static function assertEventHasListenerClass($event_abstract, $listener_class)
     {
         $has = false;
 

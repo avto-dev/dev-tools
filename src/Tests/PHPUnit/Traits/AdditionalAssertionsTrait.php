@@ -24,7 +24,7 @@ trait AdditionalAssertionsTrait
      *
      * @return void
      */
-    public static function assertIsNumeric($values): void
+    public static function assertIsNumeric($values)
     {
         foreach ((array) $values as $value) {
             static::assertInternalType(IsType::TYPE_NUMERIC, $value, 'Must be type of numeric');
@@ -41,7 +41,7 @@ trait AdditionalAssertionsTrait
      *
      * @return void
      */
-    public static function assertIsArray($value): void
+    public static function assertIsArray($value)
     {
         static::assertInternalType(IsType::TYPE_ARRAY, $value, 'Must be an array');
     }
@@ -56,7 +56,7 @@ trait AdditionalAssertionsTrait
      *
      * @return void
      */
-    public static function assertEmptyArray($values): void
+    public static function assertEmptyArray($values)
     {
         foreach ([$values] as $value) {
             static::assertIsArray($value);
@@ -74,7 +74,7 @@ trait AdditionalAssertionsTrait
      *
      * @return void
      */
-    public static function assertNotEmptyArray($values): void
+    public static function assertNotEmptyArray($values)
     {
         foreach ([$values] as $value) {
             static::assertIsArray($value);
@@ -92,7 +92,7 @@ trait AdditionalAssertionsTrait
      *
      * @return void
      */
-    public static function assertIsString($values): void
+    public static function assertIsString($values)
     {
         foreach ([$values] as $value) {
             static::assertInternalType(IsType::TYPE_STRING, $value, 'Must be type of string');
@@ -109,7 +109,7 @@ trait AdditionalAssertionsTrait
      *
      * @return void
      */
-    public static function assertEmptyString($values): void
+    public static function assertEmptyString($values)
     {
         foreach ([$values] as $value) {
             static::assertIsString($value);
@@ -127,7 +127,7 @@ trait AdditionalAssertionsTrait
      *
      * @return void
      */
-    public static function assertNotEmptyString($values): void
+    public static function assertNotEmptyString($values)
     {
         foreach ([$values] as $value) {
             static::assertIsString($value);
@@ -149,7 +149,7 @@ trait AdditionalAssertionsTrait
      *
      * @return void
      */
-    public static function assertStringsEquals($expected, $actual, $ignore_case = true): void
+    public static function assertStringsEquals($expected, $actual, $ignore_case = true)
     {
         if ($ignore_case === true) {
             $expected = \mb_strtolower($expected, 'UTF-8');
@@ -171,7 +171,7 @@ trait AdditionalAssertionsTrait
      *
      * @return void
      */
-    public static function assertStringsNotEquals($expected, $actual, $ignore_case = true): void
+    public static function assertStringsNotEquals($expected, $actual, $ignore_case = true)
     {
         if ($ignore_case === true) {
             $expected = \mb_strtolower($expected, 'UTF-8');
@@ -192,7 +192,7 @@ trait AdditionalAssertionsTrait
      *
      * @return void
      */
-    public static function assertClassExists($class_names, $include_interfaces = true): void
+    public static function assertClassExists($class_names, $include_interfaces = true)
     {
         foreach ([$class_names] as $class_name) {
             static::assertTrue(
@@ -215,7 +215,7 @@ trait AdditionalAssertionsTrait
      *
      * @return void
      */
-    public static function assertHasMethods($object_or_class_name, $expected_methods): void
+    public static function assertHasMethods($object_or_class_name, $expected_methods)
     {
         foreach ([$expected_methods] as $method_name) {
             static::assertTrue(
@@ -235,7 +235,7 @@ trait AdditionalAssertionsTrait
      *
      * @return void
      */
-    public static function assertClassUsesTraits($class, $expected_traits): void
+    public static function assertClassUsesTraits($class, $expected_traits)
     {
         /**
          * Returns all traits used by a trait and its traits.

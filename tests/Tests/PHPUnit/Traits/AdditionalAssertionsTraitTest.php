@@ -16,7 +16,7 @@ class AdditionalAssertionsTraitTest extends AbstractTestCase
      *
      * @return void
      */
-    public function testAssertIsNumeric(): void
+    public function testAssertIsNumeric()
     {
         foreach ([1, 1.0, 0.00001, '1', '1.0', '0.00001', [1, 0.00001], [1]] as $valid_assert) {
             AdditionalAssertionsTraitStub::assertIsNumeric($valid_assert);
@@ -42,7 +42,7 @@ class AdditionalAssertionsTraitTest extends AbstractTestCase
      *
      * @return void
      */
-    public function testAssertIsArray(): void
+    public function testAssertIsArray()
     {
         foreach ([[], [null], [1], [1, 2], [1, [null]]] as $valid_assert) {
             AdditionalAssertionsTraitStub::assertIsArray($valid_assert);

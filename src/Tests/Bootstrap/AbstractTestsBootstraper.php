@@ -65,7 +65,7 @@ abstract class AbstractTestsBootstraper
      * @param string|null $message
      * @param string      $style
      */
-    protected function log($message = null, $style = 'info'): void
+    protected function log($message = null, $style = 'info')
     {
         /** @var ConsoleOutput|null $output */
         static $output = null;
