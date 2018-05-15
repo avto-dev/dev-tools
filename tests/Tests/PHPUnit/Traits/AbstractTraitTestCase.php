@@ -20,32 +20,33 @@ abstract class AbstractTraitTestCase extends AbstractTestCase
      * @param string $method_name
      * @param array  $valid
      * @param array  $invalid
+     * @param mixed  ...$args
      *
      * @throws ExpectationFailedException
      * @throws InvalidArgumentException
      *
      * @return void
      */
-    protected function makeAssertTest(string $method_name, array $valid, array $invalid)
+    protected function makeAssertTest(string $method_name, array $valid, array $invalid, ...$args)
     {
         $instance = $this->classUsedTraitFactory();
 
         foreach ($valid as $valid_assert) {
-            $instance::{$method_name}($valid_assert);
+            $instance::{$method_name}($valid_assert, ...$args);
         }
 
         foreach ($invalid as $invalid_assert) {
             $caught = false;
 
             try {
-                $instance::{$method_name}($invalid_assert);
+                $instance::{$method_name}($invalid_assert, ...$args);
             } catch (ExpectationFailedException $e) {
                 $caught = true;
             } catch (AssertionFailedError $e) {
                 $caught = true;
             }
 
-            $this->assertTrue($caught, var_export($invalid_assert, true));
+            $this->assertTrue($caught, 'Passed invalid value: ' . var_export($invalid_assert, true));
         }
     }
 }

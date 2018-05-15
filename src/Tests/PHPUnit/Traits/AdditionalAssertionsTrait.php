@@ -17,18 +17,16 @@ trait AdditionalAssertionsTrait
     /**
      * Asserts that value(s) has a numeric type.
      *
-     * @param mixed|mixed[] $values
+     * @param mixed $value
      *
      * @throws AssertionFailedError
      * @throws InvalidArgumentException
      *
      * @return void
      */
-    public static function assertIsNumeric($values)
+    public static function assertIsNumeric($value)
     {
-        foreach ((array) $values as $value) {
-            static::assertInternalType(IsType::TYPE_NUMERIC, $value, 'Must be type of numeric');
-        }
+        static::assertInternalType(IsType::TYPE_NUMERIC, $value, 'Must be type of numeric');
     }
 
     /**
@@ -81,36 +79,32 @@ trait AdditionalAssertionsTrait
     /**
      * Asserts that value(s) is string.
      *
-     * @param mixed|string|string[] $values
+     * @param mixed|string $value
      *
      * @throws AssertionFailedError
      * @throws InvalidArgumentException
      *
      * @return void
      */
-    public static function assertIsString($values)
+    public static function assertIsString($value)
     {
-        foreach ([$values] as $value) {
-            static::assertInternalType(IsType::TYPE_STRING, $value, 'Must be type of string');
-        }
+        static::assertInternalType(IsType::TYPE_STRING, $value, 'Must be type of string');
     }
 
     /**
      * Asserts that value(s) is empty string.
      *
-     * @param mixed|string|string[] $values
+     * @param mixed|string $value
      *
      * @throws AssertionFailedError
      * @throws InvalidArgumentException
      *
      * @return void
      */
-    public static function assertEmptyString($values)
+    public static function assertEmptyString($value)
     {
-        foreach ([$values] as $value) {
-            static::assertIsString($value);
-            static::assertEmpty($value);
-        }
+        static::assertIsString($value);
+        static::assertEmpty($value);
     }
 
     /**
@@ -213,7 +207,7 @@ trait AdditionalAssertionsTrait
      */
     public static function assertHasMethods($object_or_class_name, $expected_methods)
     {
-        foreach ([$expected_methods] as $method_name) {
+        foreach ((array) $expected_methods as $method_name) {
             static::assertTrue(
                 \method_exists($object_or_class_name, $method_name), "Has no method named {$method_name}"
             );
@@ -268,13 +262,13 @@ trait AdditionalAssertionsTrait
                 $results += $trait_uses_recursive($class_iterate);
             }
 
-            return \array_unique($results);
+            return \array_values(\array_unique($results));
         };
 
-        $uses = \array_flip($class_uses_recursive($class));
+        $uses = $class_uses_recursive($class);
 
-        foreach ([$expected_traits] as $trait_class) {
-            static::assertArrayHasKey($trait_class, $uses);
+        foreach ((array) $expected_traits as $trait_class) {
+            static::assertContains($trait_class, $uses);
         }
     }
 }
