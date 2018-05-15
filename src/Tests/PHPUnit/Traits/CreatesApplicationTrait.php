@@ -15,9 +15,9 @@ trait CreatesApplicationTrait
      * @param Closure|null $before_bootstrap Call `$app->useStoragePath(...)` and others here
      * @param Closure|null $after_bootstrap  Register your service-providers `$app->register(...)`, etc
      *
-     * @return Application
-     *
      * @throws FileNotFoundException
+     *
+     * @return Application
      */
     public function createApplication(Closure $before_bootstrap = null, Closure $after_bootstrap = null)
     {

@@ -29,13 +29,6 @@ abstract class AbstractTestsBootstraper
     protected $files;
 
     /**
-     * Creates the application.
-     *
-     * @return Application
-     */
-    abstract public function createApplication();
-
-    /**
      * AbstractTestsBootstraper constructor.
      *
      * @throws Exception
@@ -62,6 +55,13 @@ abstract class AbstractTestsBootstraper
 
         $this->log(null);
     }
+
+    /**
+     * Creates the application.
+     *
+     * @return Application
+     */
+    abstract public function createApplication();
 
     /**
      * Show "styled" console message.
