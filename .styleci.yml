@@ -15,8 +15,13 @@ enabled:
   - phpdoc_order
   - phpdoc_separation
   - phpdoc_return_self_reference
+  - phpdoc_no_package
   - align_equals
   - concat_with_spaces
+  - void_return
+  - php_unit_dedicate_assert
+  - php_unit_namespaced
+  - php_unit_construct
 
 disabled:
   - unalign_equals
