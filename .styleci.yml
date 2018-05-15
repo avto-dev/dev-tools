@@ -15,7 +15,6 @@ enabled:
   - phpdoc_order
   - phpdoc_separation
   - phpdoc_return_self_reference
-  - phpdoc_no_package
   - align_equals
   - concat_with_spaces
   - void_return
