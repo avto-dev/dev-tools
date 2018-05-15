@@ -3,36 +3,25 @@
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
 use PHPUnit\Framework\AssertionFailedError;
-use Tests\AvtoDev\DevTools\AbstractTestCase;
 use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
-class AdditionalAssertionsTraitTest extends AbstractTestCase
+/**
+ * Class AdditionalAssertionsTraitTest.
+ */
+class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
 {
     /**
-     * @throws ExpectationFailedException
-     * @throws AssertionFailedError
-     * @throws InvalidArgumentException
+     * @inheritdoc
      *
-     * @return void
+     * @return mixed|\PHPUnit\Framework\TestCase
      */
-    public function testAssertIsNumeric()
+    protected function classUsedTraitFactory()
     {
-        foreach ([1, 1.0, 0.00001, '1', '1.0', '0.00001', [1, 0.00001], [1]] as $valid_assert) {
-            AdditionalAssertionsTraitStub::assertIsNumeric($valid_assert);
-        }
-
-        foreach (['foo', [1, 'foo']] as $invalid_assert) {
-            $caught = false;
-
-            try {
-                AdditionalAssertionsTraitStub::assertIsNumeric($invalid_assert);
-            } catch (ExpectationFailedException $e) {
-                $caught = true;
-            }
-
-            $this->assertTrue($caught, var_export($invalid_assert, true));
-        }
+        return new class extends \PHPUnit\Framework\TestCase
+        {
+            use \AvtoDev\DevTools\Tests\PHPUnit\Traits\AdditionalAssertionsTrait;
+        };
     }
 
     /**
@@ -42,22 +31,30 @@ class AdditionalAssertionsTraitTest extends AbstractTestCase
      *
      * @return void
      */
-    public function testAssertIsArray()
+    public function testsTraitAsserts()
     {
-        foreach ([[], [null], [1], [1, 2], [1, [null]]] as $valid_assert) {
-            AdditionalAssertionsTraitStub::assertIsArray($valid_assert);
-        }
+        $this->makeAssertTest(
+            'assertIsNumeric',
+            [1, 1.0, 0.00001, '1', '1.0', '0.00001', [1, 0.00001], [1]],
+            ['foo', [1, 'foo']]
+        );
 
-        foreach (['foo', 1, new \stdClass] as $invalid_assert) {
-            $caught = false;
+        $this->makeAssertTest(
+            'assertNotEmptyArray',
+            [[1], ['foo'], [new \stdClass]],
+            [[]]
+        );
 
-            try {
-                AdditionalAssertionsTraitStub::assertIsArray($invalid_assert);
-            } catch (ExpectationFailedException $e) {
-                $caught = true;
-            }
+        $this->makeAssertTest(
+            'assertIsArray',
+            [[], [null], [1], [1, 2], [1, [null]]],
+            ['foo', 1, new \stdClass]
+        );
 
-            $this->assertTrue($caught, var_export($invalid_assert, true));
-        }
+        $this->makeAssertTest(
+            'assertEmptyArray',
+            [[]],
+            ['foo', [1], new \stdClass, [[]]]
+        );
     }
 }

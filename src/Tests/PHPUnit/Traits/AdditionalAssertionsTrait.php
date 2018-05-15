@@ -17,7 +17,7 @@ trait AdditionalAssertionsTrait
     /**
      * Asserts that value(s) has a numeric type.
      *
-     * @param mixed|array|array[] $values
+     * @param mixed|mixed[] $values
      *
      * @throws AssertionFailedError
      * @throws InvalidArgumentException
@@ -49,37 +49,33 @@ trait AdditionalAssertionsTrait
     /**
      * Asserts that value(s) is empty array.
      *
-     * @param mixed|array|array[] $values
+     * @param mixed|array $value
      *
      * @throws AssertionFailedError
      * @throws InvalidArgumentException
      *
      * @return void
      */
-    public static function assertEmptyArray($values)
+    public static function assertEmptyArray($value)
     {
-        foreach ([$values] as $value) {
-            static::assertIsArray($value);
-            static::assertEmpty($value);
-        }
+        static::assertIsArray($value);
+        static::assertEmpty($value);
     }
 
     /**
      * Asserts that value(s) is not empty array.
      *
-     * @param mixed|array|array[] $values
+     * @param mixed|array $value
      *
      * @throws AssertionFailedError
      * @throws InvalidArgumentException
      *
      * @return void
      */
-    public static function assertNotEmptyArray($values)
+    public static function assertNotEmptyArray($value)
     {
-        foreach ([$values] as $value) {
-            static::assertIsArray($value);
-            static::assertNotEmpty($value);
-        }
+        static::assertIsArray($value);
+        static::assertNotEmpty($value);
     }
 
     /**
