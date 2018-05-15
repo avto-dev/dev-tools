@@ -26,7 +26,7 @@ trait LaravelEventsAssertionsTrait
      *
      * @return array
      */
-    public static function getEventListeners($event_abstract)
+    public static function getEventListenersClasses($event_abstract)
     {
         $result = [];
 
@@ -48,8 +48,8 @@ trait LaravelEventsAssertionsTrait
      * @see https://laravel.com/docs/5.6/events
      * @see https://laravel.com/docs/5.5/events
      *
-     * @param mixed|string $event_abstract
-     * @param string       $listener_class
+     * @param string|object|mixed $event_abstract
+     * @param string              $listener_class
      *
      * @throws ExpectationFailedException
      * @throws ReflectionException
@@ -63,7 +63,7 @@ trait LaravelEventsAssertionsTrait
 
         static::assertContains(
             $listener_class,
-            static::getEventListeners($event_abstract),
+            static::getEventListenersClasses($event_abstract),
             sprintf('"%s" has no listener class "%s"', $event_abstract, $listener_class)
         );
     }
@@ -74,8 +74,8 @@ trait LaravelEventsAssertionsTrait
      * @see https://laravel.com/docs/5.6/events
      * @see https://laravel.com/docs/5.5/events
      *
-     * @param mixed|string $event_abstract
-     * @param string       $listener_class
+     * @param string|object|mixed $event_abstract
+     * @param string              $listener_class
      *
      * @throws ExpectationFailedException
      * @throws ReflectionException
@@ -89,7 +89,7 @@ trait LaravelEventsAssertionsTrait
 
         static::assertNotContains(
             $listener_class,
-            static::getEventListeners($event_abstract),
+            static::getEventListenersClasses($event_abstract),
             sprintf('"%s" has no listener class "%s"', $event_abstract, $listener_class)
         );
     }

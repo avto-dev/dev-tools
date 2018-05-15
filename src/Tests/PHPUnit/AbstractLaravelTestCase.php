@@ -6,11 +6,11 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\TestCase;
 
 /**
- * Class AbstractIlluminateTestCase.
+ * Class AbstractLaravelTestCase.
  *
  * Abstract Illuminate test case.
  */
-abstract class AbstractIlluminateTestCase extends TestCase
+abstract class AbstractLaravelTestCase extends TestCase
 {
     use Traits\AdditionalAssertionsTrait,
         Traits\InstancesAccessorsTrait,

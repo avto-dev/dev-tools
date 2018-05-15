@@ -1,11 +1,9 @@
 {
     "name": "avto-dev/dev-tools",
-    "description": "Developer tools",
+    "description": "PHP developer tools",
     "keywords": [
-        "some",
-        "keywords",
-        "goes",
-        "here"
+        "dev",
+        "tools"
     ],
     "type": "library",
     "license": "MIT",
@@ -38,6 +36,10 @@
     "scripts": {
         "test": "@php ./vendor/bin/phpunit --no-coverage",
         "test-cover": "@php ./vendor/bin/phpunit"
+    },
+    "suggest": {
+        "codedungeon/phpunit-result-printer": "PHPUnit Pretty Result Printer",
+        "johnkary/phpunit-speedtrap": "Reports on slow-running tests in your PHPUnit test suite"
     },
     "support": {
         "issues": "https://github.com/avto-dev/dev-tools/issues",

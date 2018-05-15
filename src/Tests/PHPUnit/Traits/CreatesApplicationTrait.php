@@ -28,14 +28,14 @@ trait CreatesApplicationTrait
                 /** @var Application $app */
                 $app = require $path;
 
-                if (\method_exists($this, 'beforeApplicationBootstrapped')) {
-                    $this->beforeApplicationBootstrapped($app);
+                if (\method_exists($this, $before_method_name = 'beforeApplicationBootstrapped')) {
+                    $this->$before_method_name($app);
                 }
 
                 $app->make(Kernel::class)->bootstrap();
 
-                if (\method_exists($this, 'afterApplicationBootstrapped')) {
-                    $this->afterApplicationBootstrapped($app);
+                if (\method_exists($this, $after_method_name = 'afterApplicationBootstrapped')) {
+                    $this->$after_method_name($app);
                 }
 
                 return $app;

@@ -3,9 +3,10 @@
 namespace Tests\AvtoDev\DevTools\Tests\Bootstrap;
 
 use Tests\AvtoDev\DevTools\AbstractTestCase;
-use AvtoDev\DevTools\Tests\Bootstrap\AbstractTestsBootstrapper;
+use AvtoDev\DevTools\Tests\Bootstrap\AbstractLaravelTestsBootstrapper;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 
-class AbstractTestsBootstrapperTest extends AbstractTestCase
+class AbstractLaravelTestsBootstrapperTest extends AbstractTestCase
 {
     /**
      * @throws \Exception
@@ -14,7 +15,16 @@ class AbstractTestsBootstrapperTest extends AbstractTestCase
     {
         $this->expectExceptionMessageRegExp('~stub is works~');
 
-        new class extends AbstractTestsBootstrapper {
+        new class extends AbstractLaravelTestsBootstrapper {
+            use CreatesApplicationTrait;
+
+            protected function bootLog()
+            {
+                $this->log();
+
+                return true;
+            }
+
             /**
              * This method must be called automatically.
              *

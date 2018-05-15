@@ -33,9 +33,9 @@ class AbstractTestCasesTest extends AbstractTestCase
      * @throws \PHPUnit\Framework\ExpectationFailedException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
-    public function testAbstractIlluminateTestCase()
+    public function testAbstractLaravelTestCase()
     {
-        $instance = new class extends \AvtoDev\DevTools\Tests\PHPUnit\AbstractIlluminateTestCase {
+        $instance = new class extends \AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase {
         };
 
         $this->assertInstanceOf(\PHPUnit\Framework\TestCase::class, $instance);

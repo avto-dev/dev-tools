@@ -3,10 +3,6 @@
 namespace AvtoDev\DevTools\Tests\Bootstrap;
 
 use Exception;
-use Illuminate\Support\Str;
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\Foundation\Application;
-use Symfony\Component\Console\Output\ConsoleOutput;
 
 /**
  * Class AbstractTestsBootstrapper.
@@ -19,14 +15,22 @@ abstract class AbstractTestsBootstrapper
     const MAGIC_METHODS_PREFIX = 'boot';
 
     /**
-     * @var Application
+     * Determine if a given string starts with a given substring.
+     *
+     * @param  string       $haystack
+     * @param  string|array $needles
+     * @return bool
      */
-    protected $app;
+    public static function startsWith($haystack, $needles)
+    {
+        foreach ((array) $needles as $needle) {
+            if ($needle !== '' && \substr($haystack, 0, \strlen($needle)) === (string) $needle) {
+                return true;
+            }
+        }
 
-    /**
-     * @var Filesystem
-     */
-    protected $files;
+        return false;
+    }
 
     /**
      * AbstractTestsBootstrapper constructor.
@@ -35,15 +39,22 @@ abstract class AbstractTestsBootstrapper
      */
     public function __construct()
     {
-        $this->app = $this->createApplication();
+        set_exception_handler(function (Exception $e) {
+            echo(sprintf(
+                'Exception: "%s" (file: %s, line: %d)',
+                $e->getMessage(),
+                $e->getFile(),
+                $e->getLine()
+            ));
 
-        $this->files = $this->app->make('files');
+            exit(100);
+        });
 
-        // Перебираем все имена методов собственного класса
+        // Iterate all methods names
         foreach (get_class_methods(static::class) as $method_name) {
-            // Если метод начинается с подстроки 'boot'
-            if (Str::startsWith($method_name, static::MAGIC_METHODS_PREFIX)) {
-                // То вызываем метод, передавая ему на вход массив коллекций (хотя передавать не обязательно)
+            // Check for method name prefix
+            if (static::startsWith($method_name, static::MAGIC_METHODS_PREFIX)) {
+                // ...and make call
                 if ($this->$method_name() !== true) {
                     throw new Exception(sprintf(
                         'Bootstrap method "%s" has non-true result. So, we cannot start tests for this reason',
@@ -53,34 +64,6 @@ abstract class AbstractTestsBootstrapper
             }
         }
 
-        $this->log(null);
-    }
-
-    /**
-     * Creates the application.
-     *
-     * @return Application
-     */
-    abstract public function createApplication();
-
-    /**
-     * Show "styled" console message.
-     *
-     * @param string|null $message
-     * @param string      $style
-     */
-    protected function log($message = null, $style = 'info')
-    {
-        /** @var ConsoleOutput|null $output */
-        static $output = null;
-
-        if (! ($output instanceof ConsoleOutput)) {
-            $output = $this->app->make(ConsoleOutput::class);
-        }
-
-        $output->writeln(empty((string) $message)
-            ? ''
-            : sprintf('<%1$s>> Bootstrap:</%1$s> <%2$s>%3$s</%2$s>', 'comment', $style, $message)
-        );
+        restore_exception_handler();
     }
 }
