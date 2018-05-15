@@ -12,19 +12,6 @@ use SebastianBergmann\RecursionContext\InvalidArgumentException;
 class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
 {
     /**
-     * @inheritdoc
-     *
-     * @return mixed|\PHPUnit\Framework\TestCase
-     */
-    protected function classUsedTraitFactory()
-    {
-        return new class extends \PHPUnit\Framework\TestCase
-        {
-            use \AvtoDev\DevTools\Tests\PHPUnit\Traits\AdditionalAssertionsTrait;
-        };
-    }
-
-    /**
      * @throws ExpectationFailedException
      * @throws AssertionFailedError
      * @throws InvalidArgumentException
@@ -56,5 +43,17 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
             [[]],
             ['foo', [1], new \stdClass, [[]]]
         );
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return mixed|\PHPUnit\Framework\TestCase
+     */
+    protected function classUsedTraitFactory()
+    {
+        return new class extends \PHPUnit\Framework\TestCase {
+            use \AvtoDev\DevTools\Tests\PHPUnit\Traits\AdditionalAssertionsTrait;
+        };
     }
 }

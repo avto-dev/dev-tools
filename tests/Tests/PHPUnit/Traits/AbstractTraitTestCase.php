@@ -21,10 +21,10 @@ abstract class AbstractTraitTestCase extends AbstractTestCase
      * @param array  $valid
      * @param array  $invalid
      *
-     * @return void
-     *
      * @throws ExpectationFailedException
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
     protected function makeAssertTest(string $method_name, array $valid, array $invalid)
     {
