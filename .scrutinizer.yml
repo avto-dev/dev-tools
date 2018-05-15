@@ -8,6 +8,10 @@ checks:
     duplication: true
 
 build:
+  project_setup:
+    after:
+      - php-scrutinizer-run
+
   environment:
     mysql: false
     postgresql: false
@@ -19,17 +23,6 @@ build:
     rabbitmq: false
 
   nodes:
-    php56:
-      environment:
-        php: 5.6
-      tests:
-        override:
-          -
-            command: 'vendor/bin/phpunit --coverage-clover=clover-file'
-            coverage:
-              file: 'clover-file'
-              format: 'clover'
-
     php70:
       environment:
         php: 7.0
