@@ -2,7 +2,6 @@
 
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
-use PHPUnit\Framework\Constraint\IsType;
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
@@ -27,7 +26,7 @@ trait AdditionalAssertionsTrait
     public static function assertIsNumeric($values)
     {
         foreach ((array) $values as $value) {
-            static::assertInternalType(IsType::TYPE_NUMERIC, $value, 'Must be type of numeric');
+            static::assertInternalType('numeric', $value, 'Must be type of numeric');
         }
     }
 
@@ -43,7 +42,7 @@ trait AdditionalAssertionsTrait
      */
     public static function assertIsArray($value)
     {
-        static::assertInternalType(IsType::TYPE_ARRAY, $value, 'Must be an array');
+        static::assertInternalType('array', $value, 'Must be an array');
     }
 
     /**
@@ -95,7 +94,7 @@ trait AdditionalAssertionsTrait
     public static function assertIsString($values)
     {
         foreach ([$values] as $value) {
-            static::assertInternalType(IsType::TYPE_STRING, $value, 'Must be type of string');
+            static::assertInternalType('string', $value, 'Must be type of string');
         }
     }
 

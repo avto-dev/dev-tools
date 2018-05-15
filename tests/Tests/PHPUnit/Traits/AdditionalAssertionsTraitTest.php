@@ -22,8 +22,7 @@ class AdditionalAssertionsTraitTest extends AbstractTestCase
             AdditionalAssertionsTraitStub::assertIsNumeric($valid_assert);
         }
 
-        foreach (['foo', function () {
-        }, [1, 'foo']] as $invalid_assert) {
+        foreach (['foo', [1, 'foo']] as $invalid_assert) {
             $caught = false;
 
             try {
@@ -49,8 +48,7 @@ class AdditionalAssertionsTraitTest extends AbstractTestCase
             AdditionalAssertionsTraitStub::assertIsArray($valid_assert);
         }
 
-        foreach (['foo', 1, new \stdClass, function () {
-        }] as $invalid_assert) {
+        foreach (['foo', 1, new \stdClass] as $invalid_assert) {
             $caught = false;
 
             try {
