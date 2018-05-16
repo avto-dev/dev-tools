@@ -42,7 +42,8 @@ Bootstrap - это файл, который выполняется **перед 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit bootstrap="./tests/bootstrap.php">
- <!-- configuration --></phpunit>
+    <!-- configuration -->
+</phpunit>
 ```
 
 #### Для Laravel-приложений
