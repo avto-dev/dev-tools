@@ -30,6 +30,21 @@ trait AdditionalAssertionsTrait
     }
 
     /**
+     * Asserts that value(s) has a integer type.
+     *
+     * @param mixed $value
+     *
+     * @throws AssertionFailedError
+     * @throws InvalidArgumentException
+     *
+     * @return void
+     */
+    public static function assertIsInteger($value)
+    {
+        static::assertInternalType(IsType::TYPE_INT, $value, 'Must be type of integer');
+    }
+
+    /**
      * Asserts that value(s) is array.
      *
      * @param array|mixed $value

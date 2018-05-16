@@ -27,6 +27,9 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
         /* @see AdditionalAssertionsTrait::assertIsNumeric */
         $this->makeAssertTest('assertIsNumeric', [1, 1.0, 0.00001, '1', '1.0', '0.00001'], ['foo', null]);
 
+        /* @see AdditionalAssertionsTrait::assertIsInteger */
+        $this->makeAssertTest('assertIsInteger', [1, 2, 1000], [1.01, '1', 'foo', []]);
+
         /* @see AdditionalAssertionsTrait::assertIsArray */
         $this->makeAssertTest('assertIsArray', [[], [null], [1], [1, 2], [1, [null]]], ['foo', 1, new \stdClass]);
 
