@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.1.2
+
+### Fixed
+- Fixed application bootstrap file path for using in packages in `CreatesApplicationTrait`
+
 ## v1.1.1
 
 ### Fixed
