@@ -110,6 +110,7 @@ trait AdditionalAssertionsTrait
      * Asserts that value(s) is empty string.
      *
      * @param mixed|string $value
+     * @param mixed        $values
      *
      * @throws AssertionFailedError
      * @throws InvalidArgumentException
