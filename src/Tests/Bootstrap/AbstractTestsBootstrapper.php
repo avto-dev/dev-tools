@@ -2,6 +2,7 @@
 
 namespace AvtoDev\DevTools\Tests\Bootstrap;
 
+use TypeError;
 use Exception;
 
 /**
@@ -21,13 +22,15 @@ abstract class AbstractTestsBootstrapper
      */
     public function __construct()
     {
-        set_exception_handler(function (Exception $e) {
-            echo sprintf(
-                'Exception: "%s" (file: %s, line: %d)',
-                $e->getMessage(),
-                $e->getFile(),
-                $e->getLine()
-            );
+        set_exception_handler(function ($e) {
+            if ($e instanceof Exception || $e instanceof TypeError) {
+                echo sprintf(
+                    'Exception: "%s" (file: %s, line: %d)' . PHP_EOL,
+                    $e->getMessage(),
+                    $e->getFile(),
+                    $e->getLine()
+                );
+            }
 
             exit(100);
         });
