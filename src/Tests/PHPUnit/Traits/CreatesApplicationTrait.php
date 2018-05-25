@@ -21,6 +21,7 @@ trait CreatesApplicationTrait
             __DIR__ . '/../bootstrap/app.php',
             __DIR__ . '/../../../../../../../bootstrap/app.php',
             __DIR__ . '/../../../../vendor/laravel/laravel/bootstrap/app.php',
+            __DIR__ . '/../../../../../../laravel/laravel/bootstrap/app.php',
         ];
 
         foreach ($bootstrap_paths as $path) {
