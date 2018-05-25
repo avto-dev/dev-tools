@@ -116,10 +116,16 @@ trait AdditionalAssertionsTrait
      *
      * @return void
      */
-    public static function assertEmptyString($value)
+    public static function assertEmptyString($values)
     {
-        static::assertIsString($value);
-        static::assertEmpty($value);
+        $values = \is_array($values) && $values !== []
+            ? $values
+            : [$values];
+
+        foreach ($values as $value) {
+            static::assertIsString($value);
+            static::assertEmpty($value);
+        }
     }
 
     /**
@@ -134,7 +140,11 @@ trait AdditionalAssertionsTrait
      */
     public static function assertNotEmptyString($values)
     {
-        foreach ([$values] as $value) {
+        $values = \is_array($values) && $values !== []
+            ? $values
+            : [$values];
+
+        foreach ($values as $value) {
             static::assertIsString($value);
             static::assertNotEmpty($value);
         }
@@ -199,7 +209,7 @@ trait AdditionalAssertionsTrait
      */
     public static function assertClassExists($class_names, $include_interfaces = true)
     {
-        foreach ([$class_names] as $class_name) {
+        foreach ((array) $class_names as $class_name) {
             static::assertTrue(
                 $include_interfaces === true
                     ? \class_exists($class_name) || \interface_exists($class_name)

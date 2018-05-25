@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.1.3
+
+### Fixed
+- Fixed asserts `assertEmptyString`, `assertNotEmptyString`, `assertClassExists` - now works correctly with arrays of input values
+
 ## v1.1.2
 
 ### Fixed

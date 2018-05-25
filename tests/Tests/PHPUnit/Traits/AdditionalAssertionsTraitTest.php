@@ -49,9 +49,11 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
 
         /* @see AdditionalAssertionsTrait::assertEmptyString */
         $this->makeAssertTest('assertEmptyString', [''], ['foo', [1], new \stdClass, []]);
+        $this->makeAssertTest('assertEmptyString', ['', ['', '']], ['foo', [1], new \stdClass, []]);
 
         /* @see AdditionalAssertionsTrait::assertNotEmptyString */
         $this->makeAssertTest('assertNotEmptyString', ['foo'], ['', null]);
+        $this->makeAssertTest('assertNotEmptyString', ['foo', ['foo2', 'bar']], ['', null, []]);
 
         /* @see AdditionalAssertionsTrait::assertStringsEquals */
         $this->makeAssertTest('assertStringsEquals', ['Превед foo'], [], 'превед foo', true);
@@ -64,6 +66,10 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
         /* @see AdditionalAssertionsTrait::assertClassExists */
         $this->makeAssertTest('assertClassExists', [\Exception::class, \Throwable::class], ['FooClass']);
         $this->makeAssertTest('assertClassExists', [\Exception::class], ['FooClass', \Throwable::class], false);
+        $this->makeAssertTest('assertClassExists', [
+            \Exception::class,
+            [\Exception::class, \Throwable::class],
+        ], ['FooClass']);
 
         /* @see AdditionalAssertionsTrait::assertHasMethods */
         $this->makeAssertTest('assertHasMethods', [\Exception::class], [\Throwable::class], '__wakeup');
