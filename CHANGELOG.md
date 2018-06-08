@@ -6,6 +6,7 @@
 
 - Additional method `getApplicationBootstrapFiles()` into `CreatesApplicationTrait`
 - Trait `LaravelLogFilesAssertsTrait`
+- Minimal PHPunit version now is `6.5` (for internal testing)
 
 ## v1.1.3
 
