@@ -6,6 +6,7 @@ use Tests\AvtoDev\DevTools\AbstractTestCase;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\InstancesAccessorsTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\AdditionalAssertionsTrait;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelLogFilesAssertsTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelEventsAssertionsTrait;
 
 class AbstractTestCasesTest extends AbstractTestCase
@@ -36,6 +37,7 @@ class AbstractTestCasesTest extends AbstractTestCase
     public function testAbstractLaravelTestCase()
     {
         $instance = new class extends \AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase {
+            use CreatesApplicationTrait;
         };
 
         $this->assertInstanceOf(\PHPUnit\Framework\TestCase::class, $instance);
@@ -46,6 +48,7 @@ class AbstractTestCasesTest extends AbstractTestCase
             InstancesAccessorsTrait::class,
             CreatesApplicationTrait::class,
             LaravelEventsAssertionsTrait::class,
+            LaravelLogFilesAssertsTrait::class,
         ]);
     }
 }

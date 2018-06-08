@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AvtoDev\DevTools\Tests\PHPUnit;
 
 use Illuminate\Foundation\Application;
@@ -15,6 +17,7 @@ abstract class AbstractLaravelTestCase extends TestCase
     use Traits\AdditionalAssertionsTrait,
         Traits\InstancesAccessorsTrait,
         Traits\CreatesApplicationTrait,
+        Traits\LaravelLogFilesAssertsTrait,
         Traits\LaravelEventsAssertionsTrait;
 
     /**

@@ -2,6 +2,7 @@
 
 namespace Tests\AvtoDev\DevTools\Tests\Bootstrap;
 
+use Exception;
 use Tests\AvtoDev\DevTools\AbstractTestCase;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 use AvtoDev\DevTools\Tests\Bootstrap\AbstractLaravelTestsBootstrapper;
@@ -13,6 +14,7 @@ class AbstractLaravelTestsBootstrapperTest extends AbstractTestCase
      */
     public function testBootstrapper()
     {
+        $this->expectException(Exception::class);
         $this->expectExceptionMessageRegExp('~stub is works~');
 
         new class extends AbstractLaravelTestsBootstrapper {

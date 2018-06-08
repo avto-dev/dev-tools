@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
 use ReflectionClass;
@@ -21,7 +23,7 @@ trait InstancesAccessorsTrait
      *
      * @return mixed
      */
-    public static function callMethod($object, $method_name, array $args = [])
+    public static function callMethod($object, string $method_name, array $args = [])
     {
         $class  = new ReflectionClass($object);
         $method = $class->getMethod($method_name);
@@ -41,7 +43,7 @@ trait InstancesAccessorsTrait
      *
      * @return mixed
      */
-    public static function getProperty($object, $property_name)
+    public static function getProperty($object, string $property_name)
     {
         $reflection = new ReflectionClass($object);
 

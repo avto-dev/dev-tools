@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AvtoDev\DevTools\Tests\PHPUnit;
 
 use PHPUnit\Framework\TestCase;

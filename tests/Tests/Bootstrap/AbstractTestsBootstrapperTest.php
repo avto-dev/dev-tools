@@ -2,6 +2,7 @@
 
 namespace Tests\AvtoDev\DevTools\Tests\Bootstrap;
 
+use Exception;
 use Tests\AvtoDev\DevTools\AbstractTestCase;
 use AvtoDev\DevTools\Tests\Bootstrap\AbstractTestsBootstrapper;
 
@@ -12,6 +13,7 @@ class AbstractTestsBootstrapperTest extends AbstractTestCase
      */
     public function testBootstrapper()
     {
+        $this->expectException(Exception::class);
         $this->expectExceptionMessageRegExp('~stub is works~');
 
         new class extends AbstractTestsBootstrapper {
@@ -22,7 +24,7 @@ class AbstractTestsBootstrapperTest extends AbstractTestCase
              */
             protected function bootFoo()
             {
-                throw new \Exception('stub is works');
+                throw new Exception('stub is works');
             }
         };
     }
