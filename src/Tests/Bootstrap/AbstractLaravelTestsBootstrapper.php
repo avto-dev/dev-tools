@@ -51,6 +51,8 @@ abstract class AbstractLaravelTestsBootstrapper extends AbstractTestsBootstrappe
      *
      * @param string|null $message
      * @param string      $style
+     *
+     * @return void
      */
     protected function log($message = null, $style = 'info')
     {
