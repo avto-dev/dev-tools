@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.1.5
+
+### Fixed
+
+- Some PHPDoc annotations and asserts messages fixed
+
 ## v1.1.4
 
 ### Added

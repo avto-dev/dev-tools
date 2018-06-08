@@ -62,10 +62,10 @@ abstract class AbstractTestsBootstrapper
      *
      * @return bool
      */
-    public static function startsWith($haystack, $needles)
+    public static function startsWith($haystack, $needles): bool
     {
         foreach ((array) $needles as $needle) {
-            if ($needle !== '' && \mb_substr($haystack, 0, \mb_strlen($needle)) === (string) $needle) {
+            if ($needle !== '' && \mb_strpos($haystack, (string) $needle) === 0) {
                 return true;
             }
         }

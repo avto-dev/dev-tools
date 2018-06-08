@@ -37,11 +37,14 @@ trait LaravelLogFilesAssertsTrait
      */
     public function assertLogFileExists(string $file_name = 'laravel.log')
     {
-        $this->assertFileExists($this->getDefaultLogsDirectoryPath($file_name));
+        $this->assertFileExists(
+            $this->getDefaultLogsDirectoryPath($file_name),
+            "Log file [{$file_name}] does not exists."
+        );
     }
 
     /**
-     * Assert that log file exists.
+     * Assert that log file NOT exists.
      *
      * @param string $file_name
      *
@@ -52,7 +55,10 @@ trait LaravelLogFilesAssertsTrait
      */
     public function assertLogFileNotExists(string $file_name = 'laravel.log')
     {
-        $this->assertFileNotExists($this->getDefaultLogsDirectoryPath($file_name));
+        $this->assertFileNotExists(
+            $this->getDefaultLogsDirectoryPath($file_name),
+            "Log file [{$file_name}] exists (but should be not)."
+        );
     }
 
     /**
@@ -73,8 +79,8 @@ trait LaravelLogFilesAssertsTrait
             ? $lines_limit
             : $lines_limit + 1);
 
-        $this->assertGreaterThanOrEqual(1, \count($lines), "File {$file} is empty");
-        $this->assertContains($substring, implode("\n", $lines), "Log file [{$file}] does not contains [{$substring}].");
+        $this->assertLogFileExists($file);
+        $this->assertContains($substring, \implode("\n", $lines), "Log file [{$file}] does not contains [{$substring}].");
     }
 
     /**
@@ -95,7 +101,7 @@ trait LaravelLogFilesAssertsTrait
             ? $lines_limit
             : $lines_limit + 1);
 
-        $this->assertNotContains($substring, implode("\n", $lines), "Log file [{$file}] contains [{$substring}].");
+        $this->assertNotContains($substring, \implode("\n", $lines), "Log file [{$file}] contains [{$substring}].");
     }
 
     /**
