@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
 use PHPUnit\Framework\Constraint\IsType;
@@ -109,8 +111,7 @@ trait AdditionalAssertionsTrait
     /**
      * Asserts that value(s) is empty string.
      *
-     * @param mixed|string $value
-     * @param mixed        $values
+     * @param mixed[]|string $values
      *
      * @throws AssertionFailedError
      * @throws InvalidArgumentException

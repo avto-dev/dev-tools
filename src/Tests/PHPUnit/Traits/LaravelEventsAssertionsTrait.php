@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
 use ReflectionFunction;
@@ -49,7 +51,7 @@ trait LaravelEventsAssertionsTrait
      * @see https://laravel.com/docs/5.5/events
      *
      * @param string|object|mixed $event_abstract
-     * @param string              $listener_class
+     * @param string|object       $listener_class
      *
      * @throws ExpectationFailedException
      * @throws ReflectionException
@@ -75,7 +77,7 @@ trait LaravelEventsAssertionsTrait
      * @see https://laravel.com/docs/5.5/events
      *
      * @param string|object|mixed $event_abstract
-     * @param string              $listener_class
+     * @param string|object       $listener_class
      *
      * @throws ExpectationFailedException
      * @throws ReflectionException

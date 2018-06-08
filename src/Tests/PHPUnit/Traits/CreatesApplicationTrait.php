@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
 use Illuminate\Foundation\Application;
@@ -9,6 +11,21 @@ use Illuminate\Contracts\Filesystem\FileNotFoundException;
 trait CreatesApplicationTrait
 {
     /**
+     * Get application bootstrap file(s).
+     *
+     * @return string|array
+     */
+    public function getApplicationBootstrapFiles()
+    {
+        return [
+            __DIR__ . '/../bootstrap/app.php',
+            __DIR__ . '/../../../../../../../bootstrap/app.php',
+            __DIR__ . '/../../../../vendor/laravel/laravel/bootstrap/app.php',
+            __DIR__ . '/../../../../../../laravel/laravel/bootstrap/app.php',
+        ];
+    }
+
+    /**
      * Creates the application.
      *
      * @throws FileNotFoundException
@@ -17,14 +34,7 @@ trait CreatesApplicationTrait
      */
     public function createApplication()
     {
-        $bootstrap_paths = [
-            __DIR__ . '/../bootstrap/app.php',
-            __DIR__ . '/../../../../../../../bootstrap/app.php',
-            __DIR__ . '/../../../../vendor/laravel/laravel/bootstrap/app.php',
-            __DIR__ . '/../../../../../../laravel/laravel/bootstrap/app.php',
-        ];
-
-        foreach ($bootstrap_paths as $path) {
+        foreach ((array) $this->getApplicationBootstrapFiles() as $path) {
             if (\file_exists($path)) {
                 /** @var Application $app */
                 $app = require $path;
