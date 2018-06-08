@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
@@ -141,7 +141,7 @@ trait LaravelLogFilesAssertsTrait
     public function getLogFileContentAsArray(string $file_name = 'laravel.log', $lines_limit = null): array
     {
         $content     = $this->getLogFileContent($file_name);
-        $lines       = \preg_split("/\\r|\\n/", $content);
+        $lines       = \preg_split('/\\r|\\n/', $content);
         $lines_count = \count($lines);
 
         if ($lines_limit !== null && $lines_limit > 0 && $lines_count >= $lines_limit) {

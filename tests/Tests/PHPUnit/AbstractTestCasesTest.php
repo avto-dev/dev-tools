@@ -2,11 +2,11 @@
 
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit;
 
-use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelLogFilesAssertsTrait;
 use Tests\AvtoDev\DevTools\AbstractTestCase;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\InstancesAccessorsTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\AdditionalAssertionsTrait;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelLogFilesAssertsTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelEventsAssertionsTrait;
 
 class AbstractTestCasesTest extends AbstractTestCase

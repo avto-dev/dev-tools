@@ -2,9 +2,9 @@
 
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
-use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 use Illuminate\Foundation\Application;
 use Tests\AvtoDev\DevTools\AbstractTestCase;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 
 class CreatesApplicationTraitTest extends AbstractTestCase
 {
@@ -39,6 +39,29 @@ class CreatesApplicationTraitTest extends AbstractTestCase
     }
 
     /**
+     * Test bootstrap file getter.
+     *
+     * @return void
+     */
+    public function testGetApplicationBootstrapFiles()
+    {
+        $list  = (array) $this->getApplicationBootstrapFiles();
+        $found = false;
+
+        $this->assertNotEmpty($list);
+
+        foreach ($list as $application_bootstrap_file) {
+            if (\file_exists($application_bootstrap_file)) {
+                $found = true;
+
+                break;
+            }
+        }
+
+        $this->assertTrue($found, 'Bootstrap file was not found');
+    }
+
+    /**
      * @param Application $app
      *
      * @throws \PHPUnit\Framework\ExpectationFailedException
@@ -62,28 +85,5 @@ class CreatesApplicationTraitTest extends AbstractTestCase
         $this->assertInstanceOf(Application::class, $app);
 
         $this->after_called = true;
-    }
-
-    /**
-     * Test bootstrap file getter.
-     *
-     * @return void
-     */
-    public function testGetApplicationBootstrapFiles()
-    {
-        $list  = (array) $this->getApplicationBootstrapFiles();
-        $found = false;
-
-        $this->assertNotEmpty($list);
-
-        foreach ($list as $application_bootstrap_file) {
-            if (\file_exists($application_bootstrap_file)) {
-                $found = true;
-
-                break;
-            }
-        }
-
-        $this->assertTrue($found, 'Bootstrap file was not found');
     }
 }

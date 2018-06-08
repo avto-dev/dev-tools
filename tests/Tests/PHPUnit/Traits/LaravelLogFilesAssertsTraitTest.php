@@ -2,16 +2,15 @@
 
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
+use Illuminate\Filesystem\Filesystem;
+use PHPUnit\Framework\AssertionFailedError;
+use Illuminate\Foundation\Testing\TestCase as IlluminateTestCase;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelLogFilesAssertsTrait;
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\Foundation\Testing\TestCase as IlluminateTestCase;
-use PHPUnit\Framework\AssertionFailedError;
 
 class LaravelLogFilesAssertsTraitTest extends IlluminateTestCase
 {
     use CreatesApplicationTrait;
-
     use LaravelLogFilesAssertsTrait {
         getDefaultLogsDirectoryPath as vendorGetDefaultLogsDirectoryPath;
     }
@@ -80,8 +79,7 @@ class LaravelLogFilesAssertsTraitTest extends IlluminateTestCase
         /**
          * This instance will create temp directory, put some files inside her, and works with it.
          */
-        $test_class = new class extends IlluminateTestCase
-        {
+        $test_class = new class extends IlluminateTestCase {
             use CreatesApplicationTrait,
                 LaravelLogFilesAssertsTrait;
 
