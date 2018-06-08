@@ -18,7 +18,7 @@
 Для установки данного пакета выполните в терминале следующую команду:
 
 ```shell
-$ composer require --dev avto-dev/dev-tools "^1.0"
+$ composer require --dev avto-dev/dev-tools "^1.1.5"
 ```
 
 > Для этого необходим установленный `composer`. Для его установки перейдите по [данной ссылке][getcomposer].
