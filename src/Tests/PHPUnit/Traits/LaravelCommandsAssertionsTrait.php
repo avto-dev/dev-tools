@@ -2,10 +2,10 @@
 
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
-use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
 use Illuminate\Console\Command;
-use Illuminate\Contracts\Console\Kernel as ConsoleKernelContract;
+use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
+use Illuminate\Contracts\Console\Kernel as ConsoleKernelContract;
 
 /**
  * Trait LaravelCommandsAssertionsTrait.
@@ -50,7 +50,6 @@ trait LaravelCommandsAssertionsTrait
      *
      * @param string|Command $command Command name|class_name|instance that must be checked
      * @param string         $option  Option name
-     *
      *
      * @throws InvalidArgumentException
      */
@@ -161,7 +160,7 @@ trait LaravelCommandsAssertionsTrait
     }
 
     /**
-     * Build command
+     * Build command.
      *
      * @param string|Command $command Command name|class_name|instance that must be checked
      *

@@ -2,16 +2,16 @@
 
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
-use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
-use AvtoDev\DevTools\Tests\PHPUnit\Traits\InstancesAccessorsTrait;
-use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelCommandsAssertionsTrait;
-use Illuminate\Console\Application as ArtisanApplication;
 use Illuminate\Foundation\Application;
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\ExpectationFailedException;
+use Illuminate\Console\Application as ArtisanApplication;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\InstancesAccessorsTrait;
 use Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits\Stubs\SignatureCommand;
 use Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits\Stubs\StructureCommand;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelCommandsAssertionsTrait;
 
 /**
  * Class LaravelCommandsAssertionsTraitTest.
@@ -47,24 +47,6 @@ class LaravelCommandsAssertionsTraitTest extends \Illuminate\Foundation\Testing\
     }
 
     /**
-     * Make some before application bootstrapped (call `$app->useStoragePath(...)`, `$app->loadEnvironmentFrom(...)`,
-     * etc).
-     *
-     * @see \AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait::createApplication
-     *
-     * @return void
-     */
-    protected function beforeApplicationBootstrapped(Application $app)
-    {
-        ArtisanApplication::starting(function (ArtisanApplication $app) {
-            $app->resolveCommands([
-                SignatureCommand::class,
-                StructureCommand::class,
-            ]);
-        });
-    }
-
-    /**
      * Check assertArtisanCommandExists.
      *
      * @throws InvalidArgumentException
@@ -72,7 +54,6 @@ class LaravelCommandsAssertionsTraitTest extends \Illuminate\Foundation\Testing\
      */
     public function testAssertArtisanCommandExists()
     {
-
         $this->makeAssertTest(
             'assertArtisanCommandExists',
             [
@@ -130,7 +111,6 @@ class LaravelCommandsAssertionsTraitTest extends \Illuminate\Foundation\Testing\
      */
     public function testAssertArtisanCommandHasArgument()
     {
-
         $this->makeAssertTest(
             'assertArtisanCommandHasArgument',
             [
@@ -164,7 +144,6 @@ class LaravelCommandsAssertionsTraitTest extends \Illuminate\Foundation\Testing\
      */
     public function testAssertArtisanCommandHasOptionShortcut()
     {
-
         $this->makeAssertTest(
             'assertArtisanCommandHasOptionShortcut',
             [
@@ -198,7 +177,6 @@ class LaravelCommandsAssertionsTraitTest extends \Illuminate\Foundation\Testing\
      */
     public function testAssertArtisanCommandShortcutBelongToOption()
     {
-
         $this->makeAssertTest(
             'assertArtisanCommandShortcutBelongToOption',
             [
@@ -299,6 +277,24 @@ class LaravelCommandsAssertionsTraitTest extends \Illuminate\Foundation\Testing\
     }
 
     /**
+     * Make some before application bootstrapped (call `$app->useStoragePath(...)`, `$app->loadEnvironmentFrom(...)`,
+     * etc).
+     *
+     * @see \AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait::createApplication
+     *
+     * @return void
+     */
+    protected function beforeApplicationBootstrapped(Application $app)
+    {
+        ArtisanApplication::starting(function (ArtisanApplication $app) {
+            $app->resolveCommands([
+                SignatureCommand::class,
+                StructureCommand::class,
+            ]);
+        });
+    }
+
+    /**
      * @param string $method_name
      * @param array  $valid
      * @param array  $invalid
@@ -311,7 +307,6 @@ class LaravelCommandsAssertionsTraitTest extends \Illuminate\Foundation\Testing\
      */
     protected function makeAssertTest(string $method_name, array $valid, array $invalid, ...$args)
     {
-
         foreach ($valid as $valid_assert) {
             $this->{$method_name}($valid_assert, ...$args);
         }

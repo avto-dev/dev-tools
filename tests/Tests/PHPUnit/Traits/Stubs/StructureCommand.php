@@ -3,8 +3,8 @@
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits\Stubs;
 
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
 
 class StructureCommand extends Command
 {
