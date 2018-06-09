@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.1.6
+
+### Fixed
+
+- Trait mixins
+
 ## v1.1.5
 
 ### Fixed

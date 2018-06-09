@@ -9,11 +9,6 @@ use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
-/**
- * Trait AdditionalAssertionsTrait.
- *
- * @mixin \PHPUnit\Framework\TestCase
- */
 trait AdditionalAssertionsTrait
 {
     /**

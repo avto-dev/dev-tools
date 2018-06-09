@@ -7,11 +7,6 @@ namespace AvtoDev\DevTools\Tests\PHPUnit;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\TestCase;
 
-/**
- * Class AbstractLaravelTestCase.
- *
- * Abstract Illuminate test case.
- */
 abstract class AbstractLaravelTestCase extends TestCase
 {
     use Traits\AdditionalAssertionsTrait,

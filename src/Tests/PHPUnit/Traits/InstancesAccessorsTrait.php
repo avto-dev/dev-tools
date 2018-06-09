@@ -7,9 +7,6 @@ namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 use ReflectionClass;
 use ReflectionException;
 
-/**
- * Trait InstancesAccessorsTrait.
- */
 trait InstancesAccessorsTrait
 {
     /**
