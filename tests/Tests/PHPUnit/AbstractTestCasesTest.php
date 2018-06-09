@@ -2,12 +2,13 @@
 
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit;
 
-use Tests\AvtoDev\DevTools\AbstractTestCase;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\AdditionalAssertionsTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\InstancesAccessorsTrait;
-use AvtoDev\DevTools\Tests\PHPUnit\Traits\AdditionalAssertionsTrait;
-use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelLogFilesAssertsTrait;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelCommandsAssertionsTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelEventsAssertionsTrait;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelLogFilesAssertsTrait;
+use Tests\AvtoDev\DevTools\AbstractTestCase;
 
 class AbstractTestCasesTest extends AbstractTestCase
 {
@@ -19,7 +20,8 @@ class AbstractTestCasesTest extends AbstractTestCase
      */
     public function testAbstractTestCase()
     {
-        $instance = new class extends \AvtoDev\DevTools\Tests\PHPUnit\AbstractTestCase {
+        $instance = new class extends \AvtoDev\DevTools\Tests\PHPUnit\AbstractTestCase
+        {
         };
 
         $this->assertInstanceOf(\PHPUnit\Framework\TestCase::class, $instance);
@@ -36,7 +38,8 @@ class AbstractTestCasesTest extends AbstractTestCase
      */
     public function testAbstractLaravelTestCase()
     {
-        $instance = new class extends \AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase {
+        $instance = new class extends \AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase
+        {
             use CreatesApplicationTrait;
         };
 
@@ -49,6 +52,7 @@ class AbstractTestCasesTest extends AbstractTestCase
             CreatesApplicationTrait::class,
             LaravelEventsAssertionsTrait::class,
             LaravelLogFilesAssertsTrait::class,
+            LaravelCommandsAssertionsTrait::class,
         ]);
     }
 }
