@@ -9,11 +9,6 @@ use ReflectionException;
 use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
-/**
- * Trait LaravelEventsAssertionsTrait.
- *
- * @mixin \Illuminate\Foundation\Testing\TestCase
- */
 trait LaravelEventsAssertionsTrait
 {
     /**

@@ -8,9 +8,6 @@ use Illuminate\Filesystem\Filesystem;
 use PHPUnit\Framework\AssertionFailedError;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
-/**
- * @mixin \Illuminate\Foundation\Testing\TestCase
- */
 trait LaravelLogFilesAssertsTrait
 {
     /**
