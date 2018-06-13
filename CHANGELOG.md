@@ -5,6 +5,9 @@
 ### Added
 
 - Trait `LaravelCommandsAssertionsTrait`
+
+### Changed
+
 - Trait `LaravelCommandsAssertionsTrait` enabled by default in `AbstractLaravelTestCase`
 
 ## v1.1.6
