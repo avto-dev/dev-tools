@@ -13,7 +13,8 @@ abstract class AbstractLaravelTestCase extends TestCase
         Traits\InstancesAccessorsTrait,
         Traits\CreatesApplicationTrait,
         Traits\LaravelLogFilesAssertsTrait,
-        Traits\LaravelEventsAssertionsTrait;
+        Traits\LaravelEventsAssertionsTrait,
+        Traits\LaravelCommandsAssertionsTrait;
 
     /**
      * Make some before application bootstrapped (call `$app->useStoragePath(...)`, `$app->loadEnvironmentFrom(...)`,

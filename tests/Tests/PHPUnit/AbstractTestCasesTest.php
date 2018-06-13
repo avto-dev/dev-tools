@@ -8,6 +8,7 @@ use AvtoDev\DevTools\Tests\PHPUnit\Traits\InstancesAccessorsTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\AdditionalAssertionsTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelLogFilesAssertsTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelEventsAssertionsTrait;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelCommandsAssertionsTrait;
 
 class AbstractTestCasesTest extends AbstractTestCase
 {
@@ -49,6 +50,7 @@ class AbstractTestCasesTest extends AbstractTestCase
             CreatesApplicationTrait::class,
             LaravelEventsAssertionsTrait::class,
             LaravelLogFilesAssertsTrait::class,
+            LaravelCommandsAssertionsTrait::class,
         ]);
     }
 }

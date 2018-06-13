@@ -112,6 +112,7 @@ class MyBootstrap extends \AvtoDev\DevTools\Tests\Bootstrap\AbstractTestsBootstr
 `InstancesAccessorsTrait` | Методы доступа к protected\private методам\свойствам у классов (с помощью рефлексии)
 `LaravelEventsAssertionsTrait` | Методы тестирования событий (events) и их слушателей (listeners)
 `LaravelLogFilesAssertsTrait` | Методы тестирования лог-файлов Laravel приложения
+`LaravelCommandsAssertionsTrait` | Методы тестирования Laravel artisan комманд.
 
 -----
 

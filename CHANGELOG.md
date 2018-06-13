@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.1.7
+
+### Added
+
+- Trait `LaravelCommandsAssertionsTrait`
+- Trait `LaravelCommandsAssertionsTrait` enabled by default in `AbstractLaravelTestCase`
+
 ## v1.1.6
 
 ### Fixed
