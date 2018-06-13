@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.1.x
+
+### Added
+
+- Trait `LaravelCommandsAssertionsTrait`
+
 ## v1.1.6
 
 ### Fixed
