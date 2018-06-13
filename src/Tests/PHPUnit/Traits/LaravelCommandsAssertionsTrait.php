@@ -9,8 +9,6 @@ use SebastianBergmann\RecursionContext\InvalidArgumentException;
 use Illuminate\Contracts\Console\Kernel as ConsoleKernelContract;
 
 /**
- * Trait LaravelCommandsAssertionsTrait.
- *
  * @mixin AbstractLaravelTestCase
  */
 trait LaravelCommandsAssertionsTrait
@@ -37,7 +35,7 @@ trait LaravelCommandsAssertionsTrait
 
         if (! $command_exists) {
             foreach ($all_commands as $command_instance) {
-                if ($command_exists = $command_instance instanceof $command) {
+                if ($command_exists = ($command_instance instanceof $command)) {
                     break;
                 }
             }

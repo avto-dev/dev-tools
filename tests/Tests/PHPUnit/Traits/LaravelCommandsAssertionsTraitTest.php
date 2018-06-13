@@ -14,8 +14,6 @@ use Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits\Stubs\StructureCommand;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelCommandsAssertionsTrait;
 
 /**
- * Class LaravelCommandsAssertionsTraitTest.
- *
  * @coversDefaultClass \AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelCommandsAssertionsTrait
  */
 class LaravelCommandsAssertionsTraitTest extends \Illuminate\Foundation\Testing\TestCase
