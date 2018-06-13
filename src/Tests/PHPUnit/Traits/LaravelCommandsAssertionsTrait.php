@@ -3,6 +3,7 @@
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
 use Illuminate\Console\Command;
+use PHPUnit\Framework\Exception;
 use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 use Illuminate\Contracts\Console\Kernel as ConsoleKernelContract;
@@ -103,7 +104,7 @@ trait LaravelCommandsAssertionsTrait
      * @param string         $shortcut Shortcut name
      * @param string         $option   Option name
      *
-     * @throws \ReflectionException
+     * @throws Exception
      * @throws InvalidArgumentException
      */
     public function assertArtisanCommandShortcutBelongToOption(string $shortcut, string $option, $command)
