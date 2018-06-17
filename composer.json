@@ -17,6 +17,8 @@
         "php": ">=7.0 <7.3"
     },
     "require-dev": {
+        "ext-pdo_sqlite": "*",
+        "ext-sqlite3": "*",
         "laravel/laravel": ">=5.5 <5.7.0",
         "laravel/framework": ">=5.5 <5.7.0",
         "phpunit/phpunit": "^6.5 || ~7.0",

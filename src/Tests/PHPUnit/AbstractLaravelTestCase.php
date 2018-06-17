@@ -6,6 +6,7 @@ namespace AvtoDev\DevTools\Tests\PHPUnit;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\TestCase;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\WithDatabaseQueriesLogging;
 
 abstract class AbstractLaravelTestCase extends TestCase
 {
@@ -15,6 +16,20 @@ abstract class AbstractLaravelTestCase extends TestCase
         Traits\LaravelLogFilesAssertsTrait,
         Traits\LaravelEventsAssertionsTrait,
         Traits\LaravelCommandsAssertionsTrait;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUpTraits()
+    {
+        $uses = parent::setUpTraits();
+
+        if (isset($uses[WithDatabaseQueriesLogging::class])) {
+            $this->enableDatabaseQueriesLogging();
+        }
+
+        return $uses;
+    }
 
     /**
      * Make some before application bootstrapped (call `$app->useStoragePath(...)`, `$app->loadEnvironmentFrom(...)`,

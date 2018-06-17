@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.2.0
+
+### Added
+
+- **Laravel**: Event listener for a logging database queries
+- **Laravel**: Service provider that register listener for a logging database queries
+- **Laravel**: Trait `WithDatabaseQueriesLogging` (use this trait in your tests classes for enabling all database queries logging)
+
+### Changed
+
+- Class `AbstractLaravelTestCase` now supports `WithDatabaseQueriesLogging` trait in test classes
+
 ## v1.1.7
 
 ### Added
