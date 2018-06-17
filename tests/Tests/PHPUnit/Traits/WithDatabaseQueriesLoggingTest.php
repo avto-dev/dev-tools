@@ -34,7 +34,7 @@ class WithDatabaseQueriesLoggingTest extends AbstractLaravelTestCase
 
     public function testTraitWorking()
     {
-        /** @var \Illuminate\Database\SQLiteConnection  $connection */
+        /** @var \Illuminate\Database\SQLiteConnection $connection */
         $connection = $this->app->make('db')->connection();
 
         $connection->unprepared($sql = 'SELECT name FROM sqlite_master WHERE type = "table"');

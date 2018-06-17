@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace AvtoDev\DevTools\Tests\PHPUnit;
 
-use AvtoDev\DevTools\Tests\PHPUnit\Traits\WithDatabaseQueriesLogging;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\TestCase;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\WithDatabaseQueriesLogging;
 
 abstract class AbstractLaravelTestCase extends TestCase
 {

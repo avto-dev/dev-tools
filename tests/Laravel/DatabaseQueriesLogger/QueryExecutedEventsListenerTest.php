@@ -2,12 +2,12 @@
 
 namespace Tests\AvtoDev\DevTools\Laravel\DatabaseQueriesLogger;
 
-use AvtoDev\DevTools\Laravel\DatabaseQueriesLogger\QueryExecutedEventsListener;
-use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
-use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelLogFilesAssertsTrait;
-use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Support\Str;
 use Psr\Log\LoggerInterface;
+use Illuminate\Database\Events\QueryExecuted;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelLogFilesAssertsTrait;
+use AvtoDev\DevTools\Laravel\DatabaseQueriesLogger\QueryExecutedEventsListener;
 
 class QueryExecutedEventsListenerTest extends \Illuminate\Foundation\Testing\TestCase
 {

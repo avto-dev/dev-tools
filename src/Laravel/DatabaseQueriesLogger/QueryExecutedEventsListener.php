@@ -1,13 +1,13 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AvtoDev\DevTools\Laravel\DatabaseQueriesLogger;
 
 use DateTime;
 use Exception;
-use Illuminate\Database\Events\QueryExecuted;
 use Psr\Log\LoggerInterface;
+use Illuminate\Database\Events\QueryExecuted;
 
 class QueryExecutedEventsListener
 {
@@ -39,7 +39,7 @@ class QueryExecutedEventsListener
     /**
      * Handle the event.
      *
-     * @param  QueryExecuted $event
+     * @param QueryExecuted $event
      *
      * @return void
      */
