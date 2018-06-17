@@ -18,7 +18,7 @@
 Для установки данного пакета выполните в терминале следующую команду:
 
 ```shell
-$ composer require --dev avto-dev/dev-tools "^1.1.5"
+$ composer require --dev avto-dev/dev-tools "^1.2"
 ```
 
 > Для этого необходим установленный `composer`. Для его установки перейдите по [данной ссылке][getcomposer].
@@ -28,6 +28,14 @@ $ composer require --dev avto-dev/dev-tools "^1.1.5"
 ## Использование
 
 Данный пакет позволяет легко интегрировать в ваше приложение вспомогательные инструменты, позволяющие более эффективно вести разработку. Разделить их можно на следующие группы:
+
+## Вспомогательные сервисы для Laravel
+
+Для Laravel-приложений вы можете подключать следующие сервис-провайдеры:
+
+Сервис-провайдер | Его назначение
+---------------- | --------------
+[DatabaseQueriesLogger](./src/Laravel/DatabaseQueriesLogger/ServiceProvider.php) | Производит запись всех обращений к базе данных в лог-файл приложения
 
 ## Unit-тестирование приложения
 
@@ -112,7 +120,8 @@ class MyBootstrap extends \AvtoDev\DevTools\Tests\Bootstrap\AbstractTestsBootstr
 `InstancesAccessorsTrait` | Методы доступа к protected\private методам\свойствам у классов (с помощью рефлексии)
 `LaravelEventsAssertionsTrait` | Методы тестирования событий (events) и их слушателей (listeners)
 `LaravelLogFilesAssertsTrait` | Методы тестирования лог-файлов Laravel приложения
-`LaravelCommandsAssertionsTrait` | Методы тестирования Laravel artisan комманд.
+`LaravelCommandsAssertionsTrait` | Методы тестирования Laravel artisan комманд
+`WithDatabaseQueriesLogging` | Подключая данный трейт в класс теста - все запросы к БД будут записываться в log-файл (класс теста должен наследоваться при этом от `AbstractLaravelTestCase`) 
 
 -----
 
