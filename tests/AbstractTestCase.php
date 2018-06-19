@@ -2,10 +2,30 @@
 
 namespace Tests\AvtoDev\DevTools;
 
-/**
- * Class AbstractTestCase.
- */
+use PHPUnit\Framework\AssertionFailedError;
+use PHPUnit\Framework\ExpectationFailedException;
+
 abstract class AbstractTestCase extends \PHPUnit\Framework\TestCase
 {
-    //
+    /**
+     * Assert that code inside closure throws assertion exception.
+     *
+     * @param callable $closure
+     *
+     * @return bool
+     */
+    protected function assertAssertationInsideClosureFailed(callable $closure)
+    {
+        $caught = false;
+
+        try {
+            $closure();
+        } catch (ExpectationFailedException $e) {
+            $caught = true;
+        } catch (AssertionFailedError $e) {
+            $caught = true;
+        }
+
+        return $caught;
+    }
 }

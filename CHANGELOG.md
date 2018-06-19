@@ -1,5 +1,28 @@
 # Changelog
 
+## v1.2.2
+
+### Added
+
+- Trait `CarbonAssertionsTrait`
+
+### Changed
+
+- Classes `AbstractLaravelTestCase` and `AbstractTestCase` uses `CarbonAssertionsTrait` trait by default
+- Unimportant PHPDoc blocks removed
+
+## v1.2.1
+
+### Added
+
+- **Laravel**: Event listener for a logging database queries
+- **Laravel**: Service provider that register listener for a logging database queries
+- **Laravel**: Trait `WithDatabaseQueriesLogging` (use this trait in your tests classes for enabling all database queries logging)
+
+### Changed
+
+- Method `databaseQueriesLoggerFactory` renamed to `databaseQueriesLoggerInstance` in `WithDatabaseQueriesLogging` trait (without upping major version, yes)
+
 ## v1.2.0
 
 ### Added

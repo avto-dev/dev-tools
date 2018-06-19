@@ -2,6 +2,7 @@
 
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit;
 
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\CarbonAssertionsTrait;
 use Tests\AvtoDev\DevTools\AbstractTestCase;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\InstancesAccessorsTrait;
@@ -28,6 +29,7 @@ class AbstractTestCasesTest extends AbstractTestCase
         $this->assertClassUsesTraits($instance, [
             AdditionalAssertionsTrait::class,
             InstancesAccessorsTrait::class,
+            CarbonAssertionsTrait::class,
         ]);
     }
 
@@ -51,6 +53,7 @@ class AbstractTestCasesTest extends AbstractTestCase
             LaravelEventsAssertionsTrait::class,
             LaravelLogFilesAssertsTrait::class,
             LaravelCommandsAssertionsTrait::class,
+            CarbonAssertionsTrait::class,
         ]);
     }
 }

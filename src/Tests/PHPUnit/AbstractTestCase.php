@@ -9,5 +9,6 @@ use PHPUnit\Framework\TestCase;
 abstract class AbstractTestCase extends TestCase
 {
     use Traits\AdditionalAssertionsTrait,
-        Traits\InstancesAccessorsTrait;
+        Traits\InstancesAccessorsTrait,
+        Traits\CarbonAssertionsTrait;
 }

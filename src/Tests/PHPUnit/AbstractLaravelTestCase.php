@@ -15,7 +15,8 @@ abstract class AbstractLaravelTestCase extends TestCase
         Traits\CreatesApplicationTrait,
         Traits\LaravelLogFilesAssertsTrait,
         Traits\LaravelEventsAssertionsTrait,
-        Traits\LaravelCommandsAssertionsTrait;
+        Traits\LaravelCommandsAssertionsTrait,
+        Traits\CarbonAssertionsTrait;
 
     /**
      * {@inheritdoc}
