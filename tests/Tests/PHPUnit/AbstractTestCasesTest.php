@@ -2,8 +2,8 @@
 
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit;
 
-use AvtoDev\DevTools\Tests\PHPUnit\Traits\CarbonAssertionsTrait;
 use Tests\AvtoDev\DevTools\AbstractTestCase;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\CarbonAssertionsTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\InstancesAccessorsTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\AdditionalAssertionsTrait;

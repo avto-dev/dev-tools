@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
@@ -16,6 +16,14 @@ trait CarbonAssertionsTrait
      *
      * Optional - you can ignore time comparison.
      *
+     * Important! This method ignores microseconds.
+     *
+     * Usage example:
+     * <code>
+     *   $this->assertCarbonParseEquals('2012-10-30', Carbon::create(2012, 10, 30), true);
+     *   $this->assertCarbonParseEquals('2012-10-30 12:24', Carbon::create(2012, 10, 30, 12, 24));
+     * </code>
+     *
      * @param string|null $expected
      * @param DateTime    $actual
      * @param bool        $ignore_time
@@ -25,20 +33,26 @@ trait CarbonAssertionsTrait
      *
      * @return void
      */
-    public static function assertCarbonParseEquals(string $expected = null, DateTime $actual, $ignore_time = false)
+    public static function assertCarbonParseEquals(string $expected = null, DateTime $actual, bool $ignore_time = false)
     {
-        if ($ignore_time === true) {
-            $actual = clone $actual;
+        $parsed = Carbon::parse($expected);
+        $actual = Carbon::instance($actual);
 
-            // $microseconds parameter added since PHP 7.1.0
-            // @link http://php.net/manual/en/datetime.settime.php
+        if ($ignore_time === true) {
             $time = PHP_VERSION_ID >= 70100
                 ? [0, 0, 0, 0]
                 : [0, 0, 0];
 
-            $actual->setTime(...$time);
+            foreach ([$parsed, $actual] as $carbon) {
+                /* @var Carbon $carbon */
+                $carbon->setTime(...$time);
+            }
         }
 
-        static::assertEquals(Carbon::parse($expected), $actual);
+        static::assertEquals(
+            0,
+            $parsed->diffInSeconds($actual),
+            "Parsed result [{$parsed->toIso8601String()}] does not equals [{$actual->toIso8601String()}]"
+        );
     }
 }

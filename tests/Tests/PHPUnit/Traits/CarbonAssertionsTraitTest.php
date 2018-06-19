@@ -26,6 +26,9 @@ class CarbonAssertionsTraitTest extends AbstractTestCase
         static::assertCarbonParseEquals($now->format('Y-m-d'), $now, true);
 
         static::assertCarbonParseEquals($now->format('Y-m-d'), (clone $now)->addMinutes(10), true);
+
+        static::assertCarbonParseEquals('2012-10-30', Carbon::create(2012, 10, 30), true);
+        static::assertCarbonParseEquals('2012-10-30 12:24', Carbon::create(2012, 10, 30, 12, 24));
     }
 
     /**
