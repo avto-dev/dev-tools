@@ -11,11 +11,11 @@ use AvtoDev\DevTools\Laravel\DatabaseQueriesLogger\QueryExecutedEventsListener;
 trait WithDatabaseQueriesLogging
 {
     /**
-     * Database queries logger factory.
+     * Database queries logger instance getter.
      *
      * @return LoggerInterface
      */
-    public function databaseQueriesLoggerFactory(): LoggerInterface
+    public function databaseQueriesLoggerInstance(): LoggerInterface
     {
         return $this->app->make(LoggerInterface::class);
     }
@@ -29,7 +29,7 @@ trait WithDatabaseQueriesLogging
     {
         $this->afterApplicationCreated(function () {
             $this->app->make('events')->listen(QueryExecuted::class, function (QueryExecuted $event) {
-                (new QueryExecutedEventsListener($this->databaseQueriesLoggerFactory()))->handle($event);
+                (new QueryExecutedEventsListener($this->databaseQueriesLoggerInstance()))->handle($event);
             });
         });
     }

@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.2.1
+
+### Added
+
+- Trait `CarbonAssertionsTrait`
+
+### Changed
+
+- Classes `AbstractLaravelTestCase` and `AbstractTestCase` uses `CarbonAssertionsTrait` trait by default
+- Unimportant PHPDoc blocks removed
+
 ## v1.2.0
 
 ### Added

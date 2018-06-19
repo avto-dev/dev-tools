@@ -9,9 +9,6 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Application;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
-/**
- * Class AbstractLaravelTestsBootstrapper.
- */
 abstract class AbstractLaravelTestsBootstrapper extends AbstractTestsBootstrapper
 {
     /**

@@ -7,9 +7,6 @@ namespace AvtoDev\DevTools\Tests\Bootstrap;
 use Exception;
 use TypeError;
 
-/**
- * Class AbstractTestsBootstrapper.
- */
 abstract class AbstractTestsBootstrapper
 {
     /**

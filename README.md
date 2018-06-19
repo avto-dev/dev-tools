@@ -122,6 +122,7 @@ class MyBootstrap extends \AvtoDev\DevTools\Tests\Bootstrap\AbstractTestsBootstr
 `LaravelLogFilesAssertsTrait` | Методы тестирования лог-файлов Laravel приложения
 `LaravelCommandsAssertionsTrait` | Методы тестирования Laravel artisan комманд
 `WithDatabaseQueriesLogging` | Подключая данный трейт в класс теста - все запросы к БД будут записываться в log-файл (класс теста должен наследоваться при этом от `AbstractLaravelTestCase`) 
+`CarbonAssertionsTrait` | Методы для тестирования `Carbon`-объектов
 
 -----
 
