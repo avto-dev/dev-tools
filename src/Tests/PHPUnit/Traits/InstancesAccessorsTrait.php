@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
+use Closure;
+use Exception;
 use ReflectionClass;
 use ReflectionException;
+use SuperClosure\Serializer as ClosureSerializer;
 
 trait InstancesAccessorsTrait
 {
@@ -48,5 +51,29 @@ trait InstancesAccessorsTrait
         $property->setAccessible(true);
 
         return $property->getValue($object);
+    }
+
+    /**
+     * Calculate closure hash sum.
+     *
+     * As you know - you cannot serialize closure 'as is' for hashing. So - this is a little hack for this shit!
+     *
+     * @param Closure $closure
+     *
+     * @throws Exception
+     *
+     * @return string
+     */
+    public static function getClosureHash(Closure $closure): string
+    {
+        // @codeCoverageIgnoreStart
+        if (! class_exists(ClosureSerializer::class)) {
+            throw new Exception(sprintf('Package [%s] is required for [%s] method', 'jeremeamia/superclosure', __METHOD__));
+        }
+        // @codeCoverageIgnoreEnd
+
+        return sha1(
+            (new ClosureSerializer())->serialize($closure->bindTo(new \stdClass))
+        );
     }
 }

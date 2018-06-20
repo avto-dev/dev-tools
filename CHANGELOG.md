@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.4.0
+
+### Added
+
+- **Laravel**: Trait `WithDatabaseDisconnects`
+- Method `getClosureHash()` in trait `InstancesAccessorsTrait` (requires `jeremeamia/superclosure` package installed; also it requires package `nikic/php-parser` version `2.0` and above)
+
+### Changed
+
+- Class `AbstractLaravelTestCase` now supports `WithDatabaseDisconnects` trait in test classes
+
 ## v1.3.0
 
 ### Added
