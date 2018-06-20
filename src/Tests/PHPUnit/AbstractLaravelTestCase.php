@@ -6,7 +6,6 @@ namespace AvtoDev\DevTools\Tests\PHPUnit;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\TestCase;
-use AvtoDev\DevTools\Tests\PHPUnit\Traits\WithDatabaseQueriesLogging;
 
 abstract class AbstractLaravelTestCase extends TestCase
 {
@@ -25,8 +24,12 @@ abstract class AbstractLaravelTestCase extends TestCase
     {
         $uses = parent::setUpTraits();
 
-        if (isset($uses[WithDatabaseQueriesLogging::class])) {
+        if (isset($uses[Traits\WithDatabaseQueriesLogging::class])) {
             $this->enableDatabaseQueriesLogging();
+        }
+
+        if (isset($uses[Traits\WithDatabaseDisconnects::class])) {
+            $this->enableDatabaseDisconnects();
         }
 
         return $uses;

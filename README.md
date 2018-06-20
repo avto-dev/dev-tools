@@ -18,7 +18,7 @@
 Для установки данного пакета выполните в терминале следующую команду:
 
 ```shell
-$ composer require --dev avto-dev/dev-tools "^1.2"
+$ composer require --dev avto-dev/dev-tools "^1.4"
 ```
 
 > Для этого необходим установленный `composer`. Для его установки перейдите по [данной ссылке][getcomposer].
@@ -123,6 +123,7 @@ class MyBootstrap extends \AvtoDev\DevTools\Tests\Bootstrap\AbstractTestsBootstr
 `LaravelCommandsAssertionsTrait` | Методы тестирования Laravel artisan комманд
 `WithDatabaseQueriesLogging` | Подключая данный трейт в класс теста - все запросы к БД будут записываться в log-файл (класс теста должен наследоваться при этом от `AbstractLaravelTestCase`) 
 `CarbonAssertionsTrait` | Методы для тестирования `Carbon`-объектов
+`WithDatabaseDisconnects` | Подключая данный трейт в класс теста - на `tearDown` происходит отключение от всех БД ([причина](https://www.neontsunami.com/posts/too-many-connections-using-phpunit-for-testing-laravel-51))
 
 -----
 
