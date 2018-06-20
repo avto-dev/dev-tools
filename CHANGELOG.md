@@ -5,7 +5,7 @@
 ### Added
 
 - **Laravel**: Trait `WithDatabaseDisconnects`
-- Method `getClosureHash()` in trait `InstancesAccessorsTrait` (requires `jeremeamia/superclosure` package installed)
+- Method `getClosureHash()` in trait `InstancesAccessorsTrait` (requires `jeremeamia/superclosure` package installed; also it requires package `nikic/php-parser` version `2.0` and above)
 
 ### Changed
 

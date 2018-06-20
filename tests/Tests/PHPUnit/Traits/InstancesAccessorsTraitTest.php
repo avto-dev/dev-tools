@@ -47,7 +47,7 @@ class InstancesAccessorsTraitTest extends AbstractTestCase
                 };
             },
             function () {
-                return $this->resetCount();
+                $this->resetCount();
             },
         ];
 
@@ -57,6 +57,9 @@ class InstancesAccessorsTraitTest extends AbstractTestCase
             $hash = $this->getClosureHash($test_case);
 
             $this->assertGreaterThanOrEqual(8, \mb_strlen($hash));
+
+            // Second call for a closure
+            $this->assertEquals($hash, $this->getClosureHash($test_case));
         }
     }
 }
