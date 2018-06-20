@@ -40,10 +40,10 @@ class InstancesAccessorsTraitTest extends AbstractTestCase
     public function testGetClosureHash()
     {
         $test_cases = [
-            function () {},
+            function () {
+            },
             function () {
                 return new class extends AbstractLaravelTestCase {
-
                 };
             },
             function () {
@@ -56,7 +56,7 @@ class InstancesAccessorsTraitTest extends AbstractTestCase
         foreach ($test_cases as $test_case) {
             $hash = $this->getClosureHash($test_case);
 
-            $this->assertGreaterThanOrEqual(8, \strlen($hash));
+            $this->assertGreaterThanOrEqual(8, \mb_strlen($hash));
         }
     }
 }

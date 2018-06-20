@@ -60,9 +60,9 @@ trait InstancesAccessorsTrait
      *
      * @param Closure $closure
      *
-     * @return string
-     *
      * @throws Exception
+     *
+     * @return string
      */
     public static function getClosureHash(Closure $closure): string
     {

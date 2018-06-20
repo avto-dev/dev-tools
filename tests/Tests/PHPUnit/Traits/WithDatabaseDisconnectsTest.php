@@ -68,7 +68,7 @@ class WithDatabaseDisconnectsTest extends AbstractLaravelTestCase
     public function testClosureRegistration()
     {
         $closure_hash = static::getClosureHash($this->databaseDisconnectsClosureFactory());
-        $found = false;
+        $found        = false;
 
         foreach ($this->beforeApplicationDestroyedCallbacks as $callback) {
             if (static::getClosureHash($callback) === $closure_hash) {

@@ -43,6 +43,16 @@ trait WithDatabaseDisconnects
     }
 
     /**
+     * Enable disconnects from all databases before the application is destroyed for this test class.
+     *
+     * @return void
+     */
+    public function enableDatabaseDisconnects()
+    {
+        $this->beforeApplicationDestroyed($this->databaseDisconnectsClosureFactory());
+    }
+
+    /**
      * Disconnects closure factory.
      *
      * @return Closure
@@ -52,15 +62,5 @@ trait WithDatabaseDisconnects
         return function () {
             $this->disconnectFromAllDatabaseConnections();
         };
-    }
-
-    /**
-     * Enable disconnects from all databases before the application is destroyed for this test class.
-     *
-     * @return void
-     */
-    public function enableDatabaseDisconnects()
-    {
-        $this->beforeApplicationDestroyed($this->databaseDisconnectsClosureFactory());
     }
 }
