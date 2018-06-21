@@ -17,7 +17,7 @@
 Require this package with composer using the following command:
 
 ```shell
-$ composer global require tarampampam/templates-builder "^1.0"
+$ composer require --dev avto-dev/dev-tools "^1.4"
 ```
 
 > Installed `composer` is required ([how to install composer][getcomposer]).
