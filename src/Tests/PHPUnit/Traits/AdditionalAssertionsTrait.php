@@ -293,4 +293,33 @@ trait AdditionalAssertionsTrait
             static::assertContains($trait_class, $uses);
         }
     }
+
+    /**
+     * Assert that the array has a given structure.
+     *
+     * @param array $structure
+     * @param array $testing_array
+     *
+     * @throws InvalidArgumentException
+     */
+    public static function assertArrayStructure($structure, $testing_array)
+    {
+        foreach ($structure as $key => $value) {
+            if (\is_array($value)) {
+                if ($key === '*') {
+                    static::assertIsArray($testing_array);
+
+                    foreach ($testing_array as $item) {
+                        static::assertArrayStructure($structure['*'], $item);
+                    }
+                } else {
+                    static::assertArrayHasKey($key, $testing_array);
+
+                    static::assertArrayStructure($structure[$key], $testing_array[$key]);
+                }
+            } else {
+                static::assertArrayHasKey($value, $testing_array);
+            }
+        }
+    }
 }

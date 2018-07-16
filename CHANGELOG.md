@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.5.0
+
+### Added
+
+- `assertArrayStructure` method in `AdditionasAssertionsTrait` [#7]
+
 ## v1.4.0
 
 ### Added
@@ -91,3 +97,6 @@
 ## v1.0.0
 
 ### First release
+
+
+[#7]:https://github.com/avto-dev/dev-tools/issues/7
