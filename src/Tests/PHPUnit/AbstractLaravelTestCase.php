@@ -32,6 +32,10 @@ abstract class AbstractLaravelTestCase extends TestCase
             $this->enableDatabaseDisconnects();
         }
 
+        if (isset($uses[Traits\WithMemoryClean::class])) {
+            $this->enableCleanMemory();
+        }
+
         return $uses;
     }
 
