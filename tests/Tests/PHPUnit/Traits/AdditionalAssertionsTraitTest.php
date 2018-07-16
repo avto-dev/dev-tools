@@ -79,6 +79,7 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
 
         $this->makeAssertTest(
             'assertArrayStructure',
+            // Valid structures
             [
                 [
                     'foo',
@@ -94,9 +95,10 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
                     'foo',
                 ],
             ],
+            // Invalid structures
             [
                 [
-                    'xyz',
+                    'xyz', // no key in first level
                 ],
                 [
                     'foo',
@@ -105,11 +107,12 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
                         '*' => [
                             'alice',
                             'bob',
-                            'frank',
+                            'frank', // no key in deep level
                         ],
                     ],
                 ],
             ],
+            // Testing array
             [
                 'foo' => 'var',
                 'bar' => 'var',
