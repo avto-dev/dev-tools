@@ -4,6 +4,7 @@
 
 ### Added
 
+- `assertArrayStructure` method in `AdditionasAssertionsTrait` [#7]
 - Trait `WithMemoryClean`
 
 ## v1.4.0
@@ -97,3 +98,6 @@
 ## v1.0.0
 
 ### First release
+
+
+[#7]:https://github.com/avto-dev/dev-tools/issues/7
