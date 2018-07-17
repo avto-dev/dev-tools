@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.5.0
+
+### Added
+
+- Trait `WithMemoryClean`
+
 ## v1.4.0
 
 ### Added
