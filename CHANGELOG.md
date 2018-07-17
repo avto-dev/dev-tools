@@ -5,6 +5,7 @@
 ### Added
 
 - `assertArrayStructure` method in `AdditionasAssertionsTrait` [#7]
+- Trait `WithMemoryClean`
 
 ## v1.4.0
 
