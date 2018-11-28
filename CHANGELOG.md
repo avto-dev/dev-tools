@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.6.1
+
+### Fixed
+
+- Method `getVersionRegexp` in trait `AppVersionAssertionsTrait`
+
 ## v1.6.0
 
 ### Added

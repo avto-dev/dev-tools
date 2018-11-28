@@ -34,7 +34,7 @@ trait AppVersionAssertionsTrait
      */
     public function getVersionRegexp(): string
     {
-        return '~^##[ \\[]+[vV]?(\\d\\.\\d\\.\\d).*$~m';
+        return '~^##[ \\[]+[vV]?(\\d+\\.\\d+\\.\\d+).*$~m';
     }
 
     /**
