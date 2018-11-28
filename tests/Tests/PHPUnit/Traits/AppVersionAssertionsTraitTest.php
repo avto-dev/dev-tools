@@ -14,8 +14,7 @@ class AppVersionAssertionsTraitTest extends AbstractTestCase
      */
     public function testWithKeepChangelogFormat()
     {
-        $instance = new class extends \PHPUnit\Framework\TestCase
-        {
+        $instance = new class extends \PHPUnit\Framework\TestCase {
             use \AvtoDev\DevTools\Tests\PHPUnit\Traits\AppVersionAssertionsTrait;
 
             public function getChangeLogFileLocation(): string
@@ -30,7 +29,7 @@ class AppVersionAssertionsTraitTest extends AbstractTestCase
 
             public function getChangeLogFileContent(): string
             {
-                return <<<EOF
+                return <<<'EOF'
 # Changelog
 All notable changes to this project will be documented in this file.
 
@@ -196,8 +195,7 @@ EOF;
      */
     public function testWithShortChangelogFormat()
     {
-        $instance = new class extends \PHPUnit\Framework\TestCase
-        {
+        $instance = new class extends \PHPUnit\Framework\TestCase {
             use \AvtoDev\DevTools\Tests\PHPUnit\Traits\AppVersionAssertionsTrait;
 
             public function getChangeLogFileLocation(): string
@@ -212,7 +210,7 @@ EOF;
 
             public function getChangeLogFileContent(): string
             {
-                return <<<EOF
+                return <<<'EOF'
 # Changelog
 
 ## v1.2.3
@@ -258,8 +256,7 @@ EOF;
      */
     public function testWithInvalidData()
     {
-        $instance = new class extends \PHPUnit\Framework\TestCase
-        {
+        $instance = new class extends \PHPUnit\Framework\TestCase {
             use \AvtoDev\DevTools\Tests\PHPUnit\Traits\AppVersionAssertionsTrait;
 
             public function getChangeLogFileLocation(): string
@@ -274,7 +271,7 @@ EOF;
 
             public function getChangeLogFileContent(): string
             {
-                return <<<EOF
+                return <<<'EOF'
 # Changelog
 
 ## v1.2.3
@@ -304,8 +301,7 @@ EOF;
      */
     public function testGetChangeLogFileContent()
     {
-        $instance = new class extends \PHPUnit\Framework\TestCase
-        {
+        $instance = new class extends \PHPUnit\Framework\TestCase {
             use \AvtoDev\DevTools\Tests\PHPUnit\Traits\AppVersionAssertionsTrait;
 
             public function getChangeLogFileLocation(): string
