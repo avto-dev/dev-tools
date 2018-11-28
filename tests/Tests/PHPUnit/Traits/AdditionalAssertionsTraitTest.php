@@ -76,6 +76,54 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
         $this->makeAssertTest('assertClassUsesTraits', [new WithTraits, WithTraits::class], [new \stdClass], [
             TraitOne::class, TraitTwo::class, TraitThree::class,
         ]);
+
+        $this->makeAssertTest(
+            'assertArrayStructure',
+            // Valid structures
+            [
+                [
+                    'foo',
+                    'bar',
+                    'bus' => [
+                        '*' => [
+                            'alice',
+                            'bob',
+                        ],
+                    ],
+                ],
+                [
+                    'foo',
+                ],
+            ],
+            // Invalid structures
+            [
+                [
+                    'xyz', // no key in first level
+                ],
+                [
+                    'foo',
+                    'bar',
+                    'bus' => [
+                        '*' => [
+                            'alice',
+                            'bob',
+                            'frank', // no key in deep level
+                        ],
+                    ],
+                ],
+            ],
+            // Testing array
+            [
+                'foo' => 'var',
+                'bar' => 'var',
+                'bus' => [
+                    [
+                        'alice' => 'var',
+                        'bob'   => 'var',
+                    ],
+                ],
+            ]
+        );
     }
 
     /**
