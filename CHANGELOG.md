@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.5.0
+
+### Added
+
+- Trait `AppVersionAssertionsTrait`
+
 ## v1.4.0
 
 ### Added
