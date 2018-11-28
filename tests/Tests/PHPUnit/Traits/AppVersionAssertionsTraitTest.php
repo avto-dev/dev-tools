@@ -250,6 +250,49 @@ EOF;
     }
 
     /**
+     * Test assert with short changelog format.
+     *
+     * @return void
+     */
+    public function testWithLongVersionsParts()
+    {
+        $instance = new class extends \PHPUnit\Framework\TestCase {
+            use \AvtoDev\DevTools\Tests\PHPUnit\Traits\AppVersionAssertionsTrait;
+
+            public function getChangeLogFileLocation(): string
+            {
+                return '';
+            }
+
+            public function getCurrentApplicationVersion(): string
+            {
+                return '111.2.3333';
+            }
+
+            public function getChangeLogFileContent(): string
+            {
+                return <<<'EOF'
+# Changelog
+
+## v111.2.3333
+
+### Changed
+
+- Update and improvement of Polish translation.
+
+## v0.1.2
+
+### Added
+
+- New visual identity.
+EOF;
+            }
+        };
+
+        $instance->assertAppVersionAndVersionInChangeLogIsEquals();
+    }
+
+    /**
      * Test failed assertion.
      *
      * @return void
