@@ -4,12 +4,49 @@ declare(strict_types=1);
 
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
+use Illuminate\Log\LogManager;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 use PHPUnit\Framework\AssertionFailedError;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
+use Illuminate\Config\Repository as ConfigRepository;
 
 trait LaravelLogFilesAssertsTrait
 {
+    /**
+     * @param string $default_log_file_name
+     *
+     * @return string
+     */
+    public function fixLaravelLogFileName(string $default_log_file_name): string
+    {
+        // For Laravel 5.7 and higher
+        if (\class_exists(LogManager::class)) {
+            /** @var LogManager $logger */
+            $logger = $this->app->make(LogManager::class);
+
+            // Currently enabled 'stack' channel
+            if ($logger->getDefaultDriver() === ($stack = 'stack')) {
+                /** @var ConfigRepository $config */
+                $config = $this->app->make('config');
+
+                // Current channel has 'stack' driver
+                if ($config->get("logging.channels.{$stack}.driver") === $stack) {
+                    // Stack channel is 'daily'
+                    if ($config->get("logging.channels.{$stack}.channels") === [$daily = 'daily']) {
+                        return Str::replaceLast(
+                            '.log',
+                            '-' . \date('Y-m-d') . '.log',
+                            $default_log_file_name
+                        );
+                    }
+                }
+            }
+        }
+
+        return $default_log_file_name;
+    }
+
     /**
      * Make logs directory cleaning (remove all files and directories inside).
      *
@@ -110,6 +147,10 @@ trait LaravelLogFilesAssertsTrait
      */
     public function getDefaultLogsDirectoryPath($optional_path = null): string
     {
+        if ($optional_path === 'laravel.log') {
+            $optional_path = $this->fixLaravelLogFileName($optional_path);
+        }
+
         $optional_path = $optional_path === null
             ? ''
             : DIRECTORY_SEPARATOR . ltrim($optional_path, '\\/');
