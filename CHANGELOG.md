@@ -15,6 +15,10 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 [travis]:https://travis-ci.org/
 [codecov]:https://codecov.io/
 
+### Fixed
+
+- `LaravelLogFilesAssertsTrait` for a working with Laravel `5.7.*` (if used `stack` logging driver with single channel `daily` - `laravel.log` file name automatically replaces with `laravel-%Y-m-d%.log`) - method `getDefaultLogsDirectoryPath` patched
+
 ## v1.6.1
 
 ### Fixed
