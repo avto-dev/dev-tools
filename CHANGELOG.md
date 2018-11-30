@@ -1,5 +1,24 @@
 # Changelog
 
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
+
+## v1.7.0
+
+### Changed
+
+- Maximal PHP version now is undefined
+- CI changed to [Travis CI][travis]
+- [CodeCov][codecov] integrated
+
+[travis]:https://travis-ci.org/
+[codecov]:https://codecov.io/
+
+### Fixed
+
+- `LaravelLogFilesAssertsTrait` for a working with Laravel `5.7.*` (if used `stack` logging driver with single channel `daily` - `laravel.log` file name automatically replaces with `laravel-%Y-m-d%.log`) - method `getDefaultLogsDirectoryPath` patched
+
 ## v1.6.1
 
 ### Fixed
@@ -109,7 +128,8 @@
 
 ## v1.0.0
 
-### First release
-
+- First release
 
 [#7]:https://github.com/avto-dev/dev-tools/issues/7
+[keepachangelog]:https://keepachangelog.com/en/1.0.0/
+[semver]:https://semver.org/spec/v2.0.0.html
