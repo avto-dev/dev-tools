@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
+use Illuminate\Support\Str;
 use Illuminate\Log\LogManager;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Str;
 use PHPUnit\Framework\AssertionFailedError;
-use SebastianBergmann\RecursionContext\InvalidArgumentException;
 use Illuminate\Config\Repository as ConfigRepository;
+use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
 trait LaravelLogFilesAssertsTrait
 {
