@@ -8,7 +8,7 @@
 [![Version][badge_php_version]][link_packagist]
 [![Build Status][badge_build_status]][link_build_status]
 [![Coverage][badge_coverage]][link_coverage]
-[![Code quality][badge_code_quality]][link_coverage]
+[![Code quality][badge_code_quality]][link_code_quality]
 [![Downloads count][badge_downloads_count]][link_packagist]
 [![License][badge_license]][link_license]
 
@@ -156,22 +156,23 @@ If you will find any package errors, please, [make an issue][link_create_issue] 
 
 This is open-sourced software licensed under the [MIT License][link_license].
 
-[badge_packagist_version]:https://img.shields.io/packagist/v/avto-dev/dev-tools.svg?style=flat-square&maxAge=180
-[badge_php_version]:https://img.shields.io/packagist/php-v/avto-dev/dev-tools.svg?style=flat-square&longCache=true
-[badge_build_status]:https://img.shields.io/scrutinizer/build/g/avto-dev/dev-tools.svg?style=flat-square&maxAge=180&logo=scrutinizer
-[badge_code_quality]:https://img.shields.io/scrutinizer/g/avto-dev/dev-tools.svg?style=flat-square&maxAge=180
-[badge_coverage]:https://img.shields.io/scrutinizer/coverage/g/avto-dev/dev-tools.svg?style=flat-square&maxAge=180
-[badge_downloads_count]:https://img.shields.io/packagist/dt/avto-dev/dev-tools.svg?style=flat-square&maxAge=180
-[badge_license]:https://img.shields.io/packagist/l/avto-dev/dev-tools.svg?style=flat-square&longCache=true
+[badge_packagist_version]:https://img.shields.io/packagist/v/avto-dev/dev-tools.svg?maxAge=180
+[badge_php_version]:https://img.shields.io/packagist/php-v/avto-dev/dev-tools.svg?longCache=true
+[badge_build_status]:https://travis-ci.com/avto-dev/dev-tools.svg?branch=master
+[badge_code_quality]:https://img.shields.io/scrutinizer/g/avto-dev/dev-tools.svg?maxAge=180
+[badge_coverage]:https://img.shields.io/codecov/c/github/avto-dev/dev-tools/master.svg?maxAge=60
+[badge_downloads_count]:https://img.shields.io/packagist/dt/avto-dev/dev-tools.svg?maxAge=180
+[badge_license]:https://img.shields.io/packagist/l/avto-dev/dev-tools.svg?longCache=true
 [badge_release_date]:https://img.shields.io/github/release-date/avto-dev/dev-tools.svg?style=flat-square&maxAge=180
 [badge_commits_since_release]:https://img.shields.io/github/commits-since/avto-dev/dev-tools/latest.svg?style=flat-square&maxAge=180
 [badge_issues]:https://img.shields.io/github/issues/avto-dev/dev-tools.svg?style=flat-square&maxAge=180
 [badge_pulls]:https://img.shields.io/github/issues-pr/avto-dev/dev-tools.svg?style=flat-square&maxAge=180
 [link_releases]:https://github.com/avto-dev/dev-tools/releases
 [link_packagist]:https://packagist.org/packages/avto-dev/dev-tools
-[link_build_status]:https://scrutinizer-ci.com/g/avto-dev/dev-tools/build-status/master
-[link_coverage]:https://scrutinizer-ci.com/g/avto-dev/dev-tools/?branch=master
+[link_build_status]:https://travis-ci.com/avto-dev/dev-tools
+[link_coverage]:https://codecov.io/gh/avto-dev/dev-tools/
 [link_changes_log]:https://github.com/avto-dev/dev-tools/blob/master/CHANGELOG.md
+[link_code_quality]:https://scrutinizer-ci.com/g/avto-dev/dev-tools/
 [link_issues]:https://github.com/avto-dev/dev-tools/issues
 [link_create_issue]:https://github.com/avto-dev/dev-tools/issues/new/choose
 [link_commits]:https://github.com/avto-dev/dev-tools/commits
