@@ -17,7 +17,7 @@
 Require this package with composer using the following command:
 
 ```shell
-$ composer require --dev avto-dev/dev-tools "^1.7"
+$ composer require --dev avto-dev/dev-tools "^1.7.1"
 ```
 
 > Installed `composer` is required ([how to install composer][getcomposer]).
