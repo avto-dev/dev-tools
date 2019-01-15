@@ -11,7 +11,7 @@ use Illuminate\Routing\Router;
 trait LaravelRoutesAssertsTrait
 {
     /**
-     * Assert that all existed routes point to real controllers and actions
+     * Assert that all existed routes point to real controllers and actions.
      */
     public function assertRoutesActionsExist()
     {

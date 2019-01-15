@@ -21,7 +21,7 @@ class LaravelRoutesAssertsTraitTest extends \Illuminate\Foundation\Testing\TestC
     protected $router;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function setUp()
     {
@@ -31,7 +31,16 @@ class LaravelRoutesAssertsTraitTest extends \Illuminate\Foundation\Testing\TestC
     }
 
     /**
-     * Test assertion
+     * {@inheritdoc}
+     */
+    protected function tearDown()
+    {
+        unset($this->router);
+        parent::tearDown();
+    }
+
+    /**
+     * Test assertion.
      */
     public function testExistedRoute()
     {
@@ -41,7 +50,7 @@ class LaravelRoutesAssertsTraitTest extends \Illuminate\Foundation\Testing\TestC
     }
 
     /**
-     * Test route with using method
+     * Test route with using method.
      */
     public function testInvokedRoute()
     {
@@ -51,7 +60,7 @@ class LaravelRoutesAssertsTraitTest extends \Illuminate\Foundation\Testing\TestC
     }
 
     /**
-     * Test non existing method in controller
+     * Test non existing method in controller.
      */
     public function testNotExistedMethod()
     {
@@ -63,7 +72,7 @@ class LaravelRoutesAssertsTraitTest extends \Illuminate\Foundation\Testing\TestC
     }
 
     /**
-     * Test non existing controller class
+     * Test non existing controller class.
      */
     public function testNotExistedClass()
     {
@@ -73,14 +82,5 @@ class LaravelRoutesAssertsTraitTest extends \Illuminate\Foundation\Testing\TestC
         $this->router->get('example', 'SomeClassThatNotExists@testAction');
 
         $this->assertRoutesActionsExist();
-    }
-
-    /**
-     * @inheritdoc
-     */
-    protected function tearDown()
-    {
-        unset($this->router);
-        parent::tearDown();
     }
 }
