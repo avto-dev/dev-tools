@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
-use Illuminate\Support\Str;
 use Illuminate\Routing\Route;
 use Illuminate\Routing\Router;
 
@@ -19,12 +18,12 @@ trait LaravelRoutesAssertsTrait
         $router = $this->app->make(Router::class);
         /** @var Route $route */
         foreach ($router->getRoutes() as $route) {
-            $controller = $route->getAction('uses');
+            $controller = $route->getAction()['uses'] ?? null;
+            if (\is_string($controller)) {
+                $class_method = \explode('@', $controller, 2);
 
-            if (\is_string($controller) && ! Str::startsWith($controller, '\Illuminate\Routing')) {
-                list($class, $method) = \explode('@', $controller, 2) + ['__invoke'];
-                static::assertClassExists($class);
-                static::assertHasMethods($class, $method);
+                static::assertClassExists($class_method[0]);
+                static::assertHasMethods($class_method[0], $class_method[1] ?? '__invoke');
             }
         }
     }

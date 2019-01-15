@@ -11,6 +11,9 @@ use AvtoDev\DevTools\Tests\PHPUnit\Traits\AdditionalAssertionsTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelRoutesAssertsTrait;
 use Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits\Stubs\ControllerStub;
 
+/**
+ * @coversDefaultClass \AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelRoutesAssertsTrait
+ */
 class LaravelRoutesAssertsTraitTest extends \Illuminate\Foundation\Testing\TestCase
 {
     use CreatesApplicationTrait, AdditionalAssertionsTrait, LaravelRoutesAssertsTrait;
@@ -41,6 +44,8 @@ class LaravelRoutesAssertsTraitTest extends \Illuminate\Foundation\Testing\TestC
 
     /**
      * Test assertion.
+     *
+     * @covers ::assertRoutesActionsExist
      */
     public function testExistedRoute()
     {
@@ -51,6 +56,8 @@ class LaravelRoutesAssertsTraitTest extends \Illuminate\Foundation\Testing\TestC
 
     /**
      * Test route with using method.
+     *
+     * @covers ::assertRoutesActionsExist
      */
     public function testInvokedRoute()
     {
@@ -61,6 +68,8 @@ class LaravelRoutesAssertsTraitTest extends \Illuminate\Foundation\Testing\TestC
 
     /**
      * Test non existing method in controller.
+     *
+     * @covers ::assertRoutesActionsExist
      */
     public function testNotExistedMethod()
     {
@@ -73,6 +82,8 @@ class LaravelRoutesAssertsTraitTest extends \Illuminate\Foundation\Testing\TestC
 
     /**
      * Test non existing controller class.
+     *
+     * @covers ::assertRoutesActionsExist
      */
     public function testNotExistedClass()
     {
