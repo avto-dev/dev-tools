@@ -45,31 +45,37 @@ class LaravelRoutesAssertsTraitTest extends \Illuminate\Foundation\Testing\TestC
     /**
      * Test assertion.
      *
-     * @covers ::assertRoutesActionsExist
+     * @covers ::assertAllRoutesHasActions
+     *
+     * @throws \InvalidArgumentException
      */
     public function testExistedRoute()
     {
         $this->router->get('example', ControllerStub::class . '@testAction');
 
-        $this->assertRoutesActionsExist();
+        $this->assertAllRoutesHasActions();
     }
 
     /**
      * Test route with using method.
      *
-     * @covers ::assertRoutesActionsExist
+     * @covers ::assertAllRoutesHasActions
+     *
+     * @throws \InvalidArgumentException
      */
     public function testInvokedRoute()
     {
         $this->router->get('example', ControllerStub::class);
 
-        $this->assertRoutesActionsExist();
+        $this->assertAllRoutesHasActions();
     }
 
     /**
      * Test non existing method in controller.
      *
-     * @covers ::assertRoutesActionsExist
+     * @covers ::assertAllRoutesHasActions
+     *
+     * @throws \InvalidArgumentException
      */
     public function testNotExistedMethod()
     {
@@ -77,13 +83,15 @@ class LaravelRoutesAssertsTraitTest extends \Illuminate\Foundation\Testing\TestC
         $this->expectExceptionMessageRegExp('~Has no method named~');
         $this->router->get('example', ControllerStub::class . '@nonExistsAction');
 
-        $this->assertRoutesActionsExist();
+        $this->assertAllRoutesHasActions();
     }
 
     /**
      * Test non existing controller class.
      *
-     * @covers ::assertRoutesActionsExist
+     * @covers ::assertAllRoutesHasActions
+     *
+     * @throws \InvalidArgumentException
      */
     public function testNotExistedClass()
     {
@@ -92,6 +100,6 @@ class LaravelRoutesAssertsTraitTest extends \Illuminate\Foundation\Testing\TestC
 
         $this->router->get('example', 'SomeClassThatNotExists@testAction');
 
-        $this->assertRoutesActionsExist();
+        $this->assertAllRoutesHasActions();
     }
 }

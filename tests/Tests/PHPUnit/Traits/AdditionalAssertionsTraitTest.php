@@ -37,8 +37,7 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
         $this->makeAssertTest('assertEmptyArray', [[]], ['foo', [1], new \stdClass, [[]]]);
 
         /* @see AdditionalAssertionsTrait::assertIsString */
-        $this->makeAssertTest('assertIsString', ['foo', 'bar'], [null, 1, new class
-        {
+        $this->makeAssertTest('assertIsString', ['foo', 'bar'], [null, 1, new class {
             public function __toString()
             {
                 return 'baz';
@@ -134,8 +133,7 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
      */
     protected function classUsedTraitFactory()
     {
-        return new class extends \PHPUnit\Framework\TestCase
-        {
+        return new class extends \PHPUnit\Framework\TestCase {
             use \AvtoDev\DevTools\Tests\PHPUnit\Traits\AdditionalAssertionsTrait;
         };
     }

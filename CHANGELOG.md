@@ -8,7 +8,9 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 ### Added
 
-- Added `LaravelRoutesAssertsTrait` that include `assertRoutesActionsExist` method
+- Added `LaravelRoutesAssertsTrait` that include `assertAllRoutesHasActions` method [#23]
+
+[#23]: ttps://github.com/avto-dev/dev-tools/issues/23
 
 ## v1.7.2
 
