@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## v1.8.0
+
+### Added
+
+- Added `LaravelRoutesAssertsTrait` that include `assertAllRoutesHasActions` method [#23]
+
+[#23]:ttps://github.com/avto-dev/dev-tools/issues/23
+
 ## v1.7.2
 
 ### Changed

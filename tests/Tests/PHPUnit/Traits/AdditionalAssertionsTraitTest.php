@@ -70,7 +70,7 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
 
         /* @see AdditionalAssertionsTrait::assertHasMethods */
         $this->makeAssertTest('assertHasMethods', [\Exception::class], [\Throwable::class], '__wakeup');
-        $this->makeAssertTest('assertHasMethods', [\Exception::class], [\Throwable::class], ['__wakeup', '__clone']);
+        $this->makeAssertTest('assertHasMethods', [\Exception::class], [\Throwable::class], ['__wakeup']);
 
         /* @see AdditionalAssertionsTrait::assertClassUsesTraits */
         $this->makeAssertTest('assertClassUsesTraits', [new WithTraits, WithTraits::class], [new \stdClass], [
