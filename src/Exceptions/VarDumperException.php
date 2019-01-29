@@ -4,9 +4,9 @@ declare(strict_types = 1);
 
 namespace AvtoDev\DevTools\Exceptions;
 
+use Throwable;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Throwable;
 
 class VarDumperException extends \Exception
 {

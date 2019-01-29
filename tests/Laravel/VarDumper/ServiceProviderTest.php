@@ -2,12 +2,12 @@
 
 namespace Tests\AvtoDev\DevTools\Laravel\VarDumper;
 
-use AvtoDev\DevTools\Laravel\VarDumper\DumpStack;
-use AvtoDev\DevTools\Laravel\VarDumper\VarDumperMiddleware;
-use Illuminate\Contracts\Http\Kernel as HttpKernel;
 use Illuminate\Contracts\Foundation\Application;
-use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
+use AvtoDev\DevTools\Laravel\VarDumper\DumpStack;
+use Illuminate\Contracts\Http\Kernel as HttpKernel;
 use AvtoDev\DevTools\Laravel\VarDumper\ServiceProvider;
+use AvtoDev\DevTools\Laravel\VarDumper\VarDumperMiddleware;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 
 class ServiceProviderTest extends \Illuminate\Foundation\Testing\TestCase
 {

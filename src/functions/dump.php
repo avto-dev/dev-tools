@@ -2,11 +2,11 @@
 
 namespace dev;
 
-use Illuminate\Foundation\Application as LaravelApplication;
-use AvtoDev\DevTools\Exceptions\VarDumperException;
 use AvtoDev\DevTools\Laravel\VarDumper\DumpStack;
 use Symfony\Component\VarDumper\Cloner\VarCloner;
 use Symfony\Component\VarDumper\Dumper\HtmlDumper;
+use AvtoDev\DevTools\Exceptions\VarDumperException;
+use Illuminate\Foundation\Application as LaravelApplication;
 
 /**
  * Detects ran using CLI.
@@ -74,4 +74,3 @@ function dump(...$arguments)
         }
     }
 }
-

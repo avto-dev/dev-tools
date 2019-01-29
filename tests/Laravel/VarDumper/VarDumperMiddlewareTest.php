@@ -2,12 +2,12 @@
 
 namespace Tests\AvtoDev\DevTools\Laravel\VarDumper;
 
+use Illuminate\Routing\Router;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Contracts\Foundation\Application;
 use AvtoDev\DevTools\Laravel\VarDumper\ServiceProvider;
 use AvtoDev\DevTools\Laravel\VarDumper\VarDumperMiddleware;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\Routing\Router;
 
 class VarDumperMiddlewareTest extends \Illuminate\Foundation\Testing\TestCase
 {
@@ -54,7 +54,7 @@ class VarDumperMiddlewareTest extends \Illuminate\Foundation\Testing\TestCase
                 if ($repeat_counter < 2) {
                     \dev\dump('foo bar', 'john doe');
 
-                    ++$repeat_counter;
+                    $repeat_counter++;
                 }
 
                 return \response('<html><body>bar baz</body></html>');
