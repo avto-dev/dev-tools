@@ -24,6 +24,8 @@ class DumpFunctionsTest extends \Illuminate\Foundation\Testing\TestCase
         $this->app->register(ServiceProvider::class);
 
         unset($_SERVER['DEV_DUMP_CLI_MODE']);
+
+        \putenv('RR_HTTP=');
     }
 
     /**
@@ -34,6 +36,11 @@ class DumpFunctionsTest extends \Illuminate\Foundation\Testing\TestCase
         $this->assertTrue(\function_exists('\\dev\\ran_using_cli'));
 
         $this->assertTrue(\dev\ran_using_cli());
+
+        // Detect running under RoadRunner (since RR v1.2.1)
+        \putenv('RR_HTTP=true');
+        $this->assertFalse(\dev\ran_using_cli());
+        \putenv('RR_HTTP=');
 
         $_SERVER['DEV_DUMP_CLI_MODE'] = true;
         $this->assertTrue(\dev\ran_using_cli());
