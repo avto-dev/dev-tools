@@ -26,6 +26,6 @@ class ServiceProvider extends IlluminateServiceProvider
      */
     public function register()
     {
-        $this->app->bind(DumpStack::class);
+        $this->app->singleton(DumpStackInterface::class, DumpStack::class);
     }
 }

@@ -4,57 +4,35 @@ declare(strict_types = 1);
 
 namespace AvtoDev\DevTools\Laravel\VarDumper;
 
-use Illuminate\Cache\CacheManager;
-use Illuminate\Contracts\Cache\Repository;
-
-class DumpStack implements \Countable
+class DumpStack implements DumpStackInterface
 {
     /**
-     * Cache key name.
+     * @var string[]
      */
-    const CACHE_KEY_NAME = 'avtodev.dev.dump.cache';
+    protected $stack = [];
 
     /**
-     * @var Repository
-     */
-    protected $cache;
-
-    /**
-     * DumpStack constructor.
-     *
-     * @param CacheManager $cache_manager Required for share data between web-workers
-     */
-    public function __construct(CacheManager $cache_manager)
-    {
-        $this->cache = $cache_manager->store();
-    }
-
-    /**
-     * @param string $data
+     * {@inheritdoc}
      */
     public function push(string $data)
     {
-        $current = $this->all();
-
-        $current[] = $data;
-
-        $this->cache->forever(static::CACHE_KEY_NAME, $current);
+        $this->stack[] = $data;
     }
 
     /**
-     * @return void
+     * {@inheritdoc}
      */
     public function clear()
     {
-        $this->cache->forget(static::CACHE_KEY_NAME);
+        $this->stack = [];
     }
 
     /**
-     * @return string[]
+     * {@inheritdoc}
      */
     public function all(): array
     {
-        return (array) $this->cache->get(static::CACHE_KEY_NAME, []);
+        return $this->stack;
     }
 
     /**
@@ -62,6 +40,6 @@ class DumpStack implements \Countable
      */
     public function count(): int
     {
-        return \count($this->all());
+        return \count($this->stack);
     }
 }

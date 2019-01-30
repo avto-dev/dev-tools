@@ -14,16 +14,16 @@ use Illuminate\Http\Response;
 class VarDumperMiddleware
 {
     /**
-     * @var DumpStack
+     * @var DumpStackInterface
      */
     protected $stack;
 
     /**
      * Middleware constructor.
      *
-     * @param DumpStack $stack
+     * @param DumpStackInterface $stack
      */
-    public function __construct(DumpStack $stack)
+    public function __construct(DumpStackInterface $stack)
     {
         $this->stack = $stack;
     }
@@ -42,11 +42,7 @@ class VarDumperMiddleware
         $response = $next($request);
 
         if ($this->stack->count() > 0) {
-            $dumped = '';
-
-            foreach ($this->stack->all() as $item) {
-                $dumped .= $item . \PHP_EOL;
-            }
+            $dumped = \implode(\PHP_EOL, $this->stack->all());
 
             $this->stack->clear();
 
