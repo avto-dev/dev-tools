@@ -5,8 +5,8 @@ declare(strict_types = 1);
 namespace Tests\AvtoDev\DevTools\Functions;
 
 use AvtoDev\DevTools\Exceptions\VarDumperException;
-use AvtoDev\DevTools\Laravel\VarDumper\DumpStackInterface;
 use AvtoDev\DevTools\Laravel\VarDumper\ServiceProvider;
+use AvtoDev\DevTools\Laravel\VarDumper\DumpStackInterface;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 
 class DumpFunctionsTest extends \Illuminate\Foundation\Testing\TestCase
