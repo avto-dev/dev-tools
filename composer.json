@@ -15,7 +15,8 @@
     ],
     "require": {
         "php": ">=7.0",
-        "phpunit/phpunit": "^6.5 || ~7.0 <7.5.0"
+        "phpunit/phpunit": "^6.5 || ~7.0 <7.5.0",
+        "symfony/var-dumper": "~3.3 || ^4.0"
     },
     "require-dev": {
         "ext-pdo_sqlite": "*",
@@ -23,22 +24,33 @@
         "jeremeamia/superclosure": "^2.4",
         "nikic/php-parser": "^2.0 || ^3.0 || ^4.0",
         "laravel/laravel": ">=5.5 <5.8.0",
-        "mockery/mockery": "~1.0",
-        "symfony/var-dumper": "~3.3 || ^4.0"
+        "phpstan/phpstan": "~0.9 || ^0.10",
+        "mockery/mockery": "~1.0"
     },
     "autoload": {
         "psr-4": {
             "AvtoDev\\DevTools\\": "src"
-        }
+        },
+        "files": [
+            "src/functions/dump.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
             "Tests\\AvtoDev\\DevTools\\": "tests"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AvtoDev\\DevTools\\Laravel\\VarDumper\\ServiceProvider"
+            ]
+        }
+    },
     "scripts": {
-        "test": "@php ./vendor/bin/phpunit --no-coverage",
-        "test-cover": "@php ./vendor/bin/phpunit"
+        "test": "@php ./vendor/bin/phpunit --no-coverage --testdox --colors=always",
+        "test-cover": "@php ./vendor/bin/phpunit",
+        "phpstan": "@php ./vendor/bin/phpstan analyze --no-progress --ansi --level=max ./src"
     },
     "suggest": {
         "jeremeamia/superclosure": "Library for closures serialization and hashing",

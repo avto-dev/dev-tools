@@ -28,6 +28,15 @@ $ composer require --dev avto-dev/dev-tools "^1.7.1"
 
 Данный пакет позволяет легко интегрировать в ваше приложение вспомогательные инструменты, позволяющие более эффективно вести разработку. Разделить их можно на следующие группы:
 
+## Вспомогательные функции
+
+Имя функции | Её назначение
+----------- | -------------
+`\dev\dd(...$arguments)` | Выводит удобочитаемый дамп переданных в функцию значений, бросив специальным образом оформленное исключение (при вызове в HTTP-контексте; в CLI контексте работает как обычная `\dd(...)`) <sup>*</sup>
+`\dev\dump(...$arguments)` | Выводит удобочитаемый дамп переданных в функцию значений не прерывая обработку запроса. Необходима регистрация сервис-провайдера [VarDumper](./src/Laravel/VarDumper/ServiceProvider.php) (при вызове в HTTP-контексте; в CLI контексте работает как обычная `\dump(...)`) <sup>*</sup>
+
+> **<sup> * </sup>** корректно работает в связке Laravel + [RoadRunner][roadrunner] (возможно и ReactPHP - не проверено)
+
 ## Вспомогательные сервисы для Laravel
 
 Для Laravel-приложений вы можете подключать следующие сервис-провайдеры:
@@ -35,6 +44,7 @@ $ composer require --dev avto-dev/dev-tools "^1.7.1"
 Сервис-провайдер | Его назначение
 ---------------- | --------------
 [DatabaseQueriesLogger](./src/Laravel/DatabaseQueriesLogger/ServiceProvider.php) | Производит запись всех обращений к базе данных в лог-файл приложения
+[VarDumper](./src/Laravel/VarDumper/ServiceProvider.php) | Модифицирует HTTP-ответ приложения, добавляя в него результат работы вызовов функции `\dev\dump()`. Данный сервис-провайдер регистрируется **автоматически**
 
 ## Unit-тестирование приложения
 
@@ -180,3 +190,4 @@ This is open-sourced software licensed under the [MIT License][link_license].
 [link_pulls]:https://github.com/avto-dev/dev-tools/pulls
 [link_license]:https://github.com/avto-dev/dev-tools/blob/master/LICENSE
 [getcomposer]:https://getcomposer.org/download/
+[roadrunner]:https://github.com/spiral/roadrunner

@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## v1.9.0
+
+### Added
+
+- Service `Laravel\VarDumper` (with middleware and stack instance)
+- Global helpers file (namespace `\dev\...`)
+- Function `\dev\dump(...$arguments)`
+- Function `\dev\dd(...$arguments)`
+
 ## v1.8.0
 
 ### Added
