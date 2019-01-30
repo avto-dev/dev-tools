@@ -13,9 +13,9 @@ class VarDumperMiddlewareTest extends \Illuminate\Foundation\Testing\TestCase
 {
     use CreatesApplicationTrait;
 
-    const MAGIC_GLOBAL_VARIABLE = 'DEV_DUMP_NON_CLI';
+    const GLOBAL_VAR_FORCE_CLI_MODE = 'DEV_DUMP_CLI_MODE';
 
-    const CACHE_DIR             = __DIR__ . '/../../temp';
+    const CACHE_DIR                 = __DIR__ . '/../../temp';
 
     /**
      * {@inheritdoc}
@@ -24,7 +24,7 @@ class VarDumperMiddlewareTest extends \Illuminate\Foundation\Testing\TestCase
     {
         parent::setUp();
 
-        $_SERVER[static::MAGIC_GLOBAL_VARIABLE] = true;
+        $_SERVER[static::GLOBAL_VAR_FORCE_CLI_MODE] = false;
     }
 
     /**
@@ -32,7 +32,7 @@ class VarDumperMiddlewareTest extends \Illuminate\Foundation\Testing\TestCase
      */
     protected function tearDown()
     {
-        unset($_SERVER[static::MAGIC_GLOBAL_VARIABLE]);
+        unset($_SERVER[static::GLOBAL_VAR_FORCE_CLI_MODE]);
 
         (new Filesystem)->cleanDirectory(static::CACHE_DIR);
 

@@ -15,9 +15,11 @@ use Illuminate\Foundation\Application as LaravelApplication;
  */
 function ran_using_cli(): bool
 {
-    $force_disable = isset($_SERVER[$name = 'DEV_DUMP_NON_CLI']) && (((bool) $_SERVER[$name]) === true);
+    if (isset($_SERVER[$name = 'DEV_DUMP_CLI_MODE'])) {
+        return ((bool) $_SERVER[$name]) === true;
+    }
 
-    return ! $force_disable && \in_array(\PHP_SAPI, ['cli', 'phpdbg'], true);
+    return \in_array(\PHP_SAPI, ['cli', 'phpdbg'], true);
 }
 
 /**
