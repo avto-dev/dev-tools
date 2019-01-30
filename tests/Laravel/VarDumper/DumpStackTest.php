@@ -38,7 +38,7 @@ class DumpStackTest extends AbstractTestCase
      * @return void
      *
      * @covers \AvtoDev\DevTools\Laravel\VarDumper\DumpStack::push
-     * @covers \AvtoDev\DevTools\Laravel\VarDumper\DumpStack:all
+     * @covers \AvtoDev\DevTools\Laravel\VarDumper\DumpStack::all
      */
     public function testPush()
     {
