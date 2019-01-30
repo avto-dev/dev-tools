@@ -19,6 +19,11 @@ function ran_using_cli(): bool
         return ((bool) $_SERVER[$name]) === true;
     }
 
+    // Detect running under RoadRunner (since RR v1.2.1)
+    if (((bool) \getenv('RR_HTTP')) === true) {
+        return false;
+    }
+
     return \in_array(\PHP_SAPI, ['cli', 'phpdbg'], true);
 }
 
