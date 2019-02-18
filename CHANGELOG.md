@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## v1.9.2
+
+### Fixed
+
+- `LaravelLogFilesAssertsTrait::clearLaravelLogs()` now **not** delete hidden files (like `.gitignore` and others)
+
 ## v1.9.1
 
 ### Fixed

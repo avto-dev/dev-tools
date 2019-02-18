@@ -1,14 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
-use Illuminate\Support\Str;
-use Illuminate\Log\LogManager;
-use Illuminate\Filesystem\Filesystem;
-use PHPUnit\Framework\AssertionFailedError;
 use Illuminate\Config\Repository as ConfigRepository;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Log\LogManager;
+use Illuminate\Support\Str;
+use PHPUnit\Framework\AssertionFailedError;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
 trait LaravelLogFilesAssertsTrait
@@ -56,7 +56,30 @@ trait LaravelLogFilesAssertsTrait
      */
     public function clearLaravelLogs($logs_directory_path = null)
     {
-        (new Filesystem)->cleanDirectory($logs_directory_path ?? $this->getDefaultLogsDirectoryPath());
+        $fs             = new Filesystem;
+        $directory_path = $logs_directory_path ?? $this->getDefaultLogsDirectoryPath();
+
+        if (! $fs->isDirectory($directory_path)) {
+            return;
+        }
+
+        $items = new \FilesystemIterator($directory_path);
+
+        /** @var \SplFileInfo $item */
+        foreach ($items as $item) {
+            // Recursive directories walking
+            if ($item->isDir()) {
+                $this->clearLaravelLogs($item->getPathname());
+                continue;
+            }
+
+            // Skip hidden files and directories
+            if (Str::startsWith($item->getFilename(), '.')) {
+                continue;
+            }
+
+            $fs->delete($item->getPathname());
+        }
     }
 
     /**
@@ -114,7 +137,8 @@ trait LaravelLogFilesAssertsTrait
             : $lines_limit + 1);
 
         $this->assertLogFileExists($file);
-        $this->assertContains($substring, \implode("\n", $lines), "Log file [{$file}] does not contains [{$substring}].");
+        $this->assertContains($substring, \implode("\n", $lines),
+            "Log file [{$file}] does not contains [{$substring}].");
     }
 
     /**

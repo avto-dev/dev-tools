@@ -95,9 +95,16 @@ class LaravelLogFilesAssertsTraitTest extends IlluminateTestCase
                     $files->makeDirectory($deep, 0755, true);
                 }
 
+                if (! $files->isDirectory($hidden_deep = $this->temp_logs_path . '/.hidden_dir')) {
+                    $files->makeDirectory($hidden_deep, 0755, true);
+                }
+
                 $files->put($this->temp_logs_path . '/laravel.log', 'foo');
                 $files->put($this->temp_logs_path . '/test.log', 'bar');
                 $files->put($deep . '/deep.log', 'foo bar');
+
+                $files->put($this->temp_logs_path . '/.hidden', 'bar');
+                $files->put($hidden_deep . '/.foo', 'baz');
             }
 
             public function getDefaultLogsDirectoryPath()
@@ -109,13 +116,24 @@ class LaravelLogFilesAssertsTraitTest extends IlluminateTestCase
         $this->assertStringEqualsFile($laravel_log = $this->temp_logs_path . '/laravel.log', 'foo');
         $this->assertStringEqualsFile($test_log = $this->temp_logs_path . '/test.log', 'bar');
         $this->assertStringEqualsFile($deep_log = $this->temp_logs_path . '/baz/deep.log', 'foo bar');
+        $this->assertStringEqualsFile($hidden_file = $this->temp_logs_path . '/.hidden', 'bar');
+        $this->assertStringEqualsFile($hidden_deep = $this->temp_logs_path . '/.hidden_dir/.foo', 'baz');
 
         $test_class->clearLaravelLogs(); // Execute
 
         foreach ([$laravel_log, $test_log, $deep_log] as $file_path) {
             $this->assertFileNotExists($file_path);
         }
+
+        foreach ([$hidden_file, $hidden_deep] as $file_path) {
+            $this->assertFileExists($file_path);
+        }
+
         $this->assertDirectoryExists($this->temp_logs_path);
+
+        $this->files->delete($hidden_file);
+        $this->files->delete($hidden_deep);
+        $this->files->deleteDirectory($this->temp_logs_path . '/.hidden_dir');
     }
 
     /**
