@@ -4,9 +4,9 @@ declare(strict_types = 1);
 
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
-use AvtoDev\DevTools\Tests\PHPUnit\Traits\WithGuzzleMocking;
-use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
 use Tarampampam\GuzzleUrlMock\UrlsMockHandler;
+use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\WithGuzzleMocking;
 
 class WithGuzzleMockingTest extends AbstractLaravelTestCase
 {
