@@ -6,6 +6,7 @@ namespace AvtoDev\DevTools\Tests\PHPUnit;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\TestCase;
+use Tarampampam\GuzzleUrlMock\UrlsMockHandler;
 
 abstract class AbstractLaravelTestCase extends TestCase
 {
@@ -36,6 +37,10 @@ abstract class AbstractLaravelTestCase extends TestCase
             $this->enableCleanMemory();
         }
 
+        if (isset($uses[Traits\WithGuzzleMocking::class])) {
+            $this->enableGuzzleMocking();
+        }
+
         return $uses;
     }
 
@@ -44,6 +49,8 @@ abstract class AbstractLaravelTestCase extends TestCase
      * etc).
      *
      * @see \AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait::createApplication
+     *
+     * @param Application $app
      *
      * @return void
      */
@@ -57,10 +64,30 @@ abstract class AbstractLaravelTestCase extends TestCase
      *
      * @see \AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait::createApplication
      *
+     * @param Application $app
+     *
      * @return void
      */
     protected function afterApplicationBootstrapped(Application $app)
     {
         //
+    }
+
+    /**
+     * Override application Guzzle HTTP client factory.
+     *
+     * @see \AvtoDev\DevTools\Tests\PHPUnit\Traits\WithGuzzleMocking::enableGuzzleMocking
+     *
+     * @param UrlsMockHandler $handler
+     *
+     * @return void
+     */
+    protected function overrideGuzzleClientBinding(UrlsMockHandler $handler)
+    {
+        //$this->app->bind('your-http-client', function (Application $app) use ($handler): \GuzzleHttp\Client {
+        //    return new \GuzzleHttp\Client([
+        //        'handler' => \GuzzleHttp\HandlerStack::create($handler),
+        //    ]);
+        //});
     }
 }
