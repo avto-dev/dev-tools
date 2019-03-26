@@ -17,7 +17,7 @@
 Require this package with composer using the following command:
 
 ```shell
-$ composer require --dev avto-dev/dev-tools "^1.9.1"
+$ composer require --dev avto-dev/dev-tools "^1.10"
 ```
 
 > Installed `composer` is required ([how to install composer][getcomposer]).
@@ -134,6 +134,7 @@ class MyBootstrap extends \AvtoDev\DevTools\Tests\Bootstrap\AbstractTestsBootstr
 `CarbonAssertionsTrait` | Методы для тестирования `Carbon`-объектов
 `WithDatabaseDisconnects` | Подключая данный трейт в класс теста - на `tearDown` происходит отключение от всех БД ([причина](https://www.neontsunami.com/posts/too-many-connections-using-phpunit-for-testing-laravel-51))
 `WithMemoryClean` | Подключая данный трейт в класс теста - на `tearDown` происходит очистка свойств класса. Для использования этого трейта вне `Laravel-framework` необходимо вызывать метод `clearMemory` на `tearDown` интересующего класса
+`WithGuzzleMocking` | Трейт, поставляющий метод создания хэндлера-обработчика запросов HTTP клиента Guzzle 6
 `AppVersionAssertionsTrait` | Методы для проверки версии приложения и крайней версии, указанной в файле `CHANGELOG.md`
 `LaravelRoutesAssertsTrait` | Методы для проверки правильной настройки роутов Laravel
 

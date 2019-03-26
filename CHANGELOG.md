@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## v1.10.0
+
+### Added
+
+- Trait `WithGuzzleMocking`
+
 ## v1.9.2
 
 ### Fixed
