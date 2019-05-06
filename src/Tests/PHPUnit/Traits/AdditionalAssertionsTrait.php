@@ -322,4 +322,22 @@ trait AdditionalAssertionsTrait
             }
         }
     }
+
+    /**
+     * Assert that the JSON-encoded array has a given structure.
+     *
+     * @param array  $structure
+     * @param string $testing_array_json
+     *
+     * @throws \InvalidArgumentException
+     */
+    public static function assertJsonStructure($structure, $testing_array_json)
+    {
+        static::assertIsString($testing_array_json);
+        $testing_array = \json_decode($testing_array_json, true);
+        if (\json_last_error()) {
+            throw new \InvalidArgumentException('Invalid JSON given');
+        }
+        static::assertArrayStructure($structure, $testing_array);
+    }
 }

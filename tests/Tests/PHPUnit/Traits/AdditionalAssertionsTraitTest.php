@@ -77,52 +77,69 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
             TraitOne::class, TraitTwo::class, TraitThree::class,
         ]);
 
+        /* @see AdditionalAssertionsTrait::assertArrayStructure */
+        $validStructures   = [
+            [
+                'foo',
+                'bar',
+                'bus' => [
+                    '*' => [
+                        'alice',
+                        'bob',
+                    ],
+                ],
+            ],
+            [
+                'foo',
+            ],
+        ];
+        $invalidStructures = [
+            [
+                'xyz', // no key in first level
+            ],
+            [
+                'foo',
+                'bar',
+                'bus' => [
+                    '*' => [
+                        'alice',
+                        'bob',
+                        'frank', // no key in deep level
+                    ],
+                ],
+            ],
+        ];
+        $testingArray      = [
+            'foo' => 'var',
+            'bar' => 'var',
+            'bus' => [
+                [
+                    'alice' => 'var',
+                    'bob'   => 'var',
+                ],
+            ],
+        ];
         $this->makeAssertTest(
             'assertArrayStructure',
-            // Valid structures
-            [
-                [
-                    'foo',
-                    'bar',
-                    'bus' => [
-                        '*' => [
-                            'alice',
-                            'bob',
-                        ],
-                    ],
-                ],
-                [
-                    'foo',
-                ],
-            ],
-            // Invalid structures
-            [
-                [
-                    'xyz', // no key in first level
-                ],
-                [
-                    'foo',
-                    'bar',
-                    'bus' => [
-                        '*' => [
-                            'alice',
-                            'bob',
-                            'frank', // no key in deep level
-                        ],
-                    ],
-                ],
-            ],
-            // Testing array
-            [
-                'foo' => 'var',
-                'bar' => 'var',
-                'bus' => [
-                    [
-                        'alice' => 'var',
-                        'bob'   => 'var',
-                    ],
-                ],
-            ]
+            $validStructures,
+            $invalidStructures,
+            $testingArray
+        );
+
+        /* @see AdditionalAssertionsTrait::assertJsonStructure */
+        $this->makeAssertTest(
+            'assertJsonStructure',
+            $validStructures,
+            $invalidStructures,
+            json_encode($testingArray)
+
+        );
+        $this->expectExceptionMessage('Invalid JSON given');
+        $this->makeAssertTest(
+            'assertJsonStructure',
+            $validStructures,
+            $invalidStructures,
+            'Invalid JSON'
         );
     }
 
