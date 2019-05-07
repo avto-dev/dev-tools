@@ -78,7 +78,7 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
         ]);
 
         /* @see AdditionalAssertionsTrait::assertArrayStructure */
-        $structures = $this->structuresData();
+        $structures = $this->getStructuresData();
         $this->makeAssertTest('assertArrayStructure', $structures['valid'], $structures['invalid'], $structures['testing_array']);
 
         /* @see AdditionalAssertionsTrait::assertJsonStructure */
@@ -117,7 +117,7 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
      *
      * @return array
      */
-    private function structuresData()
+    private function getStructuresData()
     {
         return [
             // Valid structures
