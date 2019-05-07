@@ -78,14 +78,14 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
         ]);
 
         /* @see AdditionalAssertionsTrait::assertArrayStructure */
-        list($valid, $invalid, $testing_array) = $this->structuresData();
-        $this->makeAssertTest('assertArrayStructure', $valid, $invalid, $testing_array);
+        $structures = $this->structuresData();
+        $this->makeAssertTest('assertArrayStructure', $structures['valid'], $structures['invalid'], $structures['testing_array']);
 
         /* @see AdditionalAssertionsTrait::assertJsonStructure */
         $this->makeAssertTest(
             'assertJsonStructure',
-            $valid,
-            $invalid,
+            $structures['valid'],
+            $structures['invalid'],
             '{"foo":"var","bar":"var","bus":[{"alice":"var","bob":"var"}]}'
         );
     }
@@ -113,7 +113,7 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
     }
 
     /**
-     * Get array [$validStructureArr, $invalidStructureArr, $testingArray]
+     * Get array ['valid' => $validStructureArr, 'invalid' => $invalidStructureArr, 'testing_array' => $testingArray].
      *
      * @return array
      */
@@ -121,7 +121,7 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
     {
         return [
             // Valid structures
-            [
+            'valid'         => [
                 [
                     'foo',
                     'bar',
@@ -137,7 +137,7 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
                 ],
             ],
             // Invalid structures
-            [
+            'invalid'       => [
                 [
                     'xyz', // no key in first level
                 ],
@@ -154,7 +154,7 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
                 ],
             ],
             // Testing array
-            [
+            'testing_array' => [
                 'foo' => 'var',
                 'bar' => 'var',
                 'bus' => [
