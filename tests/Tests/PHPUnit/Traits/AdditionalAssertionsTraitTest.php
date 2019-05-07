@@ -79,7 +79,12 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
 
         /* @see AdditionalAssertionsTrait::assertArrayStructure */
         $structures = $this->getStructuresData();
-        $this->makeAssertTest('assertArrayStructure', $structures['valid'], $structures['invalid'], $structures['testing_array']);
+        $this->makeAssertTest(
+            'assertArrayStructure',
+            $structures['valid'],
+            $structures['invalid'],
+            $structures['testing_array']
+        );
 
         /* @see AdditionalAssertionsTrait::assertJsonStructure */
         $this->makeAssertTest(
@@ -90,6 +95,9 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
         );
     }
 
+    /**
+     * @return void
+     */
     public function testAssertJsonStructureException()
     {
         $this->expectException(\InvalidArgumentException::class);
