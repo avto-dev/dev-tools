@@ -77,8 +77,49 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
             TraitOne::class, TraitTwo::class, TraitThree::class,
         ]);
 
+        /* @see AdditionalAssertionsTrait::assertArrayStructure */
+        list($valid, $invalid, $testing_array) = $this->structuresData();
+        $this->makeAssertTest('assertArrayStructure', $valid, $invalid, $testing_array);
+
+        /* @see AdditionalAssertionsTrait::assertJsonStructure */
         $this->makeAssertTest(
-            'assertArrayStructure',
+            'assertJsonStructure',
+            $valid,
+            $invalid,
+            '{"foo":"var","bar":"var","bus":[{"alice":"var","bob":"var"}]}'
+        );
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Invalid JSON given
+     */
+    public function testAssertJsonStructureException()
+    {
+        /* @see AdditionalAssertionsTrait::assertJsonStructure */
+        $this->makeAssertTest('assertJsonStructure', [[]], [[]], 'Invalid JSON');
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return mixed|\PHPUnit\Framework\TestCase
+     */
+    protected function classUsedTraitFactory()
+    {
+        return new class extends \PHPUnit\Framework\TestCase {
+            use \AvtoDev\DevTools\Tests\PHPUnit\Traits\AdditionalAssertionsTrait;
+        };
+    }
+
+    /**
+     * Get array [$validStructureArr, $invalidStructureArr, $testingArray]
+     *
+     * @return array
+     */
+    private function structuresData()
+    {
+        return [
             // Valid structures
             [
                 [
@@ -122,19 +163,7 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
                         'bob'   => 'var',
                     ],
                 ],
-            ]
-        );
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @return mixed|\PHPUnit\Framework\TestCase
-     */
-    protected function classUsedTraitFactory()
-    {
-        return new class extends \PHPUnit\Framework\TestCase {
-            use \AvtoDev\DevTools\Tests\PHPUnit\Traits\AdditionalAssertionsTrait;
-        };
+            ],
+        ];
     }
 }

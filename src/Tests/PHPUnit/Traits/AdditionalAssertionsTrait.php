@@ -327,14 +327,14 @@ trait AdditionalAssertionsTrait
      * Assert that the JSON-encoded array has a given structure.
      *
      * @param array  $structure
-     * @param string $testing_array_json
+     * @param string $json_string
      *
      * @throws \InvalidArgumentException
      */
-    public static function assertJsonStructure($structure, $testing_array_json)
+    public static function assertJsonStructure($structure, $json_string)
     {
-        static::assertIsString($testing_array_json);
-        $testing_array = \json_decode($testing_array_json, true);
+        static::assertIsString($json_string);
+        $testing_array = \json_decode($json_string, true);
         if (\json_last_error()) {
             throw new \InvalidArgumentException('Invalid JSON given');
         }
