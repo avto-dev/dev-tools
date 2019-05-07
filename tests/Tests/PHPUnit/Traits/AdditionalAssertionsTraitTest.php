@@ -90,12 +90,10 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
         );
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Invalid JSON given
-     */
     public function testAssertJsonStructureException()
     {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Passed string has not valid JSON format.');
         /* @see AdditionalAssertionsTrait::assertJsonStructure */
         $this->makeAssertTest('assertJsonStructure', [[]], [[]], 'Invalid JSON');
     }

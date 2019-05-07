@@ -336,7 +336,7 @@ trait AdditionalAssertionsTrait
         static::assertIsString($json_string);
         $testing_array = \json_decode($json_string, true);
         if (\json_last_error()) {
-            throw new \InvalidArgumentException('Invalid JSON given');
+            throw new \InvalidArgumentException('Passed string has not valid JSON format.');
         }
         static::assertArrayStructure($structure, $testing_array);
     }
