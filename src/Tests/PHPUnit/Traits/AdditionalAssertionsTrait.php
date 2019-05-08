@@ -328,16 +328,23 @@ trait AdditionalAssertionsTrait
      *
      * @param array  $structure
      * @param string $json_string
+     * @param int    $encode_options
      *
-     * @throws \InvalidArgumentException
+     * @throws AssertionFailedError
+     * @throws InvalidArgumentException
      */
-    public static function assertJsonStructure($structure, $json_string)
+    public static function assertJsonStructure($structure, $json_string, int $encode_options = 0)
     {
         static::assertIsString($json_string);
-        $testing_array = \json_decode($json_string, true);
-        if (\json_last_error()) {
+
+        $testing_array = \json_decode($json_string, true, 512, $encode_options);
+        if (\json_last_error() !== JSON_ERROR_NONE) {
             throw new \InvalidArgumentException('Passed string has not valid JSON format.');
         }
+        if (! \is_array($testing_array)) {
+            throw new \InvalidArgumentException('Passed data is not array.');
+        }
+
         static::assertArrayStructure($structure, $testing_array);
     }
 }
