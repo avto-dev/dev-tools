@@ -77,10 +77,68 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
             TraitOne::class, TraitTwo::class, TraitThree::class,
         ]);
 
+        /* @see AdditionalAssertionsTrait::assertArrayStructure */
+        $structures = $this->getStructuresData();
         $this->makeAssertTest(
             'assertArrayStructure',
+            $structures['valid'],
+            $structures['invalid'],
+            $structures['testing_array']
+        );
+
+        /* @see AdditionalAssertionsTrait::assertJsonStructure */
+        $this->makeAssertTest(
+            'assertJsonStructure',
+            $structures['valid'],
+            $structures['invalid'],
+            '{"foo":"var","bar":"var","bus":[{"alice":"var","bob":"var"}]}'
+        );
+    }
+
+    /**
+     * @return void
+     */
+    public function testAssertJsonStructureFormatException()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Passed string has not valid JSON format.');
+        /* @see AdditionalAssertionsTrait::assertJsonStructure */
+        $this->makeAssertTest('assertJsonStructure', [[]], [[]], 'Invalid JSON');
+    }
+
+    /**
+     * @return void
+     */
+    public function testAssertJsonStructureNotArrayException()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Passed data is not array.');
+        /* @see AdditionalAssertionsTrait::assertJsonStructure */
+        $this->makeAssertTest('assertJsonStructure', [[]], [[]], '"valid JSON string"');
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return mixed|\PHPUnit\Framework\TestCase
+     */
+    protected function classUsedTraitFactory()
+    {
+        return new class extends \PHPUnit\Framework\TestCase {
+            use \AvtoDev\DevTools\Tests\PHPUnit\Traits\AdditionalAssertionsTrait;
+        };
+    }
+
+    /**
+     * Get array ['valid' => $validStructureArr, 'invalid' => $invalidStructureArr, 'testing_array' => $testingArray].
+     *
+     * @return array
+     */
+    private function getStructuresData()
+    {
+        return [
             // Valid structures
-            [
+            'valid'         => [
                 [
                     'foo',
                     'bar',
@@ -96,7 +154,7 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
                 ],
             ],
             // Invalid structures
-            [
+            'invalid'       => [
                 [
                     'xyz', // no key in first level
                 ],
@@ -113,7 +171,7 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
                 ],
             ],
             // Testing array
-            [
+            'testing_array' => [
                 'foo' => 'var',
                 'bar' => 'var',
                 'bus' => [
@@ -122,19 +180,7 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
                         'bob'   => 'var',
                     ],
                 ],
-            ]
-        );
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @return mixed|\PHPUnit\Framework\TestCase
-     */
-    protected function classUsedTraitFactory()
-    {
-        return new class extends \PHPUnit\Framework\TestCase {
-            use \AvtoDev\DevTools\Tests\PHPUnit\Traits\AdditionalAssertionsTrait;
-        };
+            ],
+        ];
     }
 }
