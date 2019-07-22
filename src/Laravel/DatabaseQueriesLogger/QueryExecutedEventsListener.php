@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace AvtoDev\DevTools\Laravel\DatabaseQueriesLogger;
 
@@ -43,7 +43,7 @@ class QueryExecutedEventsListener
      *
      * @return void
      */
-    public function handle(QueryExecuted $event)
+    public function handle(QueryExecuted $event): void
     {
         try {
             $bindings   = (array) $event->bindings;

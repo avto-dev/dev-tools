@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace AvtoDev\DevTools\Tests\PHPUnit;
 
@@ -21,23 +21,35 @@ abstract class AbstractLaravelTestCase extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUpTraits()
+    protected function setUpTraits(): array
     {
         $uses = parent::setUpTraits();
 
-        if (isset($uses[Traits\WithDatabaseQueriesLogging::class])) {
+        if (
+            isset($uses[Traits\WithDatabaseQueriesLogging::class])
+            && \method_exists($this, 'enableDatabaseQueriesLogging')
+        ) {
             $this->enableDatabaseQueriesLogging();
         }
 
-        if (isset($uses[Traits\WithDatabaseDisconnects::class])) {
+        if (
+            isset($uses[Traits\WithDatabaseDisconnects::class])
+            && \method_exists($this, 'enableDatabaseDisconnects')
+        ) {
             $this->enableDatabaseDisconnects();
         }
 
-        if (isset($uses[Traits\WithMemoryClean::class])) {
+        if (
+            isset($uses[Traits\WithMemoryClean::class])
+            && \method_exists($this, 'enableCleanMemory')
+        ) {
             $this->enableCleanMemory();
         }
 
-        if (isset($uses[Traits\WithGuzzleMocking::class])) {
+        if (
+            isset($uses[Traits\WithGuzzleMocking::class])
+            && \method_exists($this, 'enableGuzzleMocking')
+        ) {
             $this->enableGuzzleMocking();
         }
 
@@ -48,13 +60,13 @@ abstract class AbstractLaravelTestCase extends TestCase
      * Make some before application bootstrapped (call `$app->useStoragePath(...)`, `$app->loadEnvironmentFrom(...)`,
      * etc).
      *
-     * @see \AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait::createApplication
-     *
      * @param Application $app
      *
      * @return void
+     *
+     * @see \AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait::createApplication
      */
-    protected function beforeApplicationBootstrapped(Application $app)
+    protected function beforeApplicationBootstrapped(Application $app): void
     {
         //
     }
@@ -62,13 +74,13 @@ abstract class AbstractLaravelTestCase extends TestCase
     /**
      * Make some after application bootstrapped (register your service-providers `$app->register(...)`, etc).
      *
-     * @see \AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait::createApplication
-     *
      * @param Application $app
      *
      * @return void
+     *
+     * @see \AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait::createApplication
      */
-    protected function afterApplicationBootstrapped(Application $app)
+    protected function afterApplicationBootstrapped(Application $app): void
     {
         //
     }
@@ -76,13 +88,13 @@ abstract class AbstractLaravelTestCase extends TestCase
     /**
      * Override application Guzzle HTTP client factory.
      *
-     * @see \AvtoDev\DevTools\Tests\PHPUnit\Traits\WithGuzzleMocking::enableGuzzleMocking
-     *
      * @param UrlsMockHandler $handler
      *
      * @return void
+     *
+     * @see \AvtoDev\DevTools\Tests\PHPUnit\Traits\WithGuzzleMocking::enableGuzzleMocking
      */
-    protected function overrideGuzzleClientBinding(UrlsMockHandler $handler)
+    protected function overrideGuzzleClientBinding(UrlsMockHandler $handler): void
     {
         //$this->app->bind('your-http-client', function (Application $app) use ($handler): \GuzzleHttp\Client {
         //    return new \GuzzleHttp\Client([

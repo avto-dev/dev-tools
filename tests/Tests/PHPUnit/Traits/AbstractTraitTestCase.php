@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
 use PHPUnit\Framework\AssertionFailedError;
@@ -32,14 +34,14 @@ abstract class AbstractTraitTestCase extends AbstractTestCase
         $instance = $this->classUsedTraitFactory();
 
         foreach ($valid as $valid_assert) {
-            $instance::{$method_name}($valid_assert, ...$args);
+            $instance->{$method_name}($valid_assert, ...$args);
         }
 
         foreach ($invalid as $invalid_assert) {
             $caught = false;
 
             try {
-                $instance::{$method_name}($invalid_assert, ...$args);
+                $instance->{$method_name}($invalid_assert, ...$args);
             } catch (ExpectationFailedException $e) {
                 $caught = true;
             } catch (AssertionFailedError $e) {

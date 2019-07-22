@@ -1,12 +1,15 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\WithMemoryClean;
 use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
 
+/**
+ * @covers \AvtoDev\DevTools\Tests\PHPUnit\Traits\WithMemoryClean<extended>
+ */
 class WithMemoryCleanTest extends AbstractLaravelTestCase
 {
     use WithMemoryClean;
@@ -16,7 +19,7 @@ class WithMemoryCleanTest extends AbstractLaravelTestCase
      */
     protected $test_property;
 
-    public function testSomeShit()
+    public function testSomeShit(): void
     {
         $this->test_property = 'test';
         $this->clearMemory();
@@ -28,13 +31,13 @@ class WithMemoryCleanTest extends AbstractLaravelTestCase
      *
      * @return void
      */
-    public function testClosureRegistration()
+    public function testClosureRegistration(): void
     {
-        $closure_hash = static::getClosureHash($this->cleanMemoryClosureFactory());
+        $closure_hash = $this->getClosureHash($this->cleanMemoryClosureFactory());
         $found        = false;
 
         foreach ($this->beforeApplicationDestroyedCallbacks as $callback) {
-            if (static::getClosureHash($callback) === $closure_hash) {
+            if ($this->getClosureHash($callback) === $closure_hash) {
                 $found = true;
 
                 break;

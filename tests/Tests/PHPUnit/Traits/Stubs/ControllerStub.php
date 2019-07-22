@@ -10,7 +10,7 @@ class ControllerStub
     {
     }
 
-    public function testAction()
+    public function testAction(): bool
     {
         return true;
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit;
 
 use Tests\AvtoDev\DevTools\AbstractTestCase;
@@ -11,6 +13,10 @@ use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelLogFilesAssertsTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelEventsAssertionsTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelCommandsAssertionsTrait;
 
+/**
+ * @covers \AvtoDev\DevTools\Tests\PHPUnit\AbstractTestCase<extended>
+ * @covers \AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase<extended>
+ */
 class AbstractTestCasesTest extends AbstractTestCase
 {
     use AdditionalAssertionsTrait;
@@ -19,7 +25,7 @@ class AbstractTestCasesTest extends AbstractTestCase
      * @throws \PHPUnit\Framework\ExpectationFailedException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
-    public function testAbstractTestCase()
+    public function testAbstractTestCase(): void
     {
         $instance = new class extends \AvtoDev\DevTools\Tests\PHPUnit\AbstractTestCase {
         };
@@ -37,7 +43,7 @@ class AbstractTestCasesTest extends AbstractTestCase
      * @throws \PHPUnit\Framework\ExpectationFailedException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
-    public function testAbstractLaravelTestCase()
+    public function testAbstractLaravelTestCase(): void
     {
         $instance = new class extends \AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase {
             use CreatesApplicationTrait;

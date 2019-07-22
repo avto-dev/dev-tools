@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
@@ -28,7 +28,7 @@ trait WithGuzzleMocking
      *
      * @return void
      */
-    public function enableGuzzleMocking()
+    public function enableGuzzleMocking(): void
     {
         $this->guzzle_handler = new UrlsMockHandler;
 

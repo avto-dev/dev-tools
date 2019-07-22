@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
 use Illuminate\Filesystem\Filesystem;
@@ -8,6 +10,9 @@ use Illuminate\Foundation\Testing\TestCase as IlluminateTestCase;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelLogFilesAssertsTrait;
 
+/**
+ * @covers \AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelLogFilesAssertsTrait<extended>
+ */
 class LaravelLogFilesAssertsTraitTest extends IlluminateTestCase
 {
     use CreatesApplicationTrait;
@@ -28,7 +33,7 @@ class LaravelLogFilesAssertsTraitTest extends IlluminateTestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -44,7 +49,7 @@ class LaravelLogFilesAssertsTraitTest extends IlluminateTestCase
     /**
      * {@inheritdoc}
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         if ($this->files->exists($this->temp_logs_path)) {
             $this->files->deleteDirectory($this->temp_logs_path);
@@ -74,7 +79,7 @@ class LaravelLogFilesAssertsTraitTest extends IlluminateTestCase
      *
      * @return void
      */
-    public function testClearLogs()
+    public function testClearLogs(): void
     {
         /**
          * This instance will create temp directory, put some files inside her, and works with it.
@@ -141,7 +146,7 @@ class LaravelLogFilesAssertsTraitTest extends IlluminateTestCase
      *
      * @return void
      */
-    public function testGetLogFilesContentGetters()
+    public function testGetLogFilesContentGetters(): void
     {
         $this->files->put(
             $this->temp_logs_path . ($file_path1 = '/foo.log'), $content1 = "\n\r\n\n\rfoo\nbar\nbaz\n   \n"
@@ -172,7 +177,7 @@ class LaravelLogFilesAssertsTraitTest extends IlluminateTestCase
      *
      * @return void
      */
-    public function testVendorGetDefaultLogsDirectoryPath()
+    public function testVendorGetDefaultLogsDirectoryPath(): void
     {
         $this->assertEquals($this->app->storagePath() . '/logs', $this->vendorGetDefaultLogsDirectoryPath());
         $this->assertEquals($this->app->storagePath() . '/logs/foo', $this->vendorGetDefaultLogsDirectoryPath('foo'));
@@ -185,7 +190,7 @@ class LaravelLogFilesAssertsTraitTest extends IlluminateTestCase
      *
      * @return void
      */
-    public function testAssertLogFileNotContains()
+    public function testAssertLogFileNotContains(): void
     {
         $find = 'hell yeah';
         $this->files->put($this->temp_logs_path . ($file_name = '/foo.log'), "\n{$find}\nfoo\nbar\nbaz\n[foo] bar\n");
@@ -214,7 +219,7 @@ class LaravelLogFilesAssertsTraitTest extends IlluminateTestCase
      *
      * @return void
      */
-    public function testAssertLogFileContains()
+    public function testAssertLogFileContains(): void
     {
         $find = 'hell yeah';
         $this->files->put($this->temp_logs_path . ($file_name = '/foo.log'), "\n{$find}\nfoo\nbar\nbaz\n[foo] bar\n");
@@ -244,7 +249,7 @@ class LaravelLogFilesAssertsTraitTest extends IlluminateTestCase
      *
      * @return void
      */
-    public function testAssertLogFileExists()
+    public function testAssertLogFileExists(): void
     {
         $this->files->put($this->temp_logs_path . ($file_name = '/foo.log'), null);
         $this->assertLogFileExists($file_name);

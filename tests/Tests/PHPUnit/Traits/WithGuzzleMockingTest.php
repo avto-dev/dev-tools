@@ -8,6 +8,9 @@ use Tarampampam\GuzzleUrlMock\UrlsMockHandler;
 use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\WithGuzzleMocking;
 
+/**
+ * @covers \AvtoDev\DevTools\Tests\PHPUnit\Traits\WithGuzzleMocking<extended>
+ */
 class WithGuzzleMockingTest extends AbstractLaravelTestCase
 {
     use WithGuzzleMocking;
@@ -20,7 +23,7 @@ class WithGuzzleMockingTest extends AbstractLaravelTestCase
     /**
      * {@inheritdoc}
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->called = false;
 
@@ -30,7 +33,7 @@ class WithGuzzleMockingTest extends AbstractLaravelTestCase
     /**
      * @return void
      */
-    public function testHandlerCreating()
+    public function testHandlerCreating(): void
     {
         $this->assertInstanceOf(UrlsMockHandler::class, $this->guzzleHandler());
     }
@@ -38,7 +41,7 @@ class WithGuzzleMockingTest extends AbstractLaravelTestCase
     /**
      * @return void
      */
-    public function testBingingMethodCalled()
+    public function testBingingMethodCalled(): void
     {
         $this->assertTrue($this->called);
     }
@@ -46,7 +49,7 @@ class WithGuzzleMockingTest extends AbstractLaravelTestCase
     /**
      * @return void
      */
-    public function overrideGuzzleClientBinding(UrlsMockHandler $handler)
+    public function overrideGuzzleClientBinding(UrlsMockHandler $handler): void
     {
         $this->called = true;
     }

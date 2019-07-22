@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
@@ -47,7 +47,7 @@ trait WithDatabaseDisconnects
      *
      * @return void
      */
-    public function enableDatabaseDisconnects()
+    public function enableDatabaseDisconnects(): void
     {
         $this->beforeApplicationDestroyed($this->databaseDisconnectsClosureFactory());
     }

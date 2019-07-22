@@ -4,6 +4,37 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## v2.0.0
+
+### Added
+
+- Docker-based environment for development
+- Project `Makefile`
+- Dependency `avto-dev/stacked-dumper-laravel`
+
+### Changed
+
+- All "custom" asserts now non-static ([reason](https://phpunit.de/manual/6.5/en/appendixes.assertions.html#appendixes.assertions.static-vs-non-static-usage-of-assertion-methods))
+- Assert methods now returns `void`
+- Some asserts now accepts "message" parameter
+- Minimal PHP version now is `7.1.3`
+- Minimal PHPUnit version now is `^7.5`
+- Minimal Laravel version now is `5.6.x`
+- Maximal Laravel version now is `5.8.x`
+- Composer scripts
+
+### Removed
+
+- `AvtoDev\DevTools\Laravel\VarDumper\*` (replaced with `avto-dev/stacked-dumper-laravel`)
+- `assertIsNumeric`
+- `assertIsInteger`
+- `assertIsArray`
+- `assertIsString`
+
+### Deprecated
+
+- `InstancesAccessorsTrait::callMethod`
+- `InstancesAccessorsTrait::getProperty`
 
 ## v1.11.0
 

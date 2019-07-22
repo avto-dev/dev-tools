@@ -1,10 +1,15 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
 use Tests\AvtoDev\DevTools\AbstractTestCase;
 use PHPUnit\Framework\ExpectationFailedException;
 
+/**
+ * @covers \AvtoDev\DevTools\Tests\PHPUnit\Traits\AppVersionAssertionsTrait<extended>
+ */
 class AppVersionAssertionsTraitTest extends AbstractTestCase
 {
     /**
@@ -12,7 +17,7 @@ class AppVersionAssertionsTraitTest extends AbstractTestCase
      *
      * @return void
      */
-    public function testWithKeepChangelogFormat()
+    public function testWithKeepChangelogFormat(): void
     {
         $instance = new class extends \PHPUnit\Framework\TestCase {
             use \AvtoDev\DevTools\Tests\PHPUnit\Traits\AppVersionAssertionsTrait;
@@ -193,7 +198,7 @@ EOF;
      *
      * @return void
      */
-    public function testWithShortChangelogFormat()
+    public function testWithShortChangelogFormat(): void
     {
         $instance = new class extends \PHPUnit\Framework\TestCase {
             use \AvtoDev\DevTools\Tests\PHPUnit\Traits\AppVersionAssertionsTrait;
@@ -254,7 +259,7 @@ EOF;
      *
      * @return void
      */
-    public function testWithLongVersionsParts()
+    public function testWithLongVersionsParts(): void
     {
         $instance = new class extends \PHPUnit\Framework\TestCase {
             use \AvtoDev\DevTools\Tests\PHPUnit\Traits\AppVersionAssertionsTrait;
@@ -297,7 +302,7 @@ EOF;
      *
      * @return void
      */
-    public function testWithInvalidData()
+    public function testWithInvalidData(): void
     {
         $instance = new class extends \PHPUnit\Framework\TestCase {
             use \AvtoDev\DevTools\Tests\PHPUnit\Traits\AppVersionAssertionsTrait;
@@ -342,7 +347,7 @@ EOF;
     /**
      * @return void
      */
-    public function testGetChangeLogFileContent()
+    public function testGetChangeLogFileContent(): void
     {
         $instance = new class extends \PHPUnit\Framework\TestCase {
             use \AvtoDev\DevTools\Tests\PHPUnit\Traits\AppVersionAssertionsTrait;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
 use Illuminate\Database\Connection;
@@ -7,6 +9,9 @@ use Illuminate\Config\Repository as ConfigRepository;
 use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\WithDatabaseDisconnects;
 
+/**
+ * @covers \AvtoDev\DevTools\Tests\PHPUnit\Traits\WithDatabaseDisconnects<extended>
+ */
 class WithDatabaseDisconnectsTest extends AbstractLaravelTestCase
 {
     use WithDatabaseDisconnects;
@@ -14,7 +19,7 @@ class WithDatabaseDisconnectsTest extends AbstractLaravelTestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -36,7 +41,7 @@ class WithDatabaseDisconnectsTest extends AbstractLaravelTestCase
      *
      * @return void
      */
-    public function testDisconnectFromAllDatabaseConnections()
+    public function testDisconnectFromAllDatabaseConnections(): void
     {
         $this->assertTrue(
             $this->app->make('db')->connection()->unprepared(
@@ -53,7 +58,7 @@ class WithDatabaseDisconnectsTest extends AbstractLaravelTestCase
      *
      * @return void
      */
-    public function testDisconnectFromAllDatabaseConnectionsWithoutPassingApp()
+    public function testDisconnectFromAllDatabaseConnectionsWithoutPassingApp(): void
     {
         $this->assertTrue($this->databaseHasActiveConnections());
         $this->assertTrue($this->disconnectFromAllDatabaseConnections());
@@ -65,13 +70,13 @@ class WithDatabaseDisconnectsTest extends AbstractLaravelTestCase
      *
      * @return void
      */
-    public function testClosureRegistration()
+    public function testClosureRegistration(): void
     {
-        $closure_hash = static::getClosureHash($this->databaseDisconnectsClosureFactory());
+        $closure_hash = $this->getClosureHash($this->databaseDisconnectsClosureFactory());
         $found        = false;
 
         foreach ($this->beforeApplicationDestroyedCallbacks as $callback) {
-            if (static::getClosureHash($callback) === $closure_hash) {
+            if ($this->getClosureHash($callback) === $closure_hash) {
                 $found = true;
 
                 break;

@@ -4,12 +4,11 @@ namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
 use Illuminate\Console\Command;
 use PHPUnit\Framework\Exception;
-use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 use Illuminate\Contracts\Console\Kernel as ConsoleKernelContract;
 
 /**
- * @mixin AbstractLaravelTestCase
+ * @mixin \Illuminate\Foundation\Testing\TestCase
  */
 trait LaravelCommandsAssertionsTrait
 {
@@ -17,19 +16,20 @@ trait LaravelCommandsAssertionsTrait
      * Assert that command registered in artisan.
      *
      * @param string|Command $command Command name|class_name|instance that must be checked
+     * @param string         $message
      *
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
-    public function assertArtisanCommandExists($command)
+    public function assertArtisanCommandExists($command, string $message = ''): void
     {
         if (\is_object($command)) {
-            $command = get_class($command);
+            $command = \get_class($command);
         }
 
         // Array of registered commands. ['command_name'=>instance]
         $all_commands = $this->app->make(ConsoleKernelContract::class)->all();
-
-        $message = "Command {$command} does not exists";
 
         $command_exists = \array_key_exists($command, $all_commands);
 
@@ -41,7 +41,9 @@ trait LaravelCommandsAssertionsTrait
             }
         }
 
-        static::assertTrue($command_exists, $message);
+        $this->assertTrue($command_exists, $message === ''
+            ? "Command {$command} does not exists"
+            : $message);
     }
 
     /**
@@ -49,16 +51,19 @@ trait LaravelCommandsAssertionsTrait
      *
      * @param string|Command $command Command name|class_name|instance that must be checked
      * @param string         $option  Option name
+     * @param string         $message
      *
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
-    public function assertArtisanCommandHasOption(string $option, $command)
+    public function assertArtisanCommandHasOption(string $option, $command, string $message = ''): void
     {
         $command = $this->buildCommand($command);
 
-        $message = sprintf('Command %s has no option "%s"', get_class($command), $option);
-
-        static::assertTrue($command->getDefinition()->hasOption($option), $message);
+        $this->assertTrue($command->getDefinition()->hasOption($option), $message === ''
+            ? \sprintf('Command %s has no option "%s"', \get_class($command), $option)
+            : $message);
     }
 
     /**
@@ -66,16 +71,19 @@ trait LaravelCommandsAssertionsTrait
      *
      * @param string|Command $command  Command name|class_name|instance that must be checked
      * @param string         $argument Argument name
+     * @param string         $message
      *
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
-    public function assertArtisanCommandHasArgument(string $argument, $command)
+    public function assertArtisanCommandHasArgument(string $argument, $command, string $message = ''): void
     {
         $command = $this->buildCommand($command);
 
-        $message = sprintf('Command %s has no argument "%s"', get_class($command), $argument);
-
-        static::assertTrue($command->getDefinition()->hasArgument($argument), $message);
+        $this->assertTrue($command->getDefinition()->hasArgument($argument), $message === ''
+            ? \sprintf('Command %s has no argument "%s"', get_class($command), $argument)
+            : $message);
     }
 
     /**
@@ -83,16 +91,19 @@ trait LaravelCommandsAssertionsTrait
      *
      * @param string|Command $command  Command name|class_name|instance that must be checked
      * @param string         $shortcut Shortcut name
+     * @param string         $message
      *
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
-    public function assertArtisanCommandHasOptionShortcut(string $shortcut, $command)
+    public function assertArtisanCommandHasOptionShortcut(string $shortcut, $command, string $message = ''): void
     {
         $command = $this->buildCommand($command);
 
-        $message = sprintf('Command %s has no shortcut "%s"', get_class($command), $shortcut);
-
-        static::assertTrue($command->getDefinition()->hasShortcut($shortcut), $message);
+        $this->assertTrue($command->getDefinition()->hasShortcut($shortcut), $message === ''
+            ? \sprintf('Command %s has no shortcut "%s"', get_class($command), $shortcut)
+            : $message);
     }
 
     /**
@@ -101,27 +112,35 @@ trait LaravelCommandsAssertionsTrait
      * @param string|Command $command  Command name|class_name|instance that must be checked
      * @param string         $shortcut Shortcut name
      * @param string         $option   Option name
+     * @param string         $message
      *
      * @throws Exception
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
-    public function assertArtisanCommandShortcutBelongToOption(string $shortcut, string $option, $command)
+    public function assertArtisanCommandShortcutBelongToOption(string $shortcut,
+                                                               string $option,
+                                                               $command,
+                                                               string $message = ''): void
     {
-        $this->assertArtisanCommandHasOptionShortcut($shortcut, $command);
+        $this->assertArtisanCommandHasOptionShortcut($shortcut, $command, $message);
 
         $command = $this->buildCommand($command);
 
-        $message = sprintf(
+        $default_message = \sprintf(
             'Shortcut "%s" in command "%s" does not belong to option "%s" ',
             $shortcut,
-            get_class($command),
+            \get_class($command),
             $option
         );
 
-        static::assertEquals(
+        $this->assertEquals(
             $option,
             $this->getObjectAttribute($command->getDefinition(), 'shortcuts')[$shortcut] ?? '',
-            $message
+            $message === ''
+                ? $default_message
+                : $message
         );
     }
 
@@ -129,33 +148,39 @@ trait LaravelCommandsAssertionsTrait
      * Assert that artisan command has description.
      *
      * @param string|Command $command Command name|class_name|instance that must be checked
+     * @param string         $message
      *
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
-    public function assertArtisanCommandDescriptionNotEmpty($command)
+    public function assertArtisanCommandDescriptionNotEmpty($command, string $message = ''): void
     {
         $command = $this->buildCommand($command);
 
-        $message = sprintf('Command "%s" has empty description', get_class($command));
-
-        static::assertNotEmpty($command->getDescription(), $message);
+        $this->assertNotEmpty($command->getDescription(), $message === ''
+            ? \sprintf('Command "%s" has empty description', \get_class($command))
+            : $message);
     }
 
     /**
      * Assert that artisan command has description.
      *
      * @param string|Command $command Command name|class_name|instance that must be checked
-     * @param string         $pattern Regular expression     *
+     * @param string         $pattern Regular expression
+     * @param string         $message
      *
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
-    public function assertArtisanCommandDescriptionRegExp(string $pattern, $command)
+    public function assertArtisanCommandDescriptionRegExp(string $pattern, $command, string $message = ''): void
     {
         $command = $this->buildCommand($command);
 
-        $message = sprintf('Description of command "%s" does not match regexp "%s"', get_class($command), $pattern);
-
-        static::assertRegExp($pattern, $command->getDescription(), $message);
+        $this->assertRegExp($pattern, $command->getDescription(), $message === ''
+            ? \sprintf('Description of command "%s" does not match regexp "%s"', \get_class($command), $pattern)
+            : $message);
     }
 
     /**
@@ -177,7 +202,7 @@ trait LaravelCommandsAssertionsTrait
                 $command = $artisan->all()[$command];
             } elseif (\class_exists($command)) {
                 $command = $this->app->make($command);
-                static::assertInstanceOf(Command::class, $command);
+                $this->assertInstanceOf(Command::class, $command);
             }
         }
 

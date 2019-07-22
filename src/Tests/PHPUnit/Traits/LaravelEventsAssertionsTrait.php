@@ -1,14 +1,18 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
 use ReflectionFunction;
 use ReflectionException;
+use Illuminate\Events\Dispatcher;
 use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
+/**
+ * @mixin \Illuminate\Foundation\Testing\TestCase
+ */
 trait LaravelEventsAssertionsTrait
 {
     /**
@@ -23,11 +27,14 @@ trait LaravelEventsAssertionsTrait
      *
      * @return array
      */
-    public static function getEventListenersClasses($event_abstract)
+    public function getEventListenersClasses($event_abstract): array
     {
         $result = [];
 
-        foreach (\Illuminate\Support\Facades\Event::getListeners($event_abstract) as $listener_closure) {
+        /** @var Dispatcher $events */
+        $events = $this->app->make(Dispatcher::class);
+
+        foreach ($events->getListeners($event_abstract) as $listener_closure) {
             $reflection = new ReflectionFunction($listener_closure);
             $uses       = $reflection->getStaticVariables();
 
@@ -47,21 +54,26 @@ trait LaravelEventsAssertionsTrait
      *
      * @param string|object|mixed $event_abstract
      * @param string|object       $listener_class
+     * @param string              $message
      *
      * @throws ExpectationFailedException
      * @throws ReflectionException
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
-    public static function assertEventHasListener($event_abstract, $listener_class)
+    public function assertEventHasListener($event_abstract, $listener_class, string $message = ''): void
     {
         if (\is_object($listener_class)) {
             $listener_class = \get_class($listener_class);
         }
 
-        static::assertContains(
+        $this->assertContains(
             $listener_class,
-            static::getEventListenersClasses($event_abstract),
-            sprintf('"%s" has no listener class "%s"', $event_abstract, $listener_class)
+            $this->getEventListenersClasses($event_abstract),
+            $message === ''
+                ? \sprintf('"%s" has no listener class "%s"', $event_abstract, $listener_class)
+                : $message
         );
     }
 
@@ -73,21 +85,26 @@ trait LaravelEventsAssertionsTrait
      *
      * @param string|object|mixed $event_abstract
      * @param string|object       $listener_class
+     * @param string              $message
      *
      * @throws ExpectationFailedException
      * @throws ReflectionException
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
-    public static function assertEventHasNoListener($event_abstract, $listener_class)
+    public function assertEventHasNoListener($event_abstract, $listener_class, string $message = ''): void
     {
         if (\is_object($listener_class)) {
             $listener_class = \get_class($listener_class);
         }
 
-        static::assertNotContains(
+        $this->assertNotContains(
             $listener_class,
-            static::getEventListenersClasses($event_abstract),
-            sprintf('"%s" has no listener class "%s"', $event_abstract, $listener_class)
+            $this->getEventListenersClasses($event_abstract),
+            $message === ''
+                ? \sprintf('"%s" has no listener class "%s"', $event_abstract, $listener_class)
+                : $message
         );
     }
 }

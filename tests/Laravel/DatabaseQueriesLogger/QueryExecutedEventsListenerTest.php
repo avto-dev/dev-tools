@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Tests\AvtoDev\DevTools\Laravel\DatabaseQueriesLogger;
 
 use Illuminate\Support\Str;
@@ -9,6 +11,9 @@ use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelLogFilesAssertsTrait;
 use AvtoDev\DevTools\Laravel\DatabaseQueriesLogger\QueryExecutedEventsListener;
 
+/**
+ * @covers \AvtoDev\DevTools\Laravel\DatabaseQueriesLogger\QueryExecutedEventsListener
+ */
 class QueryExecutedEventsListenerTest extends \Illuminate\Foundation\Testing\TestCase
 {
     use CreatesApplicationTrait,
@@ -22,7 +27,7 @@ class QueryExecutedEventsListenerTest extends \Illuminate\Foundation\Testing\Tes
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -36,7 +41,7 @@ class QueryExecutedEventsListenerTest extends \Illuminate\Foundation\Testing\Tes
      *
      * @return void
      */
-    public function testLoggingLevel()
+    public function testLoggingLevel(): void
     {
         $this->assertEquals('debug', $this->instance->loggingLevel());
 
@@ -52,7 +57,7 @@ class QueryExecutedEventsListenerTest extends \Illuminate\Foundation\Testing\Tes
      *
      * @return void
      */
-    public function testHandle()
+    public function testHandle(): void
     {
         $event = new QueryExecuted(
             $sql = 'select * from users_' . Str::random(),
@@ -73,7 +78,7 @@ class QueryExecutedEventsListenerTest extends \Illuminate\Foundation\Testing\Tes
      *
      * @return void
      */
-    public function testHandleWithDataTime()
+    public function testHandleWithDataTime(): void
     {
         $event = new QueryExecuted(
             $sql = 'select * from users_' . Str::random(),

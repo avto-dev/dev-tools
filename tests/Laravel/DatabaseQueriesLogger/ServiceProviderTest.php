@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Tests\AvtoDev\DevTools\Laravel\DatabaseQueriesLogger;
 
 use Illuminate\Database\Events\QueryExecuted;
@@ -9,6 +11,9 @@ use AvtoDev\DevTools\Laravel\DatabaseQueriesLogger\ServiceProvider;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelEventsAssertionsTrait;
 use AvtoDev\DevTools\Laravel\DatabaseQueriesLogger\QueryExecutedEventsListener;
 
+/**
+ * @covers \AvtoDev\DevTools\Laravel\DatabaseQueriesLogger\ServiceProvider
+ */
 class ServiceProviderTest extends \Illuminate\Foundation\Testing\TestCase
 {
     use CreatesApplicationTrait,
@@ -19,7 +24,7 @@ class ServiceProviderTest extends \Illuminate\Foundation\Testing\TestCase
      *
      * @return void
      */
-    public function testListenerRegistered()
+    public function testListenerRegistered(): void
     {
         $this->assertEventHasListener(QueryExecuted::class, QueryExecutedEventsListener::class);
     }

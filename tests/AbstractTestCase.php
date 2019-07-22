@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Tests\AvtoDev\DevTools;
 
 use PHPUnit\Framework\AssertionFailedError;
@@ -14,7 +16,7 @@ abstract class AbstractTestCase extends \PHPUnit\Framework\TestCase
      *
      * @return bool
      */
-    protected function assertAssertationInsideClosureFailed(callable $closure)
+    protected function assertAssertationInsideClosureFailed(callable $closure): bool
     {
         $caught = false;
 

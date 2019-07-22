@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Tests\Unit\Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
+namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
 use Illuminate\Routing\Router;
 use PHPUnit\Framework\ExpectationFailedException;
@@ -12,11 +12,13 @@ use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelRoutesAssertsTrait;
 use Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits\Stubs\ControllerStub;
 
 /**
- * @coversDefaultClass \AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelRoutesAssertsTrait
+ * @covers \AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelRoutesAssertsTrait<extended>
  */
 class LaravelRoutesAssertsTraitTest extends \Illuminate\Foundation\Testing\TestCase
 {
-    use CreatesApplicationTrait, AdditionalAssertionsTrait, LaravelRoutesAssertsTrait;
+    use CreatesApplicationTrait,
+        AdditionalAssertionsTrait,
+        LaravelRoutesAssertsTrait;
 
     /**
      * @var Router
@@ -26,7 +28,7 @@ class LaravelRoutesAssertsTraitTest extends \Illuminate\Foundation\Testing\TestC
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -36,7 +38,7 @@ class LaravelRoutesAssertsTraitTest extends \Illuminate\Foundation\Testing\TestC
     /**
      * {@inheritdoc}
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         unset($this->router);
         parent::tearDown();
@@ -45,11 +47,9 @@ class LaravelRoutesAssertsTraitTest extends \Illuminate\Foundation\Testing\TestC
     /**
      * Test assertion.
      *
-     * @covers ::assertAllRoutesHasActions
-     *
      * @throws \InvalidArgumentException
      */
-    public function testExistedRoute()
+    public function testExistedRoute(): void
     {
         $this->router->get('example', ControllerStub::class . '@testAction');
 
@@ -59,11 +59,9 @@ class LaravelRoutesAssertsTraitTest extends \Illuminate\Foundation\Testing\TestC
     /**
      * Test route with using method.
      *
-     * @covers ::assertAllRoutesHasActions
-     *
      * @throws \InvalidArgumentException
      */
-    public function testInvokedRoute()
+    public function testInvokedRoute(): void
     {
         $this->router->get('example', ControllerStub::class);
 
@@ -73,11 +71,9 @@ class LaravelRoutesAssertsTraitTest extends \Illuminate\Foundation\Testing\TestC
     /**
      * Test non existing method in controller.
      *
-     * @covers ::assertAllRoutesHasActions
-     *
      * @throws \InvalidArgumentException
      */
-    public function testNotExistedMethod()
+    public function testNotExistedMethod(): void
     {
         $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessageRegExp('~Has no method named~');
@@ -89,11 +85,9 @@ class LaravelRoutesAssertsTraitTest extends \Illuminate\Foundation\Testing\TestC
     /**
      * Test non existing controller class.
      *
-     * @covers ::assertAllRoutesHasActions
-     *
      * @throws \InvalidArgumentException
      */
-    public function testNotExistedClass()
+    public function testNotExistedClass(): void
     {
         $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessageRegExp('~Class .* was not found~');
