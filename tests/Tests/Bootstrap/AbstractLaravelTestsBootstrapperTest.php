@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Tests\AvtoDev\DevTools\Tests\Bootstrap;
 
 use Exception;
@@ -12,7 +14,7 @@ class AbstractLaravelTestsBootstrapperTest extends AbstractTestCase
     /**
      * @throws \Exception
      */
-    public function testBootstrapper()
+    public function testBootstrapper(): void
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessageRegExp('~stub is works~');

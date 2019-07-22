@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace AvtoDev\DevTools\Tests\Bootstrap;
 
@@ -51,7 +51,7 @@ abstract class AbstractLaravelTestsBootstrapper extends AbstractTestsBootstrappe
      *
      * @return void
      */
-    protected function log($message = null, $style = 'info')
+    protected function log(?string $message = null, string $style = 'info'): void
     {
         /** @var ConsoleOutput|null $output */
         static $output = null;
@@ -62,7 +62,7 @@ abstract class AbstractLaravelTestsBootstrapper extends AbstractTestsBootstrappe
 
         $output->writeln(empty((string) $message)
             ? ''
-            : sprintf('<%1$s>> Bootstrap:</%1$s> <%2$s>%3$s</%2$s>', 'comment', $style, $message)
+            : \sprintf('<%1$s>> Bootstrap:</%1$s> <%2$s>%3$s</%2$s>', 'comment', $style, $message)
         );
     }
 }

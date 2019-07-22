@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
 use Illuminate\Foundation\Application;
@@ -37,7 +39,7 @@ class LaravelCommandsAssertionsTraitTest extends \Illuminate\Foundation\Testing\
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->signature_command = resolve(SignatureCommand::class);
@@ -50,7 +52,7 @@ class LaravelCommandsAssertionsTraitTest extends \Illuminate\Foundation\Testing\
      * @throws InvalidArgumentException
      * @covers ::assertArtisanCommandExists
      */
-    public function testAssertArtisanCommandExists()
+    public function testAssertArtisanCommandExists(): void
     {
         $this->makeAssertTest(
             'assertArtisanCommandExists',
@@ -74,7 +76,7 @@ class LaravelCommandsAssertionsTraitTest extends \Illuminate\Foundation\Testing\
      * @throws InvalidArgumentException
      * @covers ::assertArtisanCommandHasOption
      */
-    public function testAssertArtisanCommandHasOption()
+    public function testAssertArtisanCommandHasOption(): void
     {
         $this->makeAssertTest(
             'assertArtisanCommandHasOption',
@@ -107,7 +109,7 @@ class LaravelCommandsAssertionsTraitTest extends \Illuminate\Foundation\Testing\
      * @throws InvalidArgumentException
      * @covers ::assertArtisanCommandHasArgument
      */
-    public function testAssertArtisanCommandHasArgument()
+    public function testAssertArtisanCommandHasArgument(): void
     {
         $this->makeAssertTest(
             'assertArtisanCommandHasArgument',
@@ -140,7 +142,7 @@ class LaravelCommandsAssertionsTraitTest extends \Illuminate\Foundation\Testing\
      * @throws InvalidArgumentException
      * @covers ::assertArtisanCommandHasOptionShortcut
      */
-    public function testAssertArtisanCommandHasOptionShortcut()
+    public function testAssertArtisanCommandHasOptionShortcut(): void
     {
         $this->makeAssertTest(
             'assertArtisanCommandHasOptionShortcut',
@@ -173,7 +175,7 @@ class LaravelCommandsAssertionsTraitTest extends \Illuminate\Foundation\Testing\
      * @throws InvalidArgumentException
      * @covers ::assertArtisanCommandShortcutBelongToOption
      */
-    public function testAssertArtisanCommandShortcutBelongToOption()
+    public function testAssertArtisanCommandShortcutBelongToOption(): void
     {
         $this->makeAssertTest(
             'assertArtisanCommandShortcutBelongToOption',
@@ -208,7 +210,7 @@ class LaravelCommandsAssertionsTraitTest extends \Illuminate\Foundation\Testing\
      * @throws InvalidArgumentException
      * @covers ::assertArtisanCommandDescriptionNotEmpty
      */
-    public function testAssertArtisanCommandDescriptionNotEmpty()
+    public function testAssertArtisanCommandDescriptionNotEmpty(): void
     {
         $this->makeAssertTest(
             'assertArtisanCommandDescriptionNotEmpty',
@@ -228,7 +230,7 @@ class LaravelCommandsAssertionsTraitTest extends \Illuminate\Foundation\Testing\
      * @throws InvalidArgumentException
      * @covers ::assertArtisanCommandDescriptionRegExp
      */
-    public function testAssertArtisanCommandDescriptionRegExp()
+    public function testAssertArtisanCommandDescriptionRegExp(): void
     {
         $this->makeAssertTest(
             'assertArtisanCommandDescriptionRegExp',
@@ -250,7 +252,7 @@ class LaravelCommandsAssertionsTraitTest extends \Illuminate\Foundation\Testing\
      *
      * @covers ::buildCommand
      */
-    public function testBuildCommand()
+    public function testBuildCommand(): void
     {
         $commands = [
             'test:signature' => [

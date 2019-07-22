@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace AvtoDev\DevTools\Laravel\DatabaseQueriesLogger;
 
@@ -14,7 +14,7 @@ class ServiceProvider extends IlluminateServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->make('events')->listen(QueryExecuted::class, QueryExecutedEventsListener::class);
     }

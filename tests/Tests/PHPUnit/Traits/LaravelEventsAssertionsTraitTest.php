@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
 use Illuminate\Support\Facades\Event;
@@ -18,7 +20,7 @@ class LaravelEventsAssertionsTraitTest extends \Illuminate\Foundation\Testing\Te
      *
      * @return void
      */
-    public function testTrait()
+    public function testTrait(): void
     {
         $event    = 'foo.event';
         $listener = new class {

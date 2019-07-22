@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
 use PHPUnit\Framework\AssertionFailedError;
@@ -19,30 +21,13 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
      *
      * @return void
      */
-    public function testsTraitAsserts()
+    public function testsTraitAsserts(): void
     {
-        /* @see AdditionalAssertionsTrait::assertIsNumeric */
-        $this->makeAssertTest('assertIsNumeric', [1, 1.0, 0.00001, '1', '1.0', '0.00001'], ['foo', null]);
-
-        /* @see AdditionalAssertionsTrait::assertIsInteger */
-        $this->makeAssertTest('assertIsInteger', [1, 2, 1000], [1.01, '1', 'foo', []]);
-
-        /* @see AdditionalAssertionsTrait::assertIsArray */
-        $this->makeAssertTest('assertIsArray', [[], [null], [1], [1, 2], [1, [null]]], ['foo', 1, new \stdClass]);
-
         /* @see AdditionalAssertionsTrait::assertNotEmptyArray */
         $this->makeAssertTest('assertNotEmptyArray', [[1], ['foo'], [new \stdClass]], [[]]);
 
         /* @see AdditionalAssertionsTrait::assertEmptyArray */
         $this->makeAssertTest('assertEmptyArray', [[]], ['foo', [1], new \stdClass, [[]]]);
-
-        /* @see AdditionalAssertionsTrait::assertIsString */
-        $this->makeAssertTest('assertIsString', ['foo', 'bar'], [null, 1, new class {
-            public function __toString()
-            {
-                return 'baz';
-            }
-        }]);
 
         /* @see AdditionalAssertionsTrait::assertEmptyString */
         $this->makeAssertTest('assertEmptyString', [''], ['foo', [1], new \stdClass, []]);
@@ -98,7 +83,7 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
     /**
      * @return void
      */
-    public function testAssertJsonStructureFormatException()
+    public function testAssertJsonStructureFormatException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Passed string has not valid JSON format.');
@@ -109,7 +94,7 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
     /**
      * @return void
      */
-    public function testAssertJsonStructureNotArrayException()
+    public function testAssertJsonStructureNotArrayException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Passed data is not array.');
@@ -134,7 +119,7 @@ class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
      *
      * @return array
      */
-    private function getStructuresData()
+    private function getStructuresData(): array
     {
         return [
             // Valid structures

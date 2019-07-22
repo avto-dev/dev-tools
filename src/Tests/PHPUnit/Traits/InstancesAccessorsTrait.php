@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
@@ -21,9 +21,11 @@ trait InstancesAccessorsTrait
      *
      * @throws ReflectionException
      *
+     * @deprecated
+     *
      * @return mixed
      */
-    public static function callMethod($object, string $method_name, array $args = [])
+    public function callMethod($object, string $method_name, array $args = [])
     {
         $class  = new ReflectionClass($object);
         $method = $class->getMethod($method_name);
@@ -41,16 +43,13 @@ trait InstancesAccessorsTrait
      *
      * @throws ReflectionException
      *
+     * @deprecated
+     *
      * @return mixed
      */
-    public static function getProperty($object, string $property_name)
+    public function getProperty($object, string $property_name)
     {
-        $reflection = new ReflectionClass($object);
-
-        $property = $reflection->getProperty($property_name);
-        $property->setAccessible(true);
-
-        return $property->getValue($object);
+        return $this->getObjectAttribute($object, $property_name);
     }
 
     /**
@@ -64,11 +63,15 @@ trait InstancesAccessorsTrait
      *
      * @return string
      */
-    public static function getClosureHash(Closure $closure): string
+    public function getClosureHash(Closure $closure): string
     {
         // @codeCoverageIgnoreStart
         if (! class_exists(ClosureSerializer::class)) {
-            throw new Exception(sprintf('Package [%s] is required for [%s] method', 'jeremeamia/superclosure', __METHOD__));
+            throw new Exception(\sprintf(
+                'Package [%s] is required for [%s] method',
+                'jeremeamia/superclosure',
+                __METHOD__
+            ));
         }
         // @codeCoverageIgnoreEnd
 

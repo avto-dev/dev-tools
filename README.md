@@ -8,7 +8,6 @@
 [![Version][badge_php_version]][link_packagist]
 [![Build Status][badge_build_status]][link_build_status]
 [![Coverage][badge_coverage]][link_coverage]
-[![Code quality][badge_code_quality]][link_code_quality]
 [![Downloads count][badge_downloads_count]][link_packagist]
 [![License][badge_license]][link_license]
 
@@ -16,8 +15,8 @@
 
 Require this package with composer using the following command:
 
-```shell
-$ composer require --dev avto-dev/dev-tools "^1.10"
+```bash
+$ composer require --dev avto-dev/dev-tools "^2.0"
 ```
 
 > Installed `composer` is required ([how to install composer][getcomposer]).
@@ -28,15 +27,6 @@ $ composer require --dev avto-dev/dev-tools "^1.10"
 
 Данный пакет позволяет легко интегрировать в ваше приложение вспомогательные инструменты, позволяющие более эффективно вести разработку. Разделить их можно на следующие группы:
 
-## Вспомогательные функции
-
-Имя функции | Её назначение
------------ | -------------
-`\dev\dd(...$arguments)` | Выводит удобочитаемый дамп переданных в функцию значений, бросив специальным образом оформленное исключение (при вызове в HTTP-контексте; в CLI контексте работает как обычная `\dd(...)`) <sup>*</sup>
-`\dev\dump(...$arguments)` | Выводит удобочитаемый дамп переданных в функцию значений не прерывая обработку запроса. Необходима регистрация сервис-провайдера [VarDumper](./src/Laravel/VarDumper/ServiceProvider.php) (при вызове в HTTP-контексте; в CLI контексте работает как обычная `\dump(...)`) <sup>*</sup>
-
-> **<sup> * </sup>** корректно работает в связке Laravel + [RoadRunner][roadrunner] (возможно и ReactPHP - не проверено)
-
 ## Вспомогательные сервисы для Laravel
 
 Для Laravel-приложений вы можете подключать следующие сервис-провайдеры:
@@ -44,7 +34,6 @@ $ composer require --dev avto-dev/dev-tools "^1.10"
 Сервис-провайдер | Его назначение
 ---------------- | --------------
 [DatabaseQueriesLogger](./src/Laravel/DatabaseQueriesLogger/ServiceProvider.php) | Производит запись всех обращений к базе данных в лог-файл приложения
-[VarDumper](./src/Laravel/VarDumper/ServiceProvider.php) | Модифицирует HTTP-ответ приложения, добавляя в него результат работы вызовов функции `\dev\dump()`. Данный сервис-провайдер регистрируется **автоматически**
 
 ## Unit-тестирование приложения
 
@@ -68,7 +57,9 @@ Bootstrap - это файл, который выполняется **перед 
 Написание кода по рекурсивному созданию директорий, соединению с БД может показаться вам довольно утомительным. Для того, чтобы упростить данную задачу вы можете создать свой класс `bootsrapper`-а, который умеет **поочередное** выполнение всех методов внутри себя, начинающихся с префикса `boot*` при создании собственного экземпляра. Более того - `$this->app` уже хранит инстанс вашего приложения (достаточно подключить нужный трейт). Взгляните на пример:
  
 ```php
-class MyBootstrap extends AvtoDev\DevTools\Tests\Bootstrap\AbstractLaravelTestsBootstrapper
+<?php
+
+class MyBootstrap extends \AvtoDev\DevTools\Tests\Bootstrap\AbstractLaravelTestsBootstrapper
 {
     use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 
@@ -86,6 +77,8 @@ class MyBootstrap extends AvtoDev\DevTools\Tests\Bootstrap\AbstractLaravelTestsB
 Более простая реализация:
 
 ```php
+<?php
+
 class MyBootstrap extends \AvtoDev\DevTools\Tests\Bootstrap\AbstractTestsBootstrapper
 {
     public function bootMakeSome()
@@ -142,12 +135,12 @@ class MyBootstrap extends \AvtoDev\DevTools\Tests\Bootstrap\AbstractTestsBootstr
 
 ### Testing
 
-For package testing we use `phpunit` framework. Just write into your terminal:
+For package testing we use `phpunit` framework and `docker-ce` + `docker-compose` as develop environment. So, just write into your terminal after repository cloning:
 
-```shell
-$ git clone git@github.com:avto-dev/dev-tools.git ./dev-tools && cd $_
-$ composer install
-$ composer test
+```bash
+$ make build
+$ make latest # or 'make lowest'
+$ make test
 ```
 
 ## Changes log
@@ -171,7 +164,6 @@ This is open-sourced software licensed under the [MIT License][link_license].
 [badge_packagist_version]:https://img.shields.io/packagist/v/avto-dev/dev-tools.svg?maxAge=180
 [badge_php_version]:https://img.shields.io/packagist/php-v/avto-dev/dev-tools.svg?longCache=true
 [badge_build_status]:https://travis-ci.org/avto-dev/dev-tools.svg?branch=master
-[badge_code_quality]:https://img.shields.io/scrutinizer/g/avto-dev/dev-tools.svg?maxAge=180
 [badge_coverage]:https://img.shields.io/codecov/c/github/avto-dev/dev-tools/master.svg?maxAge=60
 [badge_downloads_count]:https://img.shields.io/packagist/dt/avto-dev/dev-tools.svg?maxAge=180
 [badge_license]:https://img.shields.io/packagist/l/avto-dev/dev-tools.svg?longCache=true
@@ -184,7 +176,6 @@ This is open-sourced software licensed under the [MIT License][link_license].
 [link_build_status]:https://travis-ci.org/avto-dev/dev-tools
 [link_coverage]:https://codecov.io/gh/avto-dev/dev-tools/
 [link_changes_log]:https://github.com/avto-dev/dev-tools/blob/master/CHANGELOG.md
-[link_code_quality]:https://scrutinizer-ci.com/g/avto-dev/dev-tools/
 [link_issues]:https://github.com/avto-dev/dev-tools/issues
 [link_create_issue]:https://github.com/avto-dev/dev-tools/issues/new/choose
 [link_commits]:https://github.com/avto-dev/dev-tools/commits

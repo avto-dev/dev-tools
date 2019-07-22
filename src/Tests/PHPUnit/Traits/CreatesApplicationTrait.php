@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
 use Illuminate\Foundation\Application;
-use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 
 trait CreatesApplicationTrait
@@ -13,9 +12,9 @@ trait CreatesApplicationTrait
     /**
      * Get application bootstrap file(s).
      *
-     * @return string|array
+     * @return string[]
      */
-    public function getApplicationBootstrapFiles()
+    public function getApplicationBootstrapFiles(): array
     {
         return [
             __DIR__ . '/../bootstrap/app.php',
@@ -43,7 +42,7 @@ trait CreatesApplicationTrait
                     $this->$before_method_name($app);
                 }
 
-                $app->make(Kernel::class)->bootstrap();
+                $app->make(\Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
                 if (\method_exists($this, $after_method_name = 'afterApplicationBootstrapped')) {
                     $this->$after_method_name($app);

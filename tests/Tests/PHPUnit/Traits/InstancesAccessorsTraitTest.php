@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 use Tests\AvtoDev\DevTools\AbstractTestCase;
 use PHPUnit\Framework\ExpectationFailedException;
 use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
@@ -19,7 +22,7 @@ class InstancesAccessorsTraitTest extends AbstractTestCase
      *
      * @return void
      */
-    public function testsTraitAsserts()
+    public function testsTraitAsserts(): void
     {
         $instance             = new class {
             private $property = 'foo';
@@ -37,13 +40,14 @@ class InstancesAccessorsTraitTest extends AbstractTestCase
     /**
      * @return void
      */
-    public function testGetClosureHash()
+    public function testGetClosureHash(): void
     {
         $test_cases = [
             function () {
             },
             function () {
                 return new class extends AbstractLaravelTestCase {
+                    use CreatesApplicationTrait;
                 };
             },
             function () {

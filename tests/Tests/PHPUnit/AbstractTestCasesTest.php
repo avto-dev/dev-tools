@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit;
 
 use Tests\AvtoDev\DevTools\AbstractTestCase;
@@ -19,7 +21,7 @@ class AbstractTestCasesTest extends AbstractTestCase
      * @throws \PHPUnit\Framework\ExpectationFailedException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
-    public function testAbstractTestCase()
+    public function testAbstractTestCase(): void
     {
         $instance = new class extends \AvtoDev\DevTools\Tests\PHPUnit\AbstractTestCase {
         };
@@ -37,7 +39,7 @@ class AbstractTestCasesTest extends AbstractTestCase
      * @throws \PHPUnit\Framework\ExpectationFailedException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
-    public function testAbstractLaravelTestCase()
+    public function testAbstractLaravelTestCase(): void
     {
         $instance = new class extends \AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase {
             use CreatesApplicationTrait;
