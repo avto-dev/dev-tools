@@ -11,6 +11,9 @@ use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelLogFilesAssertsTrait;
 use AvtoDev\DevTools\Laravel\DatabaseQueriesLogger\QueryExecutedEventsListener;
 
+/**
+ * @covers \AvtoDev\DevTools\Laravel\DatabaseQueriesLogger\QueryExecutedEventsListener
+ */
 class QueryExecutedEventsListenerTest extends \Illuminate\Foundation\Testing\TestCase
 {
     use CreatesApplicationTrait,

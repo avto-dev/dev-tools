@@ -8,6 +8,9 @@ use Illuminate\Foundation\Application;
 use Tests\AvtoDev\DevTools\AbstractTestCase;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 
+/**
+ * @covers \AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait<extended>
+ */
 class CreatesApplicationTraitTest extends AbstractTestCase
 {
     use CreatesApplicationTrait;

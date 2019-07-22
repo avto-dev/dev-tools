@@ -12,6 +12,9 @@ use SebastianBergmann\RecursionContext\InvalidArgumentException;
 use Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits\Stubs\TraitThree;
 use Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits\Stubs\WithTraits;
 
+/**
+ * @covers \AvtoDev\DevTools\Tests\PHPUnit\Traits\AdditionalAssertionsTrait<extended>
+ */
 class AdditionalAssertionsTraitTest extends AbstractTraitTestCase
 {
     /**

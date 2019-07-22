@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Event;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelEventsAssertionsTrait;
 
+/**
+ * @covers \AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelEventsAssertionsTrait<extended>
+ */
 class LaravelEventsAssertionsTraitTest extends \Illuminate\Foundation\Testing\TestCase
 {
     use CreatesApplicationTrait,

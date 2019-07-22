@@ -7,6 +7,9 @@ namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
 use Tests\AvtoDev\DevTools\AbstractTestCase;
 use PHPUnit\Framework\ExpectationFailedException;
 
+/**
+ * @covers \AvtoDev\DevTools\Tests\PHPUnit\Traits\AppVersionAssertionsTrait<extended>
+ */
 class AppVersionAssertionsTraitTest extends AbstractTestCase
 {
     /**

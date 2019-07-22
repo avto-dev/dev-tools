@@ -13,6 +13,10 @@ use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelLogFilesAssertsTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelEventsAssertionsTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelCommandsAssertionsTrait;
 
+/**
+ * @covers \AvtoDev\DevTools\Tests\PHPUnit\AbstractTestCase<extended>
+ * @covers \AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase<extended>
+ */
 class AbstractTestCasesTest extends AbstractTestCase
 {
     use AdditionalAssertionsTrait;

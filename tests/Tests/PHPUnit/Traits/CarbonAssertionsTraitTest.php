@@ -8,6 +8,9 @@ use Carbon\Carbon;
 use Tests\AvtoDev\DevTools\AbstractTestCase;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\CarbonAssertionsTrait;
 
+/**
+ * @covers \AvtoDev\DevTools\Tests\PHPUnit\Traits\CarbonAssertionsTrait<extended>
+ */
 class CarbonAssertionsTraitTest extends AbstractTestCase
 {
     use CarbonAssertionsTrait;

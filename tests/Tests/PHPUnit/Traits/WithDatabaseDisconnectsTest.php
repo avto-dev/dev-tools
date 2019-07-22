@@ -9,6 +9,9 @@ use Illuminate\Config\Repository as ConfigRepository;
 use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\WithDatabaseDisconnects;
 
+/**
+ * @covers \AvtoDev\DevTools\Tests\PHPUnit\Traits\WithDatabaseDisconnects<extended>
+ */
 class WithDatabaseDisconnectsTest extends AbstractLaravelTestCase
 {
     use WithDatabaseDisconnects;

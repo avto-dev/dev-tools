@@ -10,6 +10,9 @@ use Illuminate\Foundation\Testing\TestCase as IlluminateTestCase;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelLogFilesAssertsTrait;
 
+/**
+ * @covers \AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelLogFilesAssertsTrait<extended>
+ */
 class LaravelLogFilesAssertsTraitTest extends IlluminateTestCase
 {
     use CreatesApplicationTrait;

@@ -8,6 +8,9 @@ use Tarampampam\GuzzleUrlMock\UrlsMockHandler;
 use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\WithGuzzleMocking;
 
+/**
+ * @covers \AvtoDev\DevTools\Tests\PHPUnit\Traits\WithGuzzleMocking<extended>
+ */
 class WithGuzzleMockingTest extends AbstractLaravelTestCase
 {
     use WithGuzzleMocking;

@@ -7,6 +7,9 @@ namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\WithMemoryClean;
 use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
 
+/**
+ * @covers \AvtoDev\DevTools\Tests\PHPUnit\Traits\WithMemoryClean<extended>
+ */
 class WithMemoryCleanTest extends AbstractLaravelTestCase
 {
     use WithMemoryClean;

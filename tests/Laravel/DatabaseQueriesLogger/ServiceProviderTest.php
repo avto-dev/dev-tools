@@ -11,6 +11,9 @@ use AvtoDev\DevTools\Laravel\DatabaseQueriesLogger\ServiceProvider;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\LaravelEventsAssertionsTrait;
 use AvtoDev\DevTools\Laravel\DatabaseQueriesLogger\QueryExecutedEventsListener;
 
+/**
+ * @covers \AvtoDev\DevTools\Laravel\DatabaseQueriesLogger\ServiceProvider
+ */
 class ServiceProviderTest extends \Illuminate\Foundation\Testing\TestCase
 {
     use CreatesApplicationTrait,

@@ -8,6 +8,9 @@ use Illuminate\Config\Repository as ConfigRepository;
 use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\WithDatabaseQueriesLogging;
 
+/**
+ * @covers \AvtoDev\DevTools\Tests\PHPUnit\Traits\WithDatabaseQueriesLogging<extended>
+ */
 class WithDatabaseQueriesLoggingTest extends AbstractLaravelTestCase
 {
     use WithDatabaseQueriesLogging;

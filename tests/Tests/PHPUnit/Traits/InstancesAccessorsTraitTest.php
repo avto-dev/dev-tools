@@ -11,6 +11,9 @@ use SebastianBergmann\RecursionContext\InvalidArgumentException;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\InstancesAccessorsTrait;
 
+/**
+ * @covers \AvtoDev\DevTools\Tests\PHPUnit\Traits\InstancesAccessorsTrait<extended>
+ */
 class InstancesAccessorsTraitTest extends AbstractTestCase
 {
     use InstancesAccessorsTrait;
