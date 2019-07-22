@@ -4,11 +4,11 @@ declare(strict_types = 1);
 
 namespace Tests\AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
-use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 use Tests\AvtoDev\DevTools\AbstractTestCase;
 use PHPUnit\Framework\ExpectationFailedException;
 use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
+use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 use AvtoDev\DevTools\Tests\PHPUnit\Traits\InstancesAccessorsTrait;
 
 class InstancesAccessorsTraitTest extends AbstractTestCase
