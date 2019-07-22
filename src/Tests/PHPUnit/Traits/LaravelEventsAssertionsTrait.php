@@ -6,9 +6,13 @@ namespace AvtoDev\DevTools\Tests\PHPUnit\Traits;
 
 use ReflectionFunction;
 use ReflectionException;
+use Illuminate\Events\Dispatcher;
 use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
+/**
+ * @mixin \Illuminate\Foundation\Testing\TestCase
+ */
 trait LaravelEventsAssertionsTrait
 {
     /**
@@ -27,7 +31,10 @@ trait LaravelEventsAssertionsTrait
     {
         $result = [];
 
-        foreach (\Illuminate\Support\Facades\Event::getListeners($event_abstract) as $listener_closure) {
+        /** @var Dispatcher $events */
+        $events = $this->app->make(Dispatcher::class);
+
+        foreach ($events->getListeners($event_abstract) as $listener_closure) {
             $reflection = new ReflectionFunction($listener_closure);
             $uses       = $reflection->getStaticVariables();
 

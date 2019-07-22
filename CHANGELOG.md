@@ -19,12 +19,17 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 - Some asserts now accepts "message" parameter
 - Minimal PHP version now is `7.1.3`
 - Minimal PHPUnit version now is `^7.5`
+- Minimal Laravel version now is `5.6.x`
 - Maximal Laravel version now is `5.8.x`
 - Composer scripts
 
 ### Removed
 
 - `AvtoDev\DevTools\Laravel\VarDumper\*` (replaced with `avto-dev/stacked-dumper-laravel`)
+- `assertIsNumeric`
+- `assertIsInteger`
+- `assertIsArray`
+- `assertIsString`
 
 ### Deprecated
 

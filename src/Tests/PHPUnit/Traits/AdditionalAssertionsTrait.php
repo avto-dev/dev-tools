@@ -240,7 +240,7 @@ trait AdditionalAssertionsTrait
                 $results += $trait_uses_recursive($class_iterate);
             }
 
-            return \array_values(\array_unique($results));
+            return \array_values(\array_unique((array) $results));
         };
 
         $uses = $class_uses_recursive($class);
