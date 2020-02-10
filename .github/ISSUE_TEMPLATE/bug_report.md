@@ -8,15 +8,15 @@ about: Create a report to help us improve
 
 > A clear and concise description of what the bug is.
 
-### Expected behaviour:
+### Expected behaviour
 
 > Tell us what should happen.
 
-### Actual behaviour:
+### Actual behaviour
 
 > Tell us what happens instead.
 
-### Steps to reproduce the behavior:
+### Steps to reproduce the behavior
 
 > Put some code example:
 >

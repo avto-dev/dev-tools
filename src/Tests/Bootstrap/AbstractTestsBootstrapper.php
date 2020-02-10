@@ -21,7 +21,7 @@ abstract class AbstractTestsBootstrapper
      */
     public function __construct()
     {
-        \set_exception_handler(function ($e) {
+        \set_exception_handler(static function ($e): void {
             if ($e instanceof Exception || $e instanceof TypeError) {
                 echo \sprintf(
                     'Exception: "%s" (file: %s, line: %d)' . PHP_EOL,
@@ -54,8 +54,8 @@ abstract class AbstractTestsBootstrapper
     /**
      * Determine if a given string starts with a given substring.
      *
-     * @param string       $haystack
-     * @param string|array $needles
+     * @param string               $haystack
+     * @param string|array<string> $needles
      *
      * @return bool
      */

@@ -19,7 +19,7 @@ abstract class AbstractLaravelTestCase extends TestCase
         Traits\CarbonAssertionsTrait;
 
     /**
-     * {@inheritdoc}
+     * @return array<string>
      */
     protected function setUpTraits(): array
     {

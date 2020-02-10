@@ -15,15 +15,15 @@ trait InstancesAccessorsTrait
     /**
      * Calls a instance method (public/private/protected) by its name.
      *
-     * @param object $object
-     * @param string $method_name
-     * @param array  $args
+     * @param object       $object
+     * @param string       $method_name
+     * @param array<mixed> $args
      *
      * @throws ReflectionException
      *
-     * @deprecated
-     *
      * @return mixed
+     *
+     * @deprecated
      */
     public function callMethod($object, string $method_name, array $args = [])
     {
@@ -43,9 +43,9 @@ trait InstancesAccessorsTrait
      *
      * @throws ReflectionException
      *
-     * @deprecated
-     *
      * @return mixed
+     *
+     * @deprecated https://github.com/sebastianbergmann/phpunit/issues/3338
      */
     public function getProperty($object, string $property_name)
     {
@@ -73,10 +73,11 @@ trait InstancesAccessorsTrait
                 __METHOD__
             ));
         }
+
         // @codeCoverageIgnoreEnd
 
         return sha1(
-            (new ClosureSerializer())->serialize($closure->bindTo(new \stdClass))
+            (new ClosureSerializer)->serialize($closure->bindTo(new \stdClass))
         );
     }
 }

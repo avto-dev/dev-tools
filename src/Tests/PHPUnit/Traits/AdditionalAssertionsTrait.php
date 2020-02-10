@@ -255,8 +255,8 @@ trait AdditionalAssertionsTrait
     /**
      * Assert that the array has a given structure.
      *
-     * @param array $structure
-     * @param array $testing_array
+     * @param array<string, mixed|array<mixed>> $structure
+     * @param array<mixed>                      $testing_array
      *
      * @throws InvalidArgumentException
      *
@@ -286,9 +286,9 @@ trait AdditionalAssertionsTrait
     /**
      * Assert that the JSON-encoded array has a given structure.
      *
-     * @param array  $structure
-     * @param string $json_string
-     * @param int    $encode_options
+     * @param array<string, mixed|array<mixed>> $structure
+     * @param string                            $json_string
+     * @param int                               $encode_options
      *
      * @throws AssertionFailedError
      * @throws InvalidArgumentException

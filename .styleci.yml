@@ -20,8 +20,10 @@ enabled:
   - php_unit_dedicate_assert
   - php_unit_namespaced
   - php_unit_construct
+  - length_ordered_imports
 
 disabled:
   - unalign_equals
   - concat_without_spaces
   - declare_equal_normalize
+  - alpha_ordered_imports

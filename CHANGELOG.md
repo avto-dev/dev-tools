@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## v2.2.0
+
+### Added
+
+- PHP 7.4 tests running using GitHub Actions and Travis CI
+- `phpunit/phpunit` version `~8.0` supports _(important notice: a lot of asserts were marked as deprecated since `v8.x`)_
+
 ## v2.1.0
 
 ### Changed

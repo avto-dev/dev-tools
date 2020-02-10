@@ -25,7 +25,7 @@ trait LaravelEventsAssertionsTrait
      *
      * @throws ReflectionException
      *
-     * @return array
+     * @return array<string>
      */
     public function getEventListenersClasses($event_abstract): array
     {
