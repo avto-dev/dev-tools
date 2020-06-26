@@ -14,7 +14,8 @@
         }
     ],
     "require": {
-        "php": ">=7.1.3",
+        "php": ">=7.2",
+        "ext-json": "*",
         "phpunit/phpunit": "^7.5 || ~8.0",
         "avto-dev/stacked-dumper-laravel": "^1.1",
         "tarampampam/guzzle-url-mock": "^1.1"
@@ -23,18 +24,17 @@
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
         "jeremeamia/superclosure": "^2.4",
-        "laravel/laravel": "^5.6 || ~6.0",
-        "phpstan/phpstan": "^0.12",
-        "mockery/mockery": "^1.3"
+        "laravel/laravel": "^5.6 || ~6.0 || ~7.0",
+        "phpstan/phpstan": "^0.12"
     },
     "autoload": {
         "psr-4": {
-            "AvtoDev\\DevTools\\": "src"
+            "AvtoDev\\DevTools\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\AvtoDev\\DevTools\\": "tests"
+            "Tests\\AvtoDev\\DevTools\\": "tests/"
         }
     },
     "scripts": {
@@ -58,9 +58,5 @@
     "support": {
         "issues": "https://github.com/avto-dev/dev-tools/issues",
         "source": "https://github.com/avto-dev/dev-tools"
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "prefer-stable": true
+    }
 }

@@ -5,7 +5,7 @@
 # PHP developers tools
 
 [![Version][badge_packagist_version]][link_packagist]
-[![Version][badge_php_version]][link_packagist]
+[![PHP Version][badge_php_version]][link_packagist]
 [![Build Status][badge_build_status]][link_build_status]
 [![Coverage][badge_coverage]][link_coverage]
 [![Downloads count][badge_downloads_count]][link_packagist]
@@ -55,7 +55,7 @@ Bootstrap - это файл, который выполняется **перед 
 #### Для Laravel-приложений
 
 Написание кода по рекурсивному созданию директорий, соединению с БД может показаться вам довольно утомительным. Для того, чтобы упростить данную задачу вы можете создать свой класс `bootsrapper`-а, который умеет **поочередное** выполнение всех методов внутри себя, начинающихся с префикса `boot*` при создании собственного экземпляра. Более того - `$this->app` уже хранит инстанс вашего приложения (достаточно подключить нужный трейт). Взгляните на пример:
- 
+
 ```php
 <?php
 
@@ -123,7 +123,7 @@ class MyBootstrap extends \AvtoDev\DevTools\Tests\Bootstrap\AbstractTestsBootstr
 `LaravelEventsAssertionsTrait` | Методы тестирования событий (events) и их слушателей (listeners)
 `LaravelLogFilesAssertsTrait` | Методы тестирования лог-файлов Laravel приложения
 `LaravelCommandsAssertionsTrait` | Методы тестирования Laravel artisan комманд
-`WithDatabaseQueriesLogging` | Подключая данный трейт в класс теста - все запросы к БД будут записываться в log-файл (класс теста должен наследоваться при этом от `AbstractLaravelTestCase`) 
+`WithDatabaseQueriesLogging` | Подключая данный трейт в класс теста - все запросы к БД будут записываться в log-файл (класс теста должен наследоваться при этом от `AbstractLaravelTestCase`)
 `CarbonAssertionsTrait` | Методы для тестирования `Carbon`-объектов
 `WithDatabaseDisconnects` | Подключая данный трейт в класс теста - на `tearDown` происходит отключение от всех БД ([причина](https://www.neontsunami.com/posts/too-many-connections-using-phpunit-for-testing-laravel-51))
 `WithMemoryClean` | Подключая данный трейт в класс теста - на `tearDown` происходит очистка свойств класса. Для использования этого трейта вне `Laravel-framework` необходимо вызывать метод `clearMemory` на `tearDown` интересующего класса
@@ -163,7 +163,7 @@ This is open-sourced software licensed under the [MIT License][link_license].
 
 [badge_packagist_version]:https://img.shields.io/packagist/v/avto-dev/dev-tools.svg?maxAge=180
 [badge_php_version]:https://img.shields.io/packagist/php-v/avto-dev/dev-tools.svg?longCache=true
-[badge_build_status]:https://travis-ci.org/avto-dev/dev-tools.svg?branch=master
+[badge_build_status]:https://img.shields.io/github/workflow/status/avto-dev/dev-tools/tests/master
 [badge_coverage]:https://img.shields.io/codecov/c/github/avto-dev/dev-tools/master.svg?maxAge=60
 [badge_downloads_count]:https://img.shields.io/packagist/dt/avto-dev/dev-tools.svg?maxAge=180
 [badge_license]:https://img.shields.io/packagist/l/avto-dev/dev-tools.svg?longCache=true

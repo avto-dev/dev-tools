@@ -10,6 +10,9 @@ use ReflectionClass;
 use ReflectionException;
 use SuperClosure\Serializer as ClosureSerializer;
 
+/**
+ * @deprecated Will be removed in future releases
+ */
 trait InstancesAccessorsTrait
 {
     /**
@@ -62,6 +65,8 @@ trait InstancesAccessorsTrait
      * @throws Exception
      *
      * @return string
+     *
+     * @deprecated
      */
     public function getClosureHash(Closure $closure): string
     {
